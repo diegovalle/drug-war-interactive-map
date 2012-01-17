@@ -63,7 +63,7 @@ html, body { height: 100%; }
       #map-key {
         position: absolute;
     top: 0px;
-    right:0px;
+     right:0px;
     //width: 420px;
     border: 1px solid #DDD;
     background-color: #fff;
@@ -94,7 +94,7 @@ text-align: right;
     #trigger {
     padding: 0 0 0 0px;
     margin: 0 0 0px 0;
-    background: url("https://github.com/diegovalle/interactive-map/raw/master/images/plus-minus.png") no-repeat;
+    background: url("http://diegovalle.github.com/drug-war-interactive-map/plus-minus.png") no-repeat;
     height: 30px;
     width:30px;
     font-size: 14px;
