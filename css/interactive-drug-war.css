@@ -121,3 +121,30 @@ text-align: right;
     font-weigth:bold;
     margin-top:15px;
 }
+
+.social_icons a{
+    float:left;
+    padding:3px;
+    list-style-type: none; 
+    background:url(../images/result.png) no-repeat top left;
+}
+
+.social_icons span {
+    display: none;
+}
+
+a.facebook_icon {
+    background-position: 0px 0px;
+    width: 19px; height: 19px;
+}
+
+a.twitter_icon {
+    width: 19px; height: 19px;
+    background-position: 0px -50px;
+}
+
+a.plusone_icon {
+    width: 19px; height: 19px;
+    background-position: 0px -25px;
+    
+}

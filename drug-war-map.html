@@ -15,6 +15,8 @@
   <link rel="canonical" href="http://www.diegovalle.net/drug-war-map.html"/>
   <link href="http://diegovalle.github.com/drug-war-interactive-map/css/bootstrap.min.css" rel="stylesheet">         
   <link rel="stylesheet" href="http://diegovalle.github.com/drug-war-interactive-map/css/interactive-drug-war.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
+  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/tipsy.css" type="text/css" rel="stylesheet"/>
 
   <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/english_text.js"></script>
   <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -32,8 +34,7 @@
 	 
   <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/drug-eradication-compiled.js" charset="utf-8"></script>
   
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
-  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/tipsy.css" type="text/css" rel="stylesheet"/>
+  
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=drawing"></script>
   
   <script type="text/javascript" src="js/google-map.js">
@@ -234,7 +235,7 @@
               <h3>Legend</h3>
             </div>
             <div class="modal-body">
-	      <img src = "images/legend.png"/>
+	      <img src = "http://diegovalle.github.com/drug-war-interactive-map/images/legend.png" width="201"  height="66"/>
 	      <p>Homicides for 2010 have been adjusted for under-counting because of the cutoff date of December 31, 2010 for registering homicides in the database</p>
 
               <p>The color scale used to represent rates is capped at 130. Both total homicides and drug war-related homicides are shown using the same scale for ease of comparison</p>
@@ -245,8 +246,21 @@
             </div>
 	  </div>
 	    <a href="#" class ="label notice" data-controls-modal="modal-legend" data-backdrop="true" data-keyboard="true" >Legend</a>
+<a id="share" class ="label success" href="">Link to Map</a>
+
+<div style="float:right; margin-top:-10px">
+<div class = "social_icons">
+<a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:location.href='http://twitter.com/share?text=Interactive%20drug%20war%20map&url='+ encodeURIComponent(document.location) + '&via=diegovalle'"><span>Twitter</span></a>
+
+<a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:location.href='http://www.facebook.com/sharer.php?u='+encodeURIComponent(document.location)+'&t='+encodeURIComponent(document.title)"><span>Facebook</span></a>
+
+<a class="plusone_icon" rel="nofollow"  title="PlusOne" href="javascript:location.href='https://plusone.google.com/_/+1/confirm?hl=en&url='+encodeURIComponent(document.location)"><span>Google Plus</span></a>	   
+</div>
+</div>
 	  </div>
+
     </div>
+
     </div>
     
     <script>

@@ -112,18 +112,18 @@
 
 function changeHash(){
     if(polyString == "")
-	document.location.hash = $.param({city: currentCity, year: yearSlider,
+	$("#share").attr("href", "#" + $.param({city: currentCity, year: yearSlider,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom, homtype : typeOfHomicide,
-					  clat: centerLat, clong: centerLong});
+					  clat: centerLat, clong: centerLong}));
     else
-	document.location.hash = $.param({city: currentCity, year: yearSlider,
+	$("#share").attr("href", "#" + $.param({city: currentCity, year: yearSlider,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom,  homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong,
-					  polygon: polyString});
+					  polygon: polyString}));
     
 }
 var style = [
