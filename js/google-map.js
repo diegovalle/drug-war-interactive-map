@@ -379,6 +379,7 @@ Canvas.prototype.onAdd = function() {
    
 }
 
+
 /* Convert the country borders to latlng.*/
       // mariguana_muns.forEach(function(c) {
 // 				 c.borders.forEach(function(b) {
@@ -433,14 +434,14 @@ Canvas.prototype.draw = function(){
 	overlay.crimes.push({latlon : new google.maps.LatLng(23.5, -105.118408)});
 	
 
-	var pixels = this.crimes.map(function(d) {
+	var city_pixels = this.crimes.map(function(d) {
 					 return projection.fromLatLngToDivPixel(d.latlon);
 				     });
 	
 	
         function x(p) {return p.x;}; function y(p) {return p.y;};
-	var x = { min: pv.min(pixels, x) - r, max: pv.max(pixels, x) + r };
-	var y = { min: pv.min(pixels, y) - r, max: pv.max(pixels, y) + r };
+	var x = { min: pv.min(city_pixels, x) - r, max: pv.max(city_pixels, x) + r };
+	var y = { min: pv.min(city_pixels, y) - r, max: pv.max(city_pixels, y) + r };
 	c.style.width = (x.max - x.min) + "px";
 	c.style.height = (y.max - y.min) + "px";
 	c.style.left = x.min + "px";
@@ -465,18 +466,18 @@ Canvas.prototype.draw = function(){
 	return;
     }			
     
-    var pixels = this.crimes.map(function(d) {
+    var city_pixels = this.crimes.map(function(d) {
 				     return projection.fromLatLngToDivPixel(d.latlon);
 				 });
     
-    var druglab__pixels = lab_density.map(function(d) {
+    var druglab_pixels = lab_density.map(function(d) {
 				     return projection.fromLatLngToDivPixel(d.latlon);
 				 });
     
 
     function x(p) {return p.x;}; function y(p) {return p.y;};
-    var x = { min: pv.min(pixels, x) - r, max: pv.max(pixels, x) + r };
-    var y = { min: pv.min(pixels, y) - r, max: pv.max(pixels, y) + r };
+    var x = { min: pv.min(city_pixels, x) - r, max: pv.max(city_pixels, x) + r };
+    var y = { min: pv.min(city_pixels, y) - r, max: pv.max(city_pixels, y) + r };
     c.style.width = (x.max - x.min) + "px";
     c.style.height = (y.max - y.min) + "px";
     c.style.left = x.min + "px";
@@ -545,10 +546,11 @@ Canvas.prototype.draw = function(){
     // 	.antialias(false)
 
 	vis.root.add(pv.Panel)
-	.data(lab_density).add(pv.Dot)
+	.data(lab_density)
+	.add(pv.Dot)
 	.visible(methVisible)
-	.left(function(d) {tempLabCoord = projection.fromLatLngToDivPixel(new google.maps.LatLng(d.y, d.x)); return tempLabCoord.x;})
-	.top(function(d) {return tempLabCoord.y;})
+	.left(function(d) {return druglab_pixels[this.parent.index].x;})
+	.top(function(d) {return druglab_pixels[this.parent.index].y;})
 	.radius(function() {
 		    if(currentZoom < 7) 
 			return 3;
@@ -564,26 +566,27 @@ Canvas.prototype.draw = function(){
 	.root.add(pv.Panel)
 	.data(crimes)
         .add(pv.Dot)
-        .cursor("pointer")
-	.left(function(d) {tempPointCoord = projection.fromLatLngToDivPixel(d.latlon);return tempPointCoord.x;})
-	.top(function(d) {return tempPointCoord.y;})
-    //.visible(function(d) {if(d.code >= 1) return true; else if(currentZoom >=8) return true;})
-	.radius(function(d) {return rad(d.code) * scaleFactor;})
-        .lineWidth(function(d) {if(d.name != currentCity)
-				return 1;
-                                else
-                                    return 4;})
-        .strokeStyle(function(d) {if(d.code < 20 & currentZoom <7) return null;
+	.visible(function(d) {return !(d.code < 20 & currentZoom < 7);})
+	.strokeStyle(function(d) {if(d.code < 20 & currentZoom <7) return null;
 				  if(d.name != currentCity)
 				      return "#444";
                                   else
                                       return "black";})
-        .def("active", -1)
-        .fillStyle(function(d) {  if(d.code < 20 & currentZoom <7) return null;                                             
+	.fillStyle(function(d) {  if(d.code < 20 & currentZoom <7) 
+                                     return null; 
 				  return colors(d.rate > 130 ? 130 :d.rate).alpha(.9);
 				  
 			       })
-			      .size(990)
+	.size(990)
+        .cursor("pointer")
+	.left(function(d) {return city_pixels[this.parent.index].x;})
+	.top(function(d) {return city_pixels[this.parent.index].y;})
+	.radius(function(d) {return rad(d.code) * scaleFactor;})
+        .lineWidth(function(d) {if(d.name != currentCity)
+			        	return 1;
+                                else
+                                        return 4;})
+        .def("active", -1)
         .event("click", function(d) { 
 		   deleteSelectedShape();
 		   
@@ -601,7 +604,7 @@ Canvas.prototype.draw = function(){
 		   currentCity = d.name;
 		   queryHomicideMonth(currentCity);
 		   return this.root;})
-    //.text(function(d) d.name)
+    
         .event("mouseover", function() {this.active(this.index);
 					return pv.Behavior.tipsy({gravity: "s", fade: true, html: true }); },  function(){alert('click call back');}) 
         .event("mouseout", function() {return this.active(-1);})
@@ -709,16 +712,21 @@ var updateHomicidesTable = function(){
     //createTipsy(drhtot, drhrate, "#n2011", 84, 93);  
 		      
     var cityText = currentCity;
-    if (currentCity ==="José Azueta, Guerrero")
-	cityText = "Zihuatanejo, Guerrero";
-    
-    if(currentCity.indexOf(",") < 0 & (currentCity != "All of México" |
-				       currentCity != "Polygon"))
-	cityText = currentCity + metroArea;
-    if (currentCity === "San Luis Potosí-Soledad de Graciano Sánchez")
-	cityText = "San Luis Potosí" + metroArea;
-    if (currentCity === "Polygon")
-	cityText = custom_area;
+    switch(cityText) {
+	case "José Azueta, Guerrero":
+	  cityText = "Zihuatanejo, Guerrero";
+	  break;
+	case "San Luis Potosí-Soledad de Graciano Sánchez":
+	  cityText = "San Luis Potosí" + metroArea;
+	  break;
+	case "Polygon":
+	  cityText = custom_area;
+	  break;
+	case currentCity.indexOf(",") < 0 & (currentCity != "All of México" &
+				       currentCity != "Polygon"):
+	  cityText = currentCity + metroArea;
+    }
+   
     document.getElementById('city').innerHTML = cityText;   
 };
 
@@ -1100,6 +1108,11 @@ function initialize() {
 }
 
 function initializeParameters() {
+
+    //To speed up the code pre-convert the lat and longitudes of the 2d drug lab density estimate to google latlon objects
+    lab_density = lab_density.map(function(d) {return {latlon: new google.maps.LatLng(d.y, d.x),
+				     z : d.z};});
+
     parameters = $.deparam(document.location.hash);
     if(parameters["year"] != null){
 	yearSlider = parameters["year"];
