@@ -5,7 +5,11 @@ var rate_colon = "rate:";
 var population_colon = "population:";
 var rate_chart = " rate: ";
 var total_homicides_chart = " Total Homicides)";
+var metroArea = ", Metro";
+var custom_area = "Custom Area";
  
+op_veracruz = new Date("May 14, 2007");
+op_veracruz_text = "Joint Operation Veracruz";
 op_marlin = new Date("July 7, 2007");
 op_marlin_text = "Operation Marlin";
 op_culiacan_text = "Joint Operation Culiacán-Navolato";
