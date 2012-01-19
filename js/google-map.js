@@ -112,18 +112,19 @@
 
 function changeHash(){
     if(polyString == "")
-	$("#share").attr("href", "#" + $.param({city: currentCity, year: yearSlider,
+	$("#maplink").attr("value", document.location.href + "#" + $.param({city: currentCity, year: yearSlider,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom, homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong}));
     else
-	$("#share").attr("href", "#" + $.param({city: currentCity, year: yearSlider,
+	$("#maplink").attr("value", document.location.href + "#" + $.param({city: currentCity, year: yearSlider,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom,  homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong,
 					  polygon: polyString}));
+clip.setText($("#maplink").value);
     
 }
 var style = [
@@ -250,6 +251,8 @@ var polyString = "";
 var myPolygon = null;
 var lastModePoly = false;
 var lastHomicideYear = 2010;
+var mj_cartodb_gmapsv3, poppy_cartodb_gmapsv3;
+var clip;
 
 var allhomrate = [8.95197942275485, 9.23184006355124, 9.46473103713526, 7.94977018134357, 9.6630951101695, 9.25970202502102, 8.56889505511036, 8.89338951400641, 8.5842676571587, 8.93100856230274, 8.94401631339588, 9.30105647558102, 8.80956075241783, 8.98285938832678, 9.63585131069867, 9.75075275754199, 9.32936103029525, 10.1506718758386, 9.32008244195188, 9.05969334756777, 9.57199038043353, 9.37994082641078, 9.33559783264202, 10.2646246451506, 10.1063517356138, 8.58207203458146, 9.59909491025194, 9.36320488644368, 10.2983517863134, 9.55628796487184, 9.56828414779203, 10.3430826890478, 10.2869527541439, 9.33545905939933, 10.085611504537, 9.8400693674629, 6.72769561800063, 5.63932472764207, 8.73925162504158, 8.57408229517618, 10.3755049657733, 8.44455730157371, 8.25807645419554, 8.4595383638773, 7.81995254254779, 8.52970153668318, 7.78104700296879, 8.58853594908215, 9.76874873571384, 9.19719970572261, 11.05559290054, 10.3302058723488, 12.5233755512309, 13.2987446689771, 12.8359257097546, 14.0356319768753, 12.8850838338497, 15.9365544062214, 16.5298677248276, 16.5123727960418, 15.0052680179629, 16.0756237894177, 15.5053048930404, 14.5351556159937, 16.0141002040905, 18.0415816272955, 17.7201440896229, 19.3962256459605, 19.9582187467678, 18.9787817686577, 18.4533029663819, 23.9589799475932, 20.852415126022, 17.8595658891945, 21.4735820649442, 21.7403806241828, 23.0332023951144, 24.5690320276738, 24.6824434160587, 26.9596631630475, 23.002378740591, 25.904326969415, 19.8201457274886, 22.188582318216, null, null, null, null, null, null, null, null, null];
 
@@ -321,7 +324,7 @@ function queryData() {
 	var homstr = "hom";
 	var ratestr = "homrate";
     }
-    $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb),function(result){
+    $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
 		  violenceData = result;
 		  overlay.crimes.splice(0, overlay.crimes.length);
 		  var startTime = new Date();
@@ -377,23 +380,23 @@ Canvas.prototype.onAdd = function() {
 }
 
 /* Convert the country borders to latlng.*/
-      mariguana_muns.forEach(function(c) {
-				 c.borders.forEach(function(b) {
-						       b.forEach(function(p, i) {
-								     //b[i] = {lat: p[1], lng: p[0]};
-								     b[i] = new google.maps.LatLng(p[1], p[0]);
-								 });
-	  });
-			     });
+      // mariguana_muns.forEach(function(c) {
+// 				 c.borders.forEach(function(b) {
+// 						       b.forEach(function(p, i) {
+// 								     //b[i] = {lat: p[1], lng: p[0]};
+// 								     b[i] = new google.maps.LatLng(p[1], p[0]);
+// 								 });
+// 	  });
+// 			     });
 
-poppy_muns.forEach(function(c) {
-		       c.borders.forEach(function(b) {
-					     b.forEach(function(p, i) {
-							   //b[i] = {lat: p[1], lng: p[0]};
-							   b[i] = new google.maps.LatLng(p[1], p[0]);
-						       });
-					 });
-		   });
+// poppy_muns.forEach(function(c) {
+// 		       c.borders.forEach(function(b) {
+// 					     b.forEach(function(p, i) {
+// 							   //b[i] = {lat: p[1], lng: p[0]};
+// 							   b[i] = new google.maps.LatLng(p[1], p[0]);
+// 						       });
+// 					 });
+// 		   });
 
 
 
@@ -466,7 +469,9 @@ Canvas.prototype.draw = function(){
 				     return projection.fromLatLngToDivPixel(d.latlon);
 				 });
     
-    
+    var druglab__pixels = lab_density.map(function(d) {
+				     return projection.fromLatLngToDivPixel(d.latlon);
+				 });
     
 
     function x(p) {return p.x;}; function y(p) {return p.y;};
@@ -498,48 +503,48 @@ Canvas.prototype.draw = function(){
     
     var tempMarCoord, tempPoppyCoord,tempLabCoord, tempPointCoord;
 
-    vis.add(pv.Panel)
-	.data(mariguana_muns)
+    // vis.add(pv.Panel)
+    // 	.data(mariguana_muns)
     
-        .add(pv.Panel)
-    //.left(-x.min)
-    //	.top(-y.min)
-	.data(function(c) {return c.borders;})
-	.add(pv.Line)
-	.data(function(l) {return l;})
-	.left(function(c)  {tempMarCoord = projection.fromLatLngToDivPixel(c);
-			    return tempMarCoord.x;})
-	.top(function(c) {return tempMarCoord.y;})
-	.fillStyle("rgba(76, 187, 23, 0.5)")
-	.lineWidth(1)
-        .visible(mjVisible)
-	.strokeStyle("black")
-	.title(function(d, b, c) {return c.name;})
-	.antialias(false)
+    //     .add(pv.Panel)
+    // //.left(-x.min)
+    // //	.top(-y.min)
+    // 	.data(function(c) {return c.borders;})
+    // 	.add(pv.Line)
+    // 	.data(function(l) {return l;})
+    // 	.left(function(c)  {tempMarCoord = projection.fromLatLngToDivPixel(c);
+    // 			    return tempMarCoord.x;})
+    // 	.top(function(c) {return tempMarCoord.y;})
+    // 	.fillStyle("rgba(76, 187, 23, 0.5)")
+    // 	.lineWidth(1)
+    //     .visible(mjVisible)
+    // 	.strokeStyle("black")
+    // 	.title(function(d, b, c) {return c.name;})
+    // 	.antialias(false)
 
     
     
     
     
-	.root.add(pv.Panel)
-	.data(poppy_muns)
-        .add(pv.Panel)
-    //.left(-x.min)
-    //	.top(-y.min)
-	.data(function(c) {return c.borders;})
-	.add(pv.Line)
-	.data(function(l) {return l;})
-	.visible(poppyVisible)
-	.left(function(c)  {tempPoppyCoord = projection.fromLatLngToDivPixel(c); return tempPoppyCoord.x;})
-	.top(function(c) {return tempPoppyCoord.y;})
-	.fillStyle("rgba(156, 138, 165, 0.5)")
-	.lineWidth(1)
+    // 	.root.add(pv.Panel)
+    // 	.data(poppy_muns)
+    //     .add(pv.Panel)
+    // //.left(-x.min)
+    // //	.top(-y.min)
+    // 	.data(function(c) {return c.borders;})
+    // 	.add(pv.Line)
+    // 	.data(function(l) {return l;})
+    // 	.visible(false)
+    // 	.left(function(c)  {tempPoppyCoord = projection.fromLatLngToDivPixel(c); return tempPoppyCoord.x;})
+    // 	.top(function(c) {return tempPoppyCoord.y;})
+    // 	.fillStyle("rgba(156, 138, 165, 0.5)")
+    // 	.lineWidth(1)
     
-	.strokeStyle("black")
-	.title(function(d, b, c) {return c.name;})
-	.antialias(false)
+    // 	.strokeStyle("black")
+    // 	.title(function(d, b, c) {return c.name;})
+    // 	.antialias(false)
 
-	.root.add(pv.Panel)
+	vis.root.add(pv.Panel)
 	.data(lab_density).add(pv.Dot)
 	.visible(methVisible)
 	.left(function(d) {tempLabCoord = projection.fromLatLngToDivPixel(new google.maps.LatLng(d.y, d.x)); return tempLabCoord.x;})
@@ -643,12 +648,22 @@ function switchLayers(layer, visible) {
     }
 }
 
+function switchCartoLayers(layer, visible) {
+    if(visible) {
+	layer.hide();
+    }
+    else {
+	layer.show();
+    }
+}
+
 
 
 
 
 function showMJ(){
     switchLayers(mjpathslayer, mjVisible);
+    switchCartoLayers(mj_cartodb_gmapsv3, mjVisible);
     mjVisible = !mjVisible;
     changeHash();
     overlay.draw();
@@ -656,6 +671,7 @@ function showMJ(){
 
 function showPoppy(){
     switchLayers(poppypathslayer, poppyVisible);
+    switchCartoLayers(poppy_cartodb_gmapsv3, poppyVisible);
     poppyVisible = !poppyVisible;
     changeHash();
     overlay.draw();
@@ -672,28 +688,39 @@ function showMeth(){
 
 
 var updateHomicidesTable = function(){   
-		      createTipsy(homtot, homrate, "#h2004", 0, 12);
-		      createTipsy(homtot, homrate, "#h2005", 12, 24);
-		      createTipsy(homtot, homrate, "#h2006", 24, 36);
-		      createTipsy(homtot, homrate, "#h2007", 36, 48);
-		      createTipsy(homtot, homrate, "#h2008", 48, 60);
-		      createTipsy(homtot, homrate, "#h2009", 60, 72);
-		      createTipsy(homtot, homrate, "#h2010", 72, 84);
-		      //document.getElementById('h2011').innerHTML = "NA";
+    createTipsy(homtot, homrate, "#h2004", 0, 12);
+    createTipsy(homtot, homrate, "#h2005", 12, 24);
+    createTipsy(homtot, homrate, "#h2006", 24, 36);
+    createTipsy(homtot, homrate, "#h2007", 36, 48);
+    createTipsy(homtot, homrate, "#h2008", 48, 60);
+    createTipsy(homtot, homrate, "#h2009", 60, 72);
+    createTipsy(homtot, homrate, "#h2010", 72, 84);
+    //document.getElementById('h2011').innerHTML = "NA";
+    
+    
+    
+    document.getElementById('n2004').innerHTML = "NA";
+    document.getElementById('n2005').innerHTML = "NA";
+    document.getElementById('n2006').innerHTML = "NA";
+    createTipsy(drhtot, drhrate, "#n2007", 36, 48);
+    createTipsy(drhtot, drhrate, "#n2008", 48, 60);
+    createTipsy(drhtot, drhrate, "#n2009", 60, 72);
+    createTipsy(drhtot, drhrate, "#n2010", 72, 84); 
+    //createTipsy(drhtot, drhrate, "#n2011", 84, 93);  
 		      
-		      
-		      
-		      document.getElementById('n2004').innerHTML = "NA";
-		      document.getElementById('n2005').innerHTML = "NA";
-		      document.getElementById('n2006').innerHTML = "NA";
-		      createTipsy(drhtot, drhrate, "#n2007", 36, 48);
-		      createTipsy(drhtot, drhrate, "#n2008", 48, 60);
-		      createTipsy(drhtot, drhrate, "#n2009", 60, 72);
-		      createTipsy(drhtot, drhrate, "#n2010", 72, 84); 
-		      //createTipsy(drhtot, drhrate, "#n2011", 84, 93);  
-		      
-		      document.getElementById('city').innerHTML = currentCity;
-		  };
+    var cityText = currentCity;
+    if (currentCity ==="José Azueta, Guerrero")
+	cityText = "Zihuatanejo, Guerrero";
+    
+    if(currentCity.indexOf(",") < 0 & (currentCity != "All of México" |
+				       currentCity != "Polygon"))
+	cityText = currentCity + metroArea;
+    if (currentCity === "San Luis Potosí-Soledad de Graciano Sánchez")
+	cityText = "San Luis Potosí" + metroArea;
+    if (currentCity === "Polygon")
+	cityText = custom_area;
+    document.getElementById('city').innerHTML = cityText;   
+};
 
 var createTipsy = function(array, arrayRate, elementId, start, end) {
 		      var hom12Month = eval(array.slice(start,end).join('+'));
@@ -741,7 +768,7 @@ function queryHomicideMonth() {
     else
 	var queryCartodb = "SELECT drh, hom, drhrate, homrate, date, pop FROM homicides_web WHERE name = " + "'" + currentCity + "'" + " ORDER BY date";
     
-    $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb),function(result){
+    $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
 		  violenceData = result;
 		  homrate = [];datehom=[];homtot = [];drhrate = [];drhtot = [];pop = [];
 		  for(var i =0; i<result.rows.length;i++) {
@@ -897,7 +924,28 @@ function initialize() {
     
     map = new google.maps.Map(document.getElementById("map"),
 				  myOptions);
-    
+    mj_cartodb_gmapsv3 = new google.maps.CartoDBLayer({
+      map_canvas: 'map',
+      map: map,
+      user_name:'diegovalle',
+      table_name: 'mariguana',
+      query: "SELECT * FROM mariguana",
+      map_style: false,
+      infowindow: false,
+      auto_bound: false
+    });
+    poppy_cartodb_gmapsv3 = new google.maps.CartoDBLayer({
+      map_canvas: 'map',
+      map: map,
+      user_name:'diegovalle',
+      table_name: 'poppy',
+      query: "SELECT * FROM poppy",
+      map_style: false,
+      infowindow: false,
+      auto_bound: false
+    });
+    mj_cartodb_gmapsv3.show(); //#4CBB17
+    poppy_cartodb_gmapsv3.hide(); //#9c8aa5
     var styledMapType = new google.maps.StyledMapType(style, {
 							  map: map,
 							  name: 'Styled Map'
@@ -953,11 +1001,14 @@ function initialize() {
     
     if(parameters["mariguana"] != null){
 	mjVisible = parameters["mariguana"] == "true";
-	if(mjVisible)
+	if(mjVisible){
 	    $("#mjCheck").prop("checked", true);
+	    //mj_cartodb_gmapsv3.hide();
+	}
 	else {
 	    $("#mjCheck").prop("checked",false);
 	    mjpathslayer.setMap(null);
+	    mj_cartodb_gmapsv3.hide();
 	}
     }
     if(parameters["poppy"] != null){
@@ -965,6 +1016,7 @@ function initialize() {
 	if(poppyVisible) {
 	    $("#poppyCheck").prop("checked", true);
 	    poppypathslayer.setMap(map);
+	    poppy_cartodb_gmapsv3.show();
 	}
     }
     if(parameters["meth"] != null){
@@ -1037,6 +1089,14 @@ function initialize() {
     overlay = new Canvas(crimes, map);
     queryData();
     queryHomicideMonth();
+
+    //Clipboard copying
+    clip = new ZeroClipboard.Client();
+    clip.setHandCursor( true );
+    //clip.glue( 'd_clip_button', 'd_clip_container' );
+    clip.glue( 'copy_button');
+    clip.setText(document.location.href);
+    $("#maplink").attr("value", document.location.href);
 }
 
 function initializeParameters() {
@@ -1401,6 +1461,10 @@ function createGraph(){
 	    rangei = [drug_war_date];
 	    tip = [drug_war_text];
 	}
+	if(currentCity.indexOf("Veracruz") >= 0) {
+	    rangei = [op_veracruz];
+	    tip = [op_veracruz_text];
+	}
 	if(currentCity.indexOf("Juárez") >= 0) {
 	    rangei = [op_chihuahua, op_reinforcements];
 	    tip = [chihuahua_text, reinforcements_text];
@@ -1559,6 +1623,7 @@ function gethomicideData() {
 
 function rerenderGraph() {
     $('div[style^="position: absolute; width: 9px;"]').remove();
+    $(".tipsy-e").remove();
     if (visChart == null)
         createGraph();
     y.domain(0, pv.max(homrate.concat(drhrate))).nice();
@@ -1571,3 +1636,4 @@ function getIndex(idx) {
     idx = new Date(idx);
     return ((idx.getYear() - 104) * 12) + idx.getMonth();
 }
+

@@ -57,4 +57,4 @@ capture_barbie_text = "Capture of 'La Barbie'";
 nacho_kidnapping_text = "Kidnapping of Nacho Coronel's son";
 nacho_kidnapping = new Date(2010, 3, 6);
 drug_war_date = new Date("December 11, 2006");
-drug_war_text = "President Calderón assumes office and starts a war against drug traffickers";
+drug_war_text = "Felipe Calderón assumes office and starts a war against drug traffickers";

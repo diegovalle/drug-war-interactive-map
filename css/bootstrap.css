@@ -2174,11 +2174,11 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 0%;
+  left: 10%;
   z-index: 11000;
-  width: 560px;
-  margin: -250px 0 0 -280px;
+  width: 80%;
+  margin: 0px 0 0 0px;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -2207,7 +2207,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   top: -25%;
 }
 .modal.fade.in {
-  top: 50%;
+  top: 10%;
 }
 .modal-header {
   border-bottom: 1px solid #eee;
