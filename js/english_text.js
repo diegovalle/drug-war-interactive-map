@@ -7,7 +7,13 @@ var rate_chart = " rate: ";
 var total_homicides_chart = " Total Homicides)";
 var metroArea = ", Metro";
 var custom_area = "Custom Area";
- 
+var monthName = new Array ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+var csvHeaders = "Date, Total Homicides, Drug War-Related Homicides, Population";
+var location_text = "Location:";
+var all_municipalities_text = "All municipalities or metro areas contained in the polygon: ";
+
+mistake_df = new Date("December 1, 2006");
+mistake_df_text = "There was no drop in homicides in the Federal District. It's a mistake in the government database";
 op_veracruz = new Date("May 14, 2007");
 op_veracruz_text = "Joint Operation Veracruz";
 op_marlin = new Date("July 7, 2007");
@@ -57,4 +63,4 @@ capture_barbie_text = "Capture of 'La Barbie'";
 nacho_kidnapping_text = "Kidnapping of Nacho Coronel's son";
 nacho_kidnapping = new Date(2010, 3, 6);
 drug_war_date = new Date("December 11, 2006");
-drug_war_text = "Felipe Calderón assumes office and starts a war against drug traffickers";
+drug_war_text = "President Calderón assumes office and starts a war against drug traffickers";

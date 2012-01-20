@@ -110,7 +110,15 @@
 
 }(jQuery));
 
+function warningLongLinksIE(){
+    if($("#maplink").val().length > 2083)
+	$('#ielonglinks').html('<span class="label warning">Warning</span> Long links may not work in Internet Explorer or Social Networks');
+    else
+	$('#ielonglinks').html("");
+}
+
 function changeHash(){
+    $("#maplink").attr("value","");
     if(polyString == "")
 	$("#maplink").attr("value", document.location.href + "#" + $.param({city: currentCity, year: yearSlider,
 					  mariguana: mjVisible, poppy: poppyVisible,
@@ -124,8 +132,7 @@ function changeHash(){
 					  zoom: currentZoom,  homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong,
 					  polygon: polyString}));
-clip.setText($("#maplink").value);
-    
+    warningLongLinksIE();
 }
 var style = [
     {
@@ -213,6 +220,14 @@ var style = [
 var homrate = [], datehom = [], homtot = [], drhrate = [], drhtot =[], pop = [];
 var commas = pv.Format.number();
 
+var lastDWRHYear = 2011;
+var lastDWRHMonth = 9; //September is the last month for which DWRH are available
+
+var dates = [];
+var monthlyData = [], coordData = [];
+
+
+var shownModalButton = false;
 var parameters;
 var layer;
 var vis, state;
@@ -254,6 +269,18 @@ var lastHomicideYear = 2010;
 var mj_cartodb_gmapsv3, poppy_cartodb_gmapsv3;
 var clip;
 
+//Chart sidebar variables
+var lastDate = "September 15, 2011";
+var interHom = -1, interDRH = -1;var interDRH2 = -1;
+var activeLine = false, activeChart;
+var start = new Date(2004, 0, 1);
+var end = new Date(lastDate);
+var monthsLength = monthDiff(start, end)+1;
+
+
+var w = 360,
+    h = 180;
+
 var allhomrate = [8.95197942275485, 9.23184006355124, 9.46473103713526, 7.94977018134357, 9.6630951101695, 9.25970202502102, 8.56889505511036, 8.89338951400641, 8.5842676571587, 8.93100856230274, 8.94401631339588, 9.30105647558102, 8.80956075241783, 8.98285938832678, 9.63585131069867, 9.75075275754199, 9.32936103029525, 10.1506718758386, 9.32008244195188, 9.05969334756777, 9.57199038043353, 9.37994082641078, 9.33559783264202, 10.2646246451506, 10.1063517356138, 8.58207203458146, 9.59909491025194, 9.36320488644368, 10.2983517863134, 9.55628796487184, 9.56828414779203, 10.3430826890478, 10.2869527541439, 9.33545905939933, 10.085611504537, 9.8400693674629, 6.72769561800063, 5.63932472764207, 8.73925162504158, 8.57408229517618, 10.3755049657733, 8.44455730157371, 8.25807645419554, 8.4595383638773, 7.81995254254779, 8.52970153668318, 7.78104700296879, 8.58853594908215, 9.76874873571384, 9.19719970572261, 11.05559290054, 10.3302058723488, 12.5233755512309, 13.2987446689771, 12.8359257097546, 14.0356319768753, 12.8850838338497, 15.9365544062214, 16.5298677248276, 16.5123727960418, 15.0052680179629, 16.0756237894177, 15.5053048930404, 14.5351556159937, 16.0141002040905, 18.0415816272955, 17.7201440896229, 19.3962256459605, 19.9582187467678, 18.9787817686577, 18.4533029663819, 23.9589799475932, 20.852415126022, 17.8595658891945, 21.4735820649442, 21.7403806241828, 23.0332023951144, 24.5690320276738, 24.6824434160587, 26.9596631630475, 23.002378740591, 25.904326969415, 19.8201457274886, 22.188582318216, null, null, null, null, null, null, null, null, null];
 
 var alltothom = [ 772, 796, 817, 687, 836, 803, 745, 773, 746, 779, 781, 812, 770, 785, 843, 855, 819, 891, 819, 799, 844, 827, 824, 907, 894, 760, 852, 834, 917, 851, 853, 924, 918, 836, 904, 883, 603, 507, 787, 771, 935, 761, 745, 765, 708, 773, 706, 779, 887, 838, 1007, 942, 1144, 1218, 1174, 1284, 1180, 1464, 1517, 1520, 1380, 1480, 1429, 1341, 1479, 1668, 1640, 1797, 1851, 1762, 1715, 2229, 1942, 1665, 2004, 2031, 2154, 2300, 2313, 2529, 2160, 2435, 1865, 2090, null, null, null, null, null, null, null, null, null];
@@ -264,10 +291,22 @@ var alltotdrh = [null, null,null,null,null,null,null,null,null,null,null,null,nu
 
 
 var allpop =[103351444, 103467997, 103584560, 103701111, 103817668, 103934230, 104050755, 104167258, 104283794, 104400303, 104516804, 104633275, 104749831, 104866386, 104982940, 105099578, 105216209, 105332929, 105449711, 105566487, 105683349, 105800241, 105917159, 106034077, 106151065, 106268043, 106385030, 106501995, 106619003, 106736005, 106853014, 106970043, 107087106, 107204155, 107321207, 107438267, 107555401, 107672466, 107789550, 107906592, 108023658, 108140660, 108257656, 108374708, 108491707, 108608724, 108725728, 108842765, 108959707, 109076679, 109193601, 109310503, 109427366, 109544174, 109660965, 109777743, 109894512, 110011233, 110127923, 110244604, 110361241, 110477828, 110594407, 110710889, 110827332, 110943710, 111060045, 111176269, 111292497, 111408626, 111524750, 111640813, 111756839, 111872820, 111988768, 112104753, 112220609, 112336538, 112452400, 112568172, 112683998, 112799688, 112915416, 113031106, 113146761, 113262382, 113378059, 113493748, 113609410, 113725096, 113840807, 113956502, 114072242];
-
-
-
-
+//Initialize a date array with all the months for the homicide data
+for(var i = 2004; i <= lastDWRHYear; i++) {
+    for(var j = 0; j < 12; j++){
+	if(i ==  lastDWRHYear) 
+	    if(j < lastDWRHMonth)
+		dates.push(new Date(i, j, 15));
+            else
+		break;
+	else
+	    dates.push(new Date(i, j, 15));
+    }
+}
+for(var i = 0; i < dates.length; i++){
+    monthlyData.push({date: dates[i], drh: alltotdrh[i], drhrate: alldrhrate[i],
+		    hom: alltothom[i], homrate: allhomrate[i], pop: allpop[i]});
+}
 
 
 function toggleProvince() {
@@ -325,25 +364,21 @@ function queryData() {
 	var ratestr = "homrate";
     }
     $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
-		  violenceData = result;
-		  overlay.crimes.splice(0, overlay.crimes.length);
-		  var startTime = new Date();
+		 // coordData = result.rows;
+		  //overlay.crimes.splice(0, overlay.crimes.length);
+		  overlay.crimes.length = 0;
+		  //var startTime = new Date();
 		  for(var i =0; i<result.rows.length;i++) {
 		      
 		      
-		      overlay.crimes.push({lat : result.rows[i]["lat"], lon: result.rows[i]["long"], latlon: new google.maps.LatLng(result.rows[i]["lat"], result.rows[i]["long"]), code: result.rows[i][homstr], name:result.rows[i]["name"], rate:result.rows[i][ratestr],
+		      overlay.crimes[i] = ({lat : result.rows[i]["lat"], lon: result.rows[i]["long"], latlon: new google.maps.LatLng(result.rows[i]["lat"], result.rows[i]["long"]), code: result.rows[i][homstr], name:result.rows[i]["name"], rate:result.rows[i][ratestr],
 					   hom: result.rows[i]["hom"], homrate: result.rows[i]["homrate"]});
 		      
 		  }
 		  
-		  var endTime = new Date();
+		  //var endTime = new Date();
 		  
-		  // time difference in ms
-		  //alert(endTime - startTime)
-		  
-		  
-		  
-		  
+		  //alert(endTime-startTime);
 		  overlay.draw();
 	      });
 }
@@ -588,6 +623,8 @@ Canvas.prototype.draw = function(){
                                         return 4;})
         .def("active", -1)
         .event("click", function(d) { 
+	 
+   
 		   deleteSelectedShape();
 		   
 		   if(oldStrokeStyle) {
@@ -602,11 +639,13 @@ Canvas.prototype.draw = function(){
 				       });}
 		   old = this;
 		   currentCity = d.name;
+
 		   queryHomicideMonth(currentCity);
+   
 		   return this.root;})
     
         .event("mouseover", function() {this.active(this.index);
-					return pv.Behavior.tipsy({gravity: "s", fade: true, html: true }); },  function(){alert('click call back');}) 
+					return pv.Behavior.tipsy({gravity: "s", fade: true, html: true }); },  function(){}) 
         .event("mouseout", function() {return this.active(-1);})
 	.anchor("center").add(pv.Label)
         .title(function(d) {return d.name;})
@@ -698,13 +737,13 @@ var updateHomicidesTable = function(){
     createTipsy(homtot, homrate, "#h2008", 48, 60);
     createTipsy(homtot, homrate, "#h2009", 60, 72);
     createTipsy(homtot, homrate, "#h2010", 72, 84);
-    //document.getElementById('h2011').innerHTML = "NA";
+    //$('#h2011').text("NA");
     
     
     
-    document.getElementById('n2004').innerHTML = "NA";
-    document.getElementById('n2005').innerHTML = "NA";
-    document.getElementById('n2006').innerHTML = "NA";
+    $('#n2004').text("NA");
+    $('#n2005').text("NA");
+    $('#n2006').text("NA");
     createTipsy(drhtot, drhrate, "#n2007", 36, 48);
     createTipsy(drhtot, drhrate, "#n2008", 48, 60);
     createTipsy(drhtot, drhrate, "#n2009", 60, 72);
@@ -722,16 +761,20 @@ var updateHomicidesTable = function(){
 	case "Polygon":
 	  cityText = custom_area;
 	  break;
-	case currentCity.indexOf(",") < 0 & (currentCity != "All of México" &
-				       currentCity != "Polygon"):
-	  cityText = currentCity + metroArea;
     }
-   
-    document.getElementById('city').innerHTML = cityText;   
+    if(cityText.indexOf(",") < 0 & (cityText != "All of México" &
+cityText != custom_area))
+	  cityText = currentCity + metroArea;
+        
+    $('#city').text(cityText);
+       
 };
 
 var createTipsy = function(array, arrayRate, elementId, start, end) {
-		      var hom12Month = eval(array.slice(start,end).join('+'));
+    function sumArray(previousValue, currentValue) {
+	return previousValue + currentValue;
+    }
+		      var hom12Month = array.slice(start,end).reduce(sumArray);
 		      var tipId = elementId.slice(1) + "tip";
 		      var tipIdHash = "#" + tipId;
 		      $(tipIdHash).tipsy("hide");
@@ -741,14 +784,28 @@ var createTipsy = function(array, arrayRate, elementId, start, end) {
 		  };
 
 function queryHomicideMonth() {
+    
+		
+    homrate = []; 
+    drhrate = [];
+    pop = [];
+    drhtot = [];
+    homtot = [];
     if(currentCity === "All of México") {
-	homrate = [];datehom=[];homtot = [];drhrate = [];drhtot = [];pop = [];
-	datehom = ["2004-01-15T00:00:00.000Z", "2004-02-15T00:00:00.000Z", "2004-03-15T00:00:00.000Z", "2004-04-15T00:00:00.000Z", "2004-05-15T00:00:00.000Z", "2004-06-15T00:00:00.000Z", "2004-07-15T00:00:00.000Z", "2004-08-15T00:00:00.000Z", "2004-09-15T00:00:00.000Z", "2004-10-15T00:00:00.000Z", "2004-11-15T00:00:00.000Z", "2004-12-15T00:00:00.000Z", "2005-01-15T00:00:00.000Z", "2005-02-15T00:00:00.000Z", "2005-03-15T00:00:00.000Z", "2005-04-15T00:00:00.000Z", "2005-05-15T00:00:00.000Z", "2005-06-15T00:00:00.000Z", "2005-07-15T00:00:00.000Z", "2005-08-15T00:00:00.000Z", "2005-09-15T00:00:00.000Z", "2005-10-15T00:00:00.000Z", "2005-11-15T00:00:00.000Z", "2005-12-15T00:00:00.000Z", "2006-01-15T00:00:00.000Z", "2006-02-15T00:00:00.000Z", "2006-03-15T00:00:00.000Z", "2006-04-15T00:00:00.000Z", "2006-05-15T00:00:00.000Z", "2006-06-15T00:00:00.000Z", "2006-07-15T00:00:00.000Z", "2006-08-15T00:00:00.000Z", "2006-09-15T00:00:00.000Z", "2006-10-15T00:00:00.000Z", "2006-11-15T00:00:00.000Z", "2006-12-15T00:00:00.000Z", "2007-01-15T00:00:00.000Z", "2007-02-15T00:00:00.000Z", "2007-03-15T00:00:00.000Z", "2007-04-15T00:00:00.000Z", "2007-05-15T00:00:00.000Z", "2007-06-15T00:00:00.000Z", "2007-07-15T00:00:00.000Z", "2007-08-15T00:00:00.000Z", "2007-09-15T00:00:00.000Z", "2007-10-15T00:00:00.000Z", "2007-11-15T00:00:00.000Z", "2007-12-15T00:00:00.000Z", "2008-01-15T00:00:00.000Z", "2008-02-15T00:00:00.000Z", "2008-03-15T00:00:00.000Z", "2008-04-15T00:00:00.000Z", "2008-05-15T00:00:00.000Z", "2008-06-15T00:00:00.000Z", "2008-07-15T00:00:00.000Z", "2008-08-15T00:00:00.000Z", "2008-09-15T00:00:00.000Z", "2008-10-15T00:00:00.000Z", "2008-11-15T00:00:00.000Z", "2008-12-15T00:00:00.000Z", "2009-01-15T00:00:00.000Z", "2009-02-15T00:00:00.000Z", "2009-03-15T00:00:00.000Z", "2009-04-15T00:00:00.000Z", "2009-05-15T00:00:00.000Z", "2009-06-15T00:00:00.000Z", "2009-07-15T00:00:00.000Z", "2009-08-15T00:00:00.000Z", "2009-09-15T00:00:00.000Z", "2009-10-15T00:00:00.000Z", "2009-11-15T00:00:00.000Z", "2009-12-15T00:00:00.000Z", "2010-01-15T00:00:00.000Z", "2010-02-15T00:00:00.000Z", "2010-03-15T00:00:00.000Z", "2010-04-15T00:00:00.000Z", "2010-05-15T00:00:00.000Z", "2010-06-15T00:00:00.000Z", "2010-07-15T00:00:00.000Z", "2010-08-15T00:00:00.000Z", "2010-09-15T00:00:00.000Z", "2010-10-15T00:00:00.000Z", "2010-11-15T00:00:00.000Z", "2010-12-15T00:00:00.000Z", "2011-01-15T00:00:00.000Z", "2011-02-15T00:00:00.000Z", "2011-03-15T00:00:00.000Z", "2011-04-15T00:00:00.000Z", "2011-05-15T00:00:00.000Z", "2011-06-15T00:00:00.000Z", "2011-07-15T00:00:00.000Z", "2011-08-15T00:00:00.000Z", "2011-09-15T00:00:00.000Z"];
-	drhtot = alltotdrh;
-	drhrate=alldrhrate;
-	homtot = alltothom;
-	homrate = allhomrate;
-	pop = allpop;
+	// homrate = [];datehom=[];homtot = [];drhrate = [];drhtot = [];pop = [];
+	// datehom = dates;
+	// drhtot = alltotdrh;
+	// drhrate=alldrhrate;
+	// homtot = alltothom;
+	// homrate = allhomrate;
+	// pop = allpop;
+	monthlyData.forEach(function(value, index) {
+				homrate.push(value.homrate);
+				homtot.push(value.hom);
+				drhrate.push(value.drhrate);
+				drhtot.push(value.drh);
+				pop.push(value.pop);
+			    });
 	updateHomicidesTable();
 	rerenderGraph();
         if(vis != null)
@@ -777,26 +834,39 @@ function queryHomicideMonth() {
 	var queryCartodb = "SELECT drh, hom, drhrate, homrate, date, pop FROM homicides_web WHERE name = " + "'" + currentCity + "'" + " ORDER BY date";
     
     $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
-		  violenceData = result;
-		  homrate = [];datehom=[];homtot = [];drhrate = [];drhtot = [];pop = [];
-		  for(var i =0; i<result.rows.length;i++) {
-		      datehom.push(result.rows[i]["date"]);
-		      drhtot.push(result.rows[i]["drh"]);
-		      drhrate.push(result.rows[i]["drhrate"]);
-		      homtot.push(result.rows[i]["hom"]);
-		      homrate.push(result.rows[i]["homrate"]);
-		      pop.push(result.rows[i]["pop"]);
-		  }
+		  monthlyData = result.rows;
+		  // homrate = [];datehom=[];homtot = [];drhrate = [];drhtot = [];pop = [];
+		  // for(var i =0; i<result.rows.length;i++) {
+		  //     datehom.push(result.rows[i]["date"]);
+		  //     drhtot.push(result.rows[i]["drh"]);
+		  //     drhrate.push(result.rows[i]["drhrate"]);
+		  //     homtot.push(result.rows[i]["hom"]);
+		  //     homrate.push(result.rows[i]["homrate"]);
+		  //     pop.push(result.rows[i]["pop"]);
+		  // }
 		  changeHash();
+		  monthlyData.forEach(function(value, index) {
+				homrate.push(value.homrate);
+				homtot.push(value.hom);
+				drhrate.push(value.drhrate);
+				drhtot.push(value.drh);
+				pop.push(value.pop);
+				monthlyData[index].date = new Date(monthlyData[index].date)
+			});
+
 		  
-		  
-		  
+		 
+		  //var startTime = new Date();
 		  updateHomicidesTable();
+		  
 		  rerenderGraph();
                   if(vis != null)
 		      vis.root.render();
+		  //var endTime = new Date();		  
+		 // console.log(endTime-startTime);
 		  
 });
+    
 }
 
 
@@ -811,46 +881,46 @@ function queryHomicideMonth() {
 
 
 
-function getDataYear(response) {
-    var numRows = response.getDataTable().getNumberOfRows();
-    homrate = []; datehom = [];homtot = [];drhrate = [];drhtot = [];
+// function getDataYear(response) {
+//     var numRows = response.getDataTable().getNumberOfRows();
+//     homrate = []; datehom = [];homtot = [];drhrate = [];drhtot = [];
     
   
-    for(var i = 0; i < numRows; i++) {
-	var hh = Number(response.getDataTable().getValue(i,0));
-	if(i >= 72) 
-	    hh = null; 
-	homrate.push(hh);
-	datehom.push(new Date(response.getDataTable().getValue(i,1)));
-	homtot.push(Number(response.getDataTable().getValue(i,2)));
-	drhtot.push(Number(response.getDataTable().getValue(i,3)));
-	var dh = Number(response.getDataTable().getValue(i,4));
-	if(isNaN(dh)) 
-	    dh = null; 
-	drhrate.push(dh);
-    }
+//     for(var i = 0; i < numRows; i++) {
+// 	var hh = Number(response.getDataTable().getValue(i,0));
+// 	if(i >= 72) 
+// 	    hh = null; 
+// 	homrate.push(hh);
+// 	datehom.push(new Date(response.getDataTable().getValue(i,1)));
+// 	homtot.push(Number(response.getDataTable().getValue(i,2)));
+// 	drhtot.push(Number(response.getDataTable().getValue(i,3)));
+// 	var dh = Number(response.getDataTable().getValue(i,4));
+// 	if(isNaN(dh)) 
+// 	    dh = null; 
+// 	drhrate.push(dh);
+//     }
     
-    changeHash();
-    document.getElementById('h2004').innerHTML = eval(homtot.slice(0,12).join('+'));
+//     changeHash();
+//     document.getElementById('h2004').innerHTML = eval(homtot.slice(0,12).join('+'));
     
-    document.getElementById('h2005').innerHTML = eval(homtot.slice(12,24).join('+'));
-    document.getElementById('h2006').innerHTML = eval(homtot.slice(24,36).join('+'));
-    document.getElementById('h2007').innerHTML = eval(homtot.slice(36,48).join('+'));
-    document.getElementById('h2008').innerHTML = eval(homtot.slice(48,60).join('+'));
-    document.getElementById('h2009').innerHTML = eval(homtot.slice(60,72).join('+'));
-    document.getElementById('h2010').innerHTML = "NA";
+//     document.getElementById('h2005').innerHTML = eval(homtot.slice(12,24).join('+'));
+//     document.getElementById('h2006').innerHTML = eval(homtot.slice(24,36).join('+'));
+//     document.getElementById('h2007').innerHTML = eval(homtot.slice(36,48).join('+'));
+//     document.getElementById('h2008').innerHTML = eval(homtot.slice(48,60).join('+'));
+//     document.getElementById('h2009').innerHTML = eval(homtot.slice(60,72).join('+'));
+//     document.getElementById('h2010').innerHTML = "NA";
     
-    document.getElementById('n2004').innerHTML = "NA";
-    document.getElementById('n2005').innerHTML = "NA";
-    document.getElementById('n2006').innerHTML = "NA";
-    document.getElementById('n2007').innerHTML = eval(drhtot.slice(36,48).join('+'));
-    document.getElementById('n2008').innerHTML = eval(drhtot.slice(48,60).join('+'));
-    document.getElementById('n2009').innerHTML = eval(drhtot.slice(60,72).join('+'));
-    document.getElementById('n2010').innerHTML = eval(drhtot.slice(72,84).join('+'));
+//     document.getElementById('n2004').innerHTML = "NA";
+//     document.getElementById('n2005').innerHTML = "NA";
+//     document.getElementById('n2006').innerHTML = "NA";
+//     document.getElementById('n2007').innerHTML = eval(drhtot.slice(36,48).join('+'));
+//     document.getElementById('n2008').innerHTML = eval(drhtot.slice(48,60).join('+'));
+//     document.getElementById('n2009').innerHTML = eval(drhtot.slice(60,72).join('+'));
+//     document.getElementById('n2010').innerHTML = eval(drhtot.slice(72,84).join('+'));
     
-    document.getElementById('city').innerHTML = currentCity;
-    rerenderGraph();
-}
+//     document.getElementById('city').innerHTML = currentCity;
+//     rerenderGraph();
+// }
 
 //SELECT sum(drh) AS drhtotal, sum(hom) AS homtotal, date FROM homicides_web  
 //WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((-105.5302734375 20.64677721903632, -97.4443359375 15.298608451631088, -93.181640625  20.81117922114718, -104.607421875 21.303306009492623, -105.5302734375 20.64677721903632)))', 4326)) GROUP BY date ORDER BY date
@@ -1098,13 +1168,19 @@ function initialize() {
     queryData();
     queryHomicideMonth();
 
+    //setup a warning if link length exceeds 2083 
+    warningLongLinksIE();
     //Clipboard copying
-    clip = new ZeroClipboard.Client();
-    clip.setHandCursor( true );
-    //clip.glue( 'd_clip_button', 'd_clip_container' );
-    clip.glue( 'copy_button');
-    clip.setText(document.location.href);
-    $("#maplink").attr("value", document.location.href);
+    $("#maplink").attr("value", document.location.href );
+    $('#modal-share').bind('shown', function () {
+			    if(!shownModalButton)
+				$('button#copy_button').zclip({
+				  path:'js/ZeroClipboard.swf',
+				  copy:function(){return $('input#maplink').val();}
+			     });
+			   shownModalButton = true;
+			});
+    
 }
 
 function initializeParameters() {
@@ -1216,23 +1292,7 @@ function monthDiff(d1, d2) {
     return months;
 }
 
-var lastDate = "September 15, 2011";
-var interHom = -1, interDRH = -1;var interDRH2 = -1;
-var monthName = new Array ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-var activeLine = false, activeChart;
-var start = new Date(2004, 0, 1);
-var end = new Date(lastDate);
-var monthsLength = monthDiff(start, end)+1;
-var data = pv.range(0, monthsLength, 1).map(function(i) {return ({					// Note #2
-						     x: new Date(datehom[i]),
-						     y: homrate[i],
-						     z: drhrate[i],
-						     homtot: homtot[i],
-						     drhtot: drhtot[i]
-						 }); });
 
-var w = 360,
-    h = 180;
 var x = pv.Scale.linear(start, end.setMonth(end.getMonth()+1)).range(0, w),
 y = pv.Scale.linear(0, pv.max(homrate.concat(drhrate))).range(0, h);
 
@@ -1245,11 +1305,8 @@ function createGraph(){
 	.height(h)
 	.bottom(20)
 	.left(40)
-    //.right(100)
 	.top(17)
-    
-	.fillStyle("#dedede")
-    ;
+	.fillStyle("#e5e5e5");
     
     
     
@@ -1257,13 +1314,12 @@ function createGraph(){
     /* X-axis ticks. */
     visChart.add(pv.Rule)
 	.data(x.ticks())
-    //.visible(function(d) d >= 0)
 	.left(x)
 	.strokeStyle(function(d) {return d ? "#fff" : "000";})
 	.add(pv.Rule)
-	.bottom(-5)
-	.height(5)
-	.strokeStyle("#000")
+	.bottom(-4)
+	.height(4)
+	.strokeStyle("#888888")
 	.anchor("bottom").add(pv.Label)
 	.bottom(6)
 	.text(x.tickFormat);
@@ -1274,84 +1330,87 @@ function createGraph(){
     visChart.add(pv.Rule)
 	.data(function() {return y.ticks(3);})
 	.bottom(y)
-	.strokeStyle(function(d) {return d ? "#fff" : "000";})
+    .visible(function(d) {return d;})
+	.strokeStyle("#fff")
 	.anchor("left")
 	.add(pv.Rule)
-	.left(-4)
+	.left(-3.8)
 	.height(1)
-	.strokeStyle("#000")
+        
+	.strokeStyle("#888888")
 	.anchor("left")
 	.add(pv.Label)
 	.left(-1)
 	.text(y.tickFormat);
     
-    visChart.add(pv.Rule)
+ /*   visChart.add(pv.Rule)
 	.left(0);
     
     visChart.add(pv.Rule)
-	.bottom(0);
+	.bottom(0);*/
     
     /* Y-axis label */
     visChart.add(pv.Label)
 	.data([annual_rate])
-	.left(-27)
+	.left(function() {
+		  //The number of digits in a number, -27 is the farthest we allow the 
+		  //y axis label to be
+		  var left = ((Math.log(y.domain()[1] / 10) / Math.log(10)+1) * -8) -8;
+		  return left < -27 ? -27 : left;
+	      })
 	.bottom(h/2)
 	.font("10pt Arial")
 	.textAlign("center")
 	.textAngle(-Math.PI/2);
 
-    visChart.add(pv.Rule)
+  /*  visChart.add(pv.Rule)
 	.data(function() {return gethomicideData();})
 	.left(function(d) {return x(d.x);})
 	.bottom(-4)
 	.lineWidth(5)
 	.strokeStyle(function() {return (activeChart == this.index) ? "#efefef" : "transparent";});
-    
+    */
     var line = visChart.add(pv.Line)
-    
-        .data(function() {return gethomicideData();})
-    
-        .bottom(function(d)  {return y(d.y);})
-        .left(function(d)  {return x(d.x);})
+        .data(function() {return monthlyData;})
+        .bottom(function(d)  {return y(d.homrate);})
+        .left(function(d)  {return x(d.date);})
         .lineWidth(2.5)
 	.antialias(true)
         .strokeStyle("#004b62")
         .text(y.tickFormat)
         .text(function(d)  {return y(d);})
-    //.strokeStyle(function() this.i() == this.index ? "red" : "#09F")
-    //.event("mouseover", function(d) {this.i(this.index);})
-    //.event("mouseout", function() this.i(-1))
-	.visible(function(d) { if (d.y == null) { return false; } else 
-			       { return true; } })
-    //.title(function(d) this.i());
-    //.event("mouseover", pv.Behavior.tipsy({gravity: "w", fade: true}))
-    ;
+	.visible(function(d) { 
+		     if (d.homrate == null) 
+			 return false;
+		     else 
+			 return true;  
+		 });
     
     
     
     
     
     
-    function getDRHData() {
-    return data = pv.range(35, monthsLength, 1)
-	    .map(function(i) {return ({
-				  x: new Date(datehom[i]),
-				  y: homrate[i],
-				  z: drhrate[i],
-				  homtot: homtot[i],
-				  drhtot: drhtot[i]
-			      });});
+    // function getDRHData() {
+    // return data = pv.range(35, monthsLength, 1)
+    // 	    .map(function(i) {return ({
+    // 				  x: new Date(datehom[i]),
+    // 				  y: homrate[i],
+    // 				  z: drhrate[i],
+    // 				  homtot: homtot[i],
+    // 				  drhtot: drhtot[i]
+    // 			      });});
 	
-    }
+    // }
 
     
     var line2 = visChart.add(pv.Line)
-        .data(function() {return getDRHData();})
-        .bottom(function(d)  {return y(d.z);})
+//Slice the data at 35 (Dec 2006) cause otherwise we get a blank line because
+//of the null values in the drug war homicide data
+        .data(function() {return monthlyData.slice(35, monthlyData.length);})
+        .bottom(function(d)  {return y(d.drhrate);})
 	.event("point",  function(d) {this.active(this.index);return visChart;})
-        .left(function(d)  {return x(d.x);})
-        .visible(function(d) { if (d.x > new Date(2004,1,1) && d.x < new Date(2006,11,1)) { return false; } else 
-			       { return true; } })
+        .left(function(d)  {return x(d.date);})
         .lineWidth(2.5)
 	.antialias(true)
         .strokeStyle("#4eb4da");
@@ -1360,35 +1419,36 @@ function createGraph(){
     
     var homDot = line.add(pv.Dot)
 	.visible(function(d) {return interDRH2 >= 0;})
-	.data(function() {return [gethomicideData()[interDRH2]];})
+	.data(function() {return [monthlyData[interDRH2]];})
 	.fillStyle(function() {return line.strokeStyle();})
 	.strokeStyle("#000")
 	.size(20)
 	.lineWidth(1);
-    
+    //A caption for when you hover above the homicide lines
     homDot.add(pv.Dot)
 	.left(10)
 	.top(10)
-	.anchor("right").add(pv.Label).textStyle("#222")
+	.anchor("right")
+	.add(pv.Label).textStyle("#222")
 	.text(function(d) {
-		  if(d.y != null) 
-		      return monthName[d.x.getMonth()] + " "+ d.x.getFullYear() + rate_chart + d.y.toFixed(0) +" (" + d.homtot + total_homicides_chart;});
+		  if(d.hom != null) 
+		      return monthName[d.date.getMonth()] + " "+ d.date.getFullYear() + rate_chart + d.homrate.toFixed(0) +" (" + d.hom + total_homicides_chart;});
 
 
     var drhDot = line2.add(pv.Dot)
 	.visible(function(d) {return interDRH >= 0;})
-	.data(function()  {return [gethomicideData()[interDRH]];})
+	.data(function()  {return [monthlyData[interDRH]];})
 	.fillStyle(function()  {return line2.strokeStyle();})
 	.strokeStyle("#000")
 	.size(20)
 	.lineWidth(1);
     
-
+//A caption for when you hover above the homicide lines
     drhDot.add(pv.Dot)
 	.left(10)
 	.top(25)
 	.anchor("right").add(pv.Label).textStyle("#222")
-	.text(function(d) {if(d.z != null) return monthName[d.x.getMonth()] + " "+ d.x.getFullYear() + " rate: " + d.z.toFixed(0) +" (" + d.drhtot +" DW-R Homicides)";});
+	.text(function(d) {if(d.drh != null) return monthName[d.date.getMonth()] + " "+ d.date.getFullYear() + " rate: " + d.drhrate.toFixed(0) +" (" + d.drh +" DW-R Homicides)";});
 
     
     
@@ -1402,9 +1462,9 @@ function createGraph(){
 	       })
 	.event("mousemove", function(d) {
 		   var mx2 = x.invert(visChart.mouse().x);
-		   mx2 = new Date(mx2.getFullYear(), mx2.getMonth(), 15)
+		   mx2 = new Date(mx2.getFullYear(), mx2.getMonth(), 15);
 		   
-		   interDRH = pv.search(gethomicideData().map(function(d) {return d.x;}), mx2);
+		   interDRH = pv.search(monthlyData.map(function(d) {return d.date;}), mx2);
 		   //alert([gethomicideData()][0]);
 		   interDRH = interDRH < 0 ? (-interDRH - 2) : interDRH;
 		   interDRH2 = interDRH;
@@ -1567,19 +1627,32 @@ function createGraph(){
 	    
 	    tip = [mochomo_capture_text];
 	}
+	if(currentCity.indexOf("Valle de México") >= 0) {
+	    rangei = [mistake_df];
+	    
+	    tip = [mistake_df_text];
+	}
         rangei = rangei.map(getIndex);
 	return data = rangei
-	    .map(function(i) {return ({
-				  x: new Date(datehom[i]),
-				  y: pv.max([homrate[i], drhrate[i]]),
-				  max: pv.max(homrate.slice(i-12<0?0:i-12, i+3).concat(drhrate.slice(i-12<0?0:i-12, i+3)))
-			      });});
+	    .map(function(i) {
+		     return ({
+			date: new Date(monthlyData[i].date),
+			max: pv.max([monthlyData[i].homrate, 
+				     monthlyData[i].drhrate]),
+			max12: pv.max(
+			    homrate.slice(
+				  i - 12 < 0 ? 0 : i - 12, i + 3)
+				.concat(drhrate.slice(i - 12 < 0 ? 0 : i - 12, i + 3)))
+			    });
+		 });
     };
     
+ 
+
     var whiteDotLine = visChart.add(pv.Dot)
 	.data(function() {return getEvents();})
-	.bottom(function(d)  {return y(d.y);})
-	.left(function(d)  {return x(d.x);})
+	.bottom(function(d)  {return y(d.max);})
+	.left(function(d)  {return x(d.date);})
 	.size(10)
 	.lineWidth(1)
 	.antialias(true)
@@ -1591,8 +1664,8 @@ function createGraph(){
     var dotLine = visChart.add(pv.Dot)
 	.data(function() {return getEvents();})
     //.bottom(function(d) y(d.y))
-	.bottom(function(d) {return (y(d.max) + dotOffset)  > h ? 180 : y(d.max) + dotOffset;})
-	.left(function(d)  {return x(d.x);})
+	.bottom(function(d) {return (y(d.max12) + dotOffset)  > h ? 180 : y(d.max12) + dotOffset;})
+	.left(function(d)  {return x(d.date);})
 	.fillStyle("black")
 	.strokeStyle(null)
     //.event("mousemove", function(d) {activeLine=true;return visChart})
@@ -1608,9 +1681,9 @@ function createGraph(){
     
     visChart.add(pv.Rule)
     .data(function() {return getEvents();})
-    .left(function(d) {return x(d.x);})
-    .top(function(d) {return (y(d.max) + dotOffset)  > h ? 4 : h+4-(y(d.max) + dotOffset);})
-    .bottom(function(d) {return y(d.y)+4;})
+    .left(function(d) {return x(d.date);})
+    .top(function(d) {return (y(d.max12) + dotOffset)  > h ? 4 : h+4-(y(d.max12) + dotOffset);})
+    .bottom(function(d) {return y(d.max)+4;})
     .strokeStyle("#666")
  .textAlign("right")
     .text(function(d) {return tip[this.index] ;});
@@ -1621,17 +1694,17 @@ function createGraph(){
 }
 
 
-function gethomicideData() {
-    return data = pv.range(0, monthsLength, 1)
-	.map(function(i) {return ({
-			      x: new Date(datehom[i]),
-			      y: homrate[i],
-			      z: drhrate[i],
-			      homtot: homtot[i],
-			      drhtot: drhtot[i]
-			  });});
+// function gethomicideData() {
+//     return data = pv.range(0, monthsLength, 1)
+// 	.map(function(i) {return ({
+// 			      x: new Date(datehom[i]),
+// 			      y: homrate[i],
+// 			      z: drhrate[i],
+// 			      homtot: homtot[i],
+// 			      drhtot: drhtot[i]
+// 			  });});
 
-}
+// }
 
 
 function rerenderGraph() {
@@ -1640,7 +1713,10 @@ function rerenderGraph() {
     if (visChart == null)
         createGraph();
     y.domain(0, pv.max(homrate.concat(drhrate))).nice();
-    visChart.render();
+		  var startTime = new Date();
+	 visChart.render();
+   var endTime = new Date();		  
+    console.log(endTime-startTime);
 }
 
 
@@ -1650,3 +1726,16 @@ function getIndex(idx) {
     return ((idx.getYear() - 104) * 12) + idx.getMonth();
 }
 
+/* Converts homtot, drhtot to a nicely formatted csv file*/
+function convertToCSV(){
+    
+    var line = csvHeaders + '\r\n';
+    for (var i = 0; i < homtot.length; i++) {
+        line += monthName[new Date(datehom[i]).getMonth()] + "-" + (new Date(datehom[i]).getFullYear()) + "," + homtot[i] + "," + drhtot[i] + "," + pop[i] + '\r\n';
+    }
+    if(currentCity != "Polygon")
+	line += location_text + currentCity;
+    else
+        line += all_municipalities_text + polyString.replace(/,/g, "/").replace(/ /g, ":");
+    return line;
+}
