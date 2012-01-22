@@ -117,16 +117,20 @@ function warningLongLinksIE(){
 	$('#ielonglinks').html("");
 }
 
+function getLocation() {
+    return location.protocol+ '//' +location.host+location.pathname;
+}
+
 function changeHash(){
     $("#maplink").attr("value","");
     if(polyString == "")
-	$("#maplink").attr("value", document.location.href + "#" + $.param({city: currentCity, year: yearSlider,
+	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, year: yearSlider,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom, homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong}));
     else
-	$("#maplink").attr("value", document.location.href + "#" + $.param({city: currentCity, year: yearSlider,
+	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, year: yearSlider,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom,  homtype : typeOfHomicide,
@@ -146,7 +150,8 @@ var style = [
 	featureType: "landscape",
 	elementType: "all",
 	stylers: [
-	    { hue: "#00"},//"#F3F4EE" },
+
+	    { hue: "#000"},//"#F3F4EE" },
             { saturation: -100 }, //100
             { lightness: 22 } //22
 	    //{ gamma: 1.11 }
@@ -1121,7 +1126,7 @@ function initialize() {
     //setup a warning if link length exceeds 2083 characters
     warningLongLinksIE();
     //Clipboard copying
-    $("#maplink").attr("value", document.location.href );
+    $("#maplink").attr("value", getLocation() );
     //You must supply an afterCopy function to supress the annoying dialog that pops up after ciopyn
     $('#modal-share').bind('shown', function () {
 			    if(!shownModalButton)
