@@ -178,5 +178,14 @@ a.plusone_icon {
 
 a.label {
     text-decoration:none;
-padding-bottom: 1px;
+    padding-bottom: 1px;
+    
+}
+
+a.label.success {
+    text-transform:none;
+}
+a.label.success:hover {
+    color:white;
+    background-color:#6FBE6F;
 }

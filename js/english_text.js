@@ -9,7 +9,7 @@ var metroArea = ", Metro";
 var custom_area = "Custom Area";
 var monthName = new Array ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
 var csvHeaders = "Date, Total Homicides, Drug War-Related Homicides, Population";
-var location_text = "Location:";
+var location_text = "Location: ";
 var all_municipalities_text = "All municipalities or metro areas contained in the polygon: ";
 
 mistake_df = new Date("December 1, 2006");
