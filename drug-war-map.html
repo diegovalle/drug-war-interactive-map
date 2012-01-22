@@ -14,11 +14,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="canonical" href="http://www.diegovalle.net/drug-war-map.html"/>
 
- <!-- <link rel="stylesheet" href="http://diegovalle.github.com/drug-war-interactive-map/css/cartodb.css">
+ <link rel="stylesheet" href="http://diegovalle.github.com/drug-war-interactive-map/css/cartodb.css">
   <link href="css/bootstrap.css" rel="stylesheet">         
   <link rel="stylesheet" href="css/interactive-drug-war.css" type="text/css" media="all" />
-  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/tipsy.css" type="text/css" rel="stylesheet"/>-->
- <link href="css/combined.min.css" rel="stylesheet">  
+  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/tipsy.css" type="text/css" rel="stylesheet"/>
+<!-- <link href="css/combined.min.css" rel="stylesheet">  -->
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
   
 
@@ -54,17 +54,21 @@
     
     <div id="map-key">
       <div class="span7">
-	<div>
-	  <span  id = "trigger" class="trigger_button"></span>
-	  <span class = "chart-title" style="">Homicides and Trafficking Routes (Beta)</span>
+	<div class="row">
+	  <div class="span1">
+	    <span  id = "trigger" class="trigger_button"></span>
+	  </div>
+	  <div class="chart-title span6" style="margin-left:-5px">
+	  <h1>Homicides and Trafficking Routes</h1>
+	  </div>
 	</div>
 	<div id = "toggle_container">
 	  <div>
-	    <hr style ="margin: 10px 0 9px;border: 0;border-bottom: 0;"/>
-	    <span class="label" id="city" style="background-color: #000;font-size:15px;margin-top:2px;padding-top:2px;text-align:center;width:100%"></span>
+	    <hr class ="clear"/>
+	    <div  class="cityname-border"><span class="label" id="city"></span></div>
 	  </div>
 	  <div id="MonthChart" style="height:200px;">
-	    <hr style ="margin: 10px 0 9px;border: 0;border-bottom: 0;"/>
+	    <hr class ="clear"/>
 	    
 	  <script type="text/javascript+protovis">
 	    
@@ -79,7 +83,7 @@
 	  </script>
 	  
 	  </div>
-	  <hr style ="margin: 20px 0 19px;border: 0;border-bottom: 0;"/>
+	  <hr class ="clear"/>
 
 	  
 	  
@@ -95,8 +99,7 @@
 	      </select>
 	    </div>
 	    
-
-	    <hr style ="margin: 9px 0 8px;border: 0;border-bottom: 0px solid #eee;;"/>
+	    <hr class ="clear"/>
 	    
 	    
 	    <div id="slider" style="width:150px;margin:2px"> 	      
@@ -137,7 +140,8 @@
                   </label>
                 </li>
               </ul>
-	      <hr style ="margin: 10px 0 9px;border: 0;border-bottom: 1px solid #eee;;"/>
+	      <hr class="clear"/>
+	    
 	      <ul class="inputs-list">
                 <li>
                   <label>
@@ -273,18 +277,23 @@
 	      <p><span id="ielonglinks"></span></p>
 	      <div class="span18">Or simply share on your favorite social netwok</div>
 
-	      <div class="span18">
+	      <div class="row">
+<div class="span6">
 	    <div class = "social_icons">
-	      <a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&url='+ ($('#maplink').val()) + '&amp;via=diegovalle')"><span>Twitter</span></a>
+	      <a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ ($('#maplink').val()) + '&amp;via=diegovalle'))"><span>Twitter</span></a>
 
-	      <a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent($('#maplink').val())+'&amp;.t='+encodeURIComponent(document.title))"><span>Facebook</span></a>
+	      <a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent($('#maplink').val())+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
 
-	      <a class="plusone_icon" rel="nofollow"  title="PlusOne" href="javascript:window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURIComponent($('#maplink').val()))"><span>Google Plus</span></a>  
+	      <a class="plusone_icon" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURIComponent($('#maplink').val())))"><span>Google Plus</span></a>  
+</div>
 	    </div>
 </div>
-<hr>
-	      <p>Don't forget to follow me on twitter <a href="http://www.twitter.com/diegovalle">@diegovalle</a></p>
 
+<div class="row">
+<div class="span6">
+	      <p>Don't forget to follow me on twitter <a href="http://www.twitter.com/diegovalle">@diegovalle</a></p>
+</div>
+</div>
 	    </div>
             <div class="modal-footer">
               <a href="" class="close xbtn primary">Close</a>
@@ -295,11 +304,11 @@
 
 	  <div style="float:right; margin-top:-10px">
 	    <div class="social_icons_small">
-	      <a class="twitter_icon_small" rel="nofollow" title="Twitter" href="javascript:location.href='http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURIComponent(document.location.href) + '&amp;via=diegovalle'"><span>Twitter</span></a>
+	      <a class="twitter_icon_small" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ ($('#maplink').val()) + '&amp;via=diegovalle'))"><span>Twitter</span></a>
 
-	      <a class="facebook_icon_small" rel="nofollow"  title="Facebook" href="javascript:location.href='http://www.facebook.com/sharer.php?u='+encodeURIComponent(document.location)+'&amp;.t='+encodeURIComponent(document.title)"><span>Facebook</span></a>
+	      <a class="facebook_icon_small" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent($('#maplink').val())+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
 
-	      <a class="plusone_icon_small" rel="nofollow"  title="PlusOne" href="javascript:location.href='https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURIComponent(document.location)"><span>Google Plus</span></a>  
+	      <a class="plusone_icon_small" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURIComponent($('#maplink').val())))"><span>Google Plus</span></a>  
 	    </div>
 	  </div>
 	</div>

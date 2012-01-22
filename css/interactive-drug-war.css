@@ -115,13 +115,29 @@ text-align: right;
 .selected-year {
     background-color:blue;
 }
+
 .chart-title {
-    font-family:Verdana;
-    font-size:16px;
-    font-weigth:bold;
-    margin-top:15px;
+    height:20px;
+    margin-top:-3px;
+    margin-left:-10px;
+}
+.chart-title h1{
+    font-size:20px;
+    font-weight:bold;
+    //line-height: 18px;
 }
 
+hr.clear {
+margin: 10px 0 9px;border: 0;border-bottom: 0;
+}
+
+#city{
+background-color: #000;font-size:15px;margin-top:2px;padding-top:2px;
+
+}
+.cityname-border{
+text-align:center;width:100%;border-top:1px solid #eee;padding-top:6px;margin-top:-9px;
+}
 .social_icons_small a{
     float:left;
     padding:3px;
