@@ -1,10 +1,10 @@
 var annual_rate = "tasa anual por 100,000";
-var total_homicides = "Homicidios T.";
+var total_homicides = "Homicidios Tot.";
 var drug_war_homicides = "Homicidios Crimen Organizado";
 var rate_colon = "tasa:";
 var population_colon = "población:";
 var rate_chart = " tasa: ";
-var total_homicides_chart = " Homicidios)";
+var total_homicides_chart = " Homicidios Tot.)";
  var metroArea = ", Z.M.";
 var custom_area = "Polígono";
 var monthName = new Array ("Ene","Feb","Mar","Apr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dec");
