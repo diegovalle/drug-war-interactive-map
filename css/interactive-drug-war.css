@@ -95,14 +95,14 @@ text-align: right;
 }
 
 #trigger {
-    padding: 0 0 0 0px;
-    margin: 0 0 0px 0;
+   // padding: 0 0 0 0px;
+   // margin: 0 0 0px 0;
     background-image: url("http://diegovalle.github.com/drug-war-interactive-map/images/plus-minus.png");
     border-style: none;
-    vertical-align:middle;
+   // vertical-align:middle;
     height: 30px;
     width:30px;
-    font-size: 14px;
+    //font-size: 14px;
     font-weight: bold;
     float:left;
     cursor: pointer;
@@ -127,16 +127,30 @@ text-align: right;
     //line-height: 18px;
 }
 
+hr.clear2 {
+    margin: 10px 0 20px;
+    border: 0;
+    border-bottom: 0;
+}
 hr.clear {
-margin: 10px 0 9px;border: 0;border-bottom: 0;
+    margin: 10px 0 9px;
+    border: 0;
+    border-bottom: 0;
 }
 
 #city{
-background-color: #000;font-size:15px;margin-top:2px;padding-top:2px;
+    background-color: #000;
+    font-size:15px;
+    margin-top:2px;
+    padding-top:2px;
 
 }
 .cityname-border{
-text-align:center;width:100%;border-top:1px solid #eee;padding-top:6px;margin-top:-9px;
+    text-align:center;
+    width:100%;
+    border-top:1px solid #eee;
+    padding-top:6px;
+    margin-top:-9px;
 }
 .social_icons_small a{
     float:left;
