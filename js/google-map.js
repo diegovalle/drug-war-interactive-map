@@ -124,13 +124,13 @@ function getLocation() {
 function changeHash(){
     $("#maplink").attr("value","");
     if(polyString == "")
-	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, year: yearSlider,
+	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom, homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong}));
     else
-	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, year: yearSlider,
+	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom,  homtype : typeOfHomicide,
@@ -222,6 +222,9 @@ var style = [
     }
 ];
 
+var startDate = "2010-01-15";
+var endDate = "2010-12-15";
+var numMonths = 12;
 var homrate = [], datehom = [], homtot = [], drhrate = [], drhtot =[], pop = [];
 var commas = pv.Format.number();
 
@@ -239,7 +242,7 @@ var vis, state;
 var showingNames = false;
 var overlay;
 var crimes = [];
-var currentCity = "All of México";
+var currentCity = all_of_mx_text;
 var currentZoom = 5;
 
 var newShape, selectedShape;
@@ -251,7 +254,7 @@ var meth_paths = 2308189;
 var homicide_month = 2330644;
 var dots;
 var visChart;
-var yearSlider = 2010;
+var yearSlider;
 
 var changed = false;
 var drh_layer= 2243315;//2240298;//
@@ -366,14 +369,15 @@ function getUrlVars()
 //SELECT sum(drh) AS drh, AVG(drhrate) as rate, sum(hom) AS hom, AVG(homrate) as homrate, MAX(lat) AS lat, MAX(long) as long, EXTRACT(year FROM date), name, AVG(pop) as pop FROM homicides_web WHERE EXTRACT(year FROM date) = 2010  AND drh > 0 GROUP BY EXTRACT(year FROM date), name ORDER BY drh DESC
 function queryData() {
     if(typeOfHomicide === "DWRH") {
-	var queryCartodb = "SELECT sum(drh) AS drh,  MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, EXTRACT(year FROM date), name, AVG(pop) as pop FROM homicides_web WHERE EXTRACT(year FROM date) = " + yearSlider + " AND drh > 0 GROUP BY EXTRACT(year FROM date), name ORDER BY drh DESC";
+
 	var homstr = "drh";
 	var ratestr = "rate";
     } else { 
-	var queryCartodb = "SELECT sum(hom) AS hom, MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, EXTRACT(year FROM date), name, AVG(pop) as pop FROM homicides_web WHERE EXTRACT(year FROM date) = " + yearSlider + " AND hom > 0 GROUP BY EXTRACT(year FROM date), name ORDER BY hom DESC";
+
 	var homstr = "hom";
 	var ratestr = "homrate";
     }
+var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr + ", MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, name, AVG(pop) as pop FROM homicides_web WHERE date BETWEEN DATE '" +startDate+"' AND DATE '"+ endDate +"' AND " + homstr + " > 0 GROUP BY  name ORDER BY " + homstr + " DESC";
 //queryCartodb = "SELECT avg(population) as pop, sum(hom) AS hom, MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END as name FROM homicides_dwrh_month_municipality WHERE  EXTRACT(year FROM date) = " + yearSlider + " GROUP BY  EXTRACT(year FROM date), metroarea, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END ORDER BY hom DESC";
     $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
 		  coordData = result;
@@ -383,8 +387,7 @@ function queryData() {
 		  for(var i =0; i<result.rows.length;i++) {
 		      
 		      
-		      overlay.crimes[i] = ({lat : result.rows[i]["lat"], lon: result.rows[i]["long"], latlon: new google.maps.LatLng(result.rows[i]["lat"], result.rows[i]["long"]), code: result.rows[i][homstr], name:result.rows[i]["name"], rate:result.rows[i][homstr]/result.rows[i]["pop"] * 100000, pop:result.rows[i]["pop"]//,
-			// hom: result.rows[i]["hom"], homrate: result.rows[i]["homrate"]
+		      overlay.crimes[i] = ({lat : result.rows[i]["lat"], lon: result.rows[i]["long"], latlon: new google.maps.LatLng(result.rows[i]["lat"], result.rows[i]["long"]), code: result.rows[i][homstr], name:result.rows[i]["name"], rate:result.rows[i][homstr]/result.rows[i]["pop"] * 100000 * 12/numMonths, pop:result.rows[i]["pop"]
 });
 		      
 		  }
@@ -629,7 +632,7 @@ Canvas.prototype.draw = function(){
         .cursor("pointer")
 	.left(function(d) {return city_pixels[this.parent.index].x;})
 	.top(function(d) {return city_pixels[this.parent.index].y;})
-	.radius(function(d) {return rad(d.code) * scaleFactor;})
+	.radius(function(d) {return rad(d.code* 12/numMonths) * scaleFactor ;})
         .lineWidth(function(d) {if(d.name != currentCity)
 			        	return 1;
                                 else
@@ -666,9 +669,9 @@ Canvas.prototype.draw = function(){
         .font(function(d) {  
 		  
 		  if(d.code < 70)
-		      return rad(70) * scaleFactor * .75 + "px sans-serif";
+		      return rad(70* 12/numMonths) * scaleFactor * .75 + "px sans-serif";
 		  else
-		      return rad(d.code) * scaleFactor * .75 + "px sans-serif";})
+		      return rad(d.code* 12/numMonths) * scaleFactor * .75 + "px sans-serif";})
 	.text(function(x, d) {
 		  if(typeOfHomicide == "INEGI"){
 		      if (d.code > 250 & d.rate > 15) 
@@ -775,7 +778,7 @@ var updateHomicidesTable = function(){
 	  cityText = custom_area;
 	  break;
     }
-    if(cityText.indexOf(",") < 0 & (cityText != "All of México" &
+    if(cityText.indexOf(",") < 0 & (cityText != all_of_mx_text &
 cityText != custom_area))
 	  cityText = currentCity + metroArea;
         
@@ -804,7 +807,7 @@ function queryHomicideMonth() {
     pop = [];
     drhtot = [];
     homtot = [];
-    if(currentCity === "All of México") {
+    if(currentCity === all_of_mx_text) {
 	 homrate = [];datehom=[];homtot = [];drhrate = [];drhtot = [];pop = [];
 	// datehom = dates;
 	// drhtot = alltotdrh;
@@ -1147,10 +1150,16 @@ function initializeParameters() {
 				     z : d.z};});
 
     parameters = $.deparam(document.location.hash);
-    if(parameters["year"] != null){
-	yearSlider = parameters["year"];
+    if(parameters["start"] != null){
+        startDate = parameters["start"];
 	changed = true;
     }
+    if(parameters["end"] != null){
+        endDate = parameters["end"];
+	changed = true;
+    }
+    yearSlider = startDate.substring(0,4);
+    numMonths = monthDiff(new Date(startDate), new Date(endDate))+1;
     transitionTable(2004, yearSlider);
 
     function changeTableColors(str, yearLast, yearCurrent) {
@@ -1173,13 +1182,12 @@ function initializeParameters() {
 				    stop: function(e, ui) {
 					transitionTable(yearSlider, ui.value);
 					yearSlider = ui.value;
+					startDate =  ui.value + "-01-15";
+					endDate =  ui.value + "-12-15";
 					
-					//crimes = [];
 					queryData();
 					changeHash();
 					
-					
-					//vis.render();
 				    },
 				    slide: function(e, ui){
 					document.getElementById('slider').firstChild.innerHTML = ui.value;
@@ -1391,7 +1399,7 @@ function createGraph(){
 	.left(10)
 	.top(25)
 	.anchor("right").add(pv.Label).textStyle("#222")
-	.text(function(d) {if(d.drh != null) return monthName[d.date.getMonth()] + " "+ d.date.getFullYear() + " rate: " + d.drhrate.toFixed(0) +" (" + d.drh +" DW-R Homicides)";});
+	.text(function(d) {if(d.drh != null) return monthName[d.date.getMonth()] + " "+ d.date.getFullYear() + " rate: " + d.drhrate.toFixed(0) +" (" + d.drh + dw_r_homicides_text;});
 
     
     
@@ -1454,7 +1462,7 @@ function createGraph(){
 
     getEvents = function() {
 	var rangei = [];
-	if(currentCity.indexOf("All of México") >= 0) {
+	if(currentCity.indexOf(all_of_mx_text) >= 0) {
 	    rangei = [drug_war_date];
 	    tip = [drug_war_text];
 	}
@@ -1645,7 +1653,7 @@ function convertToCSV(){
     for (var i = 0; i < homtot.length; i++) {
         var hom = monthlyData[i].hom == null ? "NA" : monthlyData[i].hom;
 	var drh =  monthlyData[i].drh == null ? "NA" : monthlyData[i].drh;
-        line += monthName[monthlyData[i].date.getMonth()] + "-" + (monthlyData[i].date).getFullYear() + "," + hom + "," + drh + "," + monthlyData[i].pop + '\r\n';
+        line += (monthlyData[i].date).getFullYear() + "-" + monthName[monthlyData[i].date.getMonth()] + "," + hom + "," + drh + "," + monthlyData[i].pop + '\r\n';
     }
     if(currentCity != "Polygon")
 	line += location_text + currentCity;
@@ -1789,4 +1797,4 @@ _utf8_decode : function (utftext) {
     return string;
 }
 
-}
+};

@@ -20,7 +20,7 @@
   <link href="http://diegovalle.github.com/drug-war-interactive-map/css/tipsy.css" type="text/css" rel="stylesheet"/>
 <!-- <link href="css/combined.min.css" rel="stylesheet">  -->
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
-  
+  <!--<link rel="stylesheet" href="css/dev.css"> -->
 
   
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -41,6 +41,9 @@
   <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/drug-eradication-compiled.js" charset="utf-8"></script>
   <script type="text/javascript" src="js/google-map.js"></script>
   <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/cartodb-gmapsv3.js"></script>
+<!--<script src="js/jQRangeSlider.js"></script>
+
+<script src="js/jQDateRangeSlider.js"></script>-->
 
 <!--<script type="text/javascript" src="js/combined.min.js"></script>-->
 
@@ -56,7 +59,7 @@
       <div class="span7">
 	<div class="row">
 	  <div class="span1">
-	    <span  id = "trigger" class="trigger_button"></span>
+	    <div  id = "trigger" class="trigger_button"></div>
 	  </div>
 	  <div class="chart-title span6" style="margin-left:-5px">
 	  <h1>Homicides and Trafficking Routes</h1>
@@ -83,7 +86,8 @@
 	  </script>
 	  
 	  </div>
-	  <hr class ="clear"/>
+	  <hr class="clear2"/>
+	  
 
 	  
 	  
@@ -104,6 +108,38 @@
 	    
 	    <div id="slider" style="width:150px;margin:2px"> 	      
 	    </div>
+
+
+<!--<hr class ="clear"/>
+
+<script>
+var changing = true;
+
+function updateValuesChanged(event, ui, changing){
+			if (!changing)
+				displayValues(ui.label, ui.values)
+startDate = (Math.floor(ui.values.min/12) + 2004) + '-' +
+                     ((Math.round(ui.values.min)% 12) + 1) + '-' +
+                     '15';
+endDate = (Math.floor(ui.values.max/12) + 2004) + '-' +
+                     ((Math.round(ui.values.max)% 12) + 1) +'-' +
+                     '15';
+numMonths = Math.round(ui.values.max)-Math.round(ui.values.min);
+queryData();
+		}
+
+
+$(document).ready(function(){
+  $("#defaultDateSlider").rangeSlider({
+    defaultValues:{min:72, max:12*7-1 },
+    bounds:{min:0, max:12*7+8},
+formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName[Math.round(value)% 12]}
+  }).bind("valuesChanged", function(event, ui){updateValuesChanged(event, ui, changing);});
+});	
+</script>
+-->
+
+
 	    <table style="width:100%;padding:0;margin:0;border:0;" >
 	      <tr>
 		<td style="width:33%;border:0">2004</td>
@@ -269,13 +305,15 @@
             </div>
             <div class="modal-body">
 	      
-	      <p>Just copy and paste!</p><p> Settings such as map zoom and the city or custom area used in the chart will be remembered</p>
+	      <p>Just copy and paste!</p>
+	      
 	      
 	      <input id="maplink" class="span12" type="text" readonly="readonly" onclick="" value="" maxlength="10000000">
 	      
 	      <button id="copy_button"  class="btn default">Copy</button>
 	      <p><span id="ielonglinks"></span></p>
-	      <div class="span18">Or simply share on your favorite social netwok</div>
+<p> Settings such as map zoom and the city or custom area used in the chart will be remembered</p>
+	      <div class="span18"><p>Or simply share on your favorite social netwok:</p></div>
 
 	      <div class="row">
 <div class="span6">
@@ -312,7 +350,7 @@
 	    </div>
 	  </div>
 	</div>
-
+<div id="defaultDateSlider"></div>
       </div>
 
     </div>
@@ -324,7 +362,7 @@
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
     
-<!--[if lt IE 7 ]>
+<!--[if lt IE 8 ]>
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
     <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
     <![endif]-->
