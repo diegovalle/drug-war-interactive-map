@@ -1184,7 +1184,7 @@ function initializeParameters() {
 					yearSlider = ui.value;
 					startDate =  ui.value + "-01-15";
 					endDate =  ui.value + "-12-15";
-					
+					numMonths = numMonths = monthDiff(new Date(startDate), new Date(endDate))+1;
 					queryData();
 					changeHash();
 					
