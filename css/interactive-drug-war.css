@@ -1,12 +1,7 @@
-body {
-    // padding-top: 40px;
-        //background: transparent url("images/cork_1.png") repeat top left;   
-}
-
 html, body { height: 100%; }
 
 .brand{
-    //background: transparent url("images/mx.png") no-repeat center;
+    /*background: transparent url("images/mx.png") no-repeat center;*/
 }
 
 .topbar {
@@ -16,7 +11,7 @@ html, body { height: 100%; }
 }
 
 .topbar .fill {
-    //background: transparent url("images/broken_noise2.png") repeat-x top left; 
+    /*background: transparent url("images/broken_noise2.png") repeat-x top left; */
         height:80px;
         font-size: 20px;
         
@@ -30,13 +25,10 @@ html, body { height: 100%; }
     padding-top: 10px;
     font-size: 30px;
     font-family: 'Bowlby One SC', sans-serif;
-    //border: 1px solid black;
 }
 
 
 .fill .logo {
-    //display: inline-block;
-        //margin-left: 88px;
         background-color: black;
         padding:5px;
         
@@ -48,7 +40,6 @@ html, body { height: 100%; }
     padding: 0;
     width: 100%;
     height: 100%;
-    //margin-top: 40px;
 }
 
 #map .canvas {
@@ -56,8 +47,7 @@ html, body { height: 100%; }
 }
 
 .footer {
-    //background: transparent url("images/broken_noise.png") repeat-x top left; 
-        height:250px;
+height:250px;
 }
 .ribbon {
     padding-top:0px;
@@ -67,11 +57,9 @@ html, body { height: 100%; }
     position: absolute;
     top: 0px;
     right:0px;
-    //width: 420px;
     border: 1px solid #DDD;
     background-color: #fff;
     margin: 0em 0em 0em 0em;
-    //height:500px;
     padding: .5em 1em 1em 1em;
     float: right;
 }
@@ -82,7 +70,6 @@ table th, table td {
     
 }
 #homicide_table tbody td,#homicide_table tbody th{
-    //font-family:Verdana;
 text-align: right;
 }
 
@@ -95,14 +82,10 @@ text-align: right;
 }
 
 #trigger {
-   // padding: 0 0 0 0px;
-   // margin: 0 0 0px 0;
     background-image: url("http://diegovalle.github.com/drug-war-interactive-map/images/plus-minus.png");
     border-style: none;
-   // vertical-align:middle;
     height: 30px;
     width:30px;
-    //font-size: 14px;
     font-weight: bold;
     float:left;
     cursor: pointer;
@@ -124,7 +107,6 @@ text-align: right;
 .chart-title h1{
     font-size:20px;
     font-weight:bold;
-    //line-height: 18px;
 }
 
 hr.clear2 {
