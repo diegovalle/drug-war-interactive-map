@@ -1134,7 +1134,7 @@ function initialize() {
     $('#modal-share').bind('shown', function () {
 			    if(!shownModalButton)
 				$('button#copy_button').zclip({
-				  path:'js/ZeroClipboard.swf',
+				  path:'http://diegovalle.github.com/drug-war-interactive-map/js/ZeroClipboard.swf',
 				  copy:function(){return $('input#maplink').val();},
 				  afterCopy: function() {return true;}
 			     });
