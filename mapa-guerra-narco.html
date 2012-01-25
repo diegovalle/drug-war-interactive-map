@@ -1,0 +1,376 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+  <title>Mapa de la guerra contra el narcotráfico</title>
+  <meta name="description" content="The most up to date map of violence in Mexico">
+  <meta name="author" content="Diego Valle-Jones">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="canonical" href="http://www.diegovalle.net/drug-war-map.html"/>
+
+<!-- <link rel="stylesheet" href="http://diegovalle.github.com/drug-war-interactive-map/css/cartodb.css">
+  <link href="css/bootstrap.css" rel="stylesheet">         
+  <link rel="stylesheet" href="css/interactive-drug-war.css" type="text/css" media="all" />
+  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/tipsy.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="css/dev.css">
+-->
+ <link href="http://diegovalle.github.com/drug-war-interactive-map/css/combined.min.css" rel="stylesheet">  
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
+
+  
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=drawing"></script>
+
+
+<!--  <script type="text/javascript" src="js/english_text.js"></script>
+  <script src="js/jquery.zclip.js" type="text/javascript"></script>
+  <script  type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/bootstrap-modal.js"></script>
+  <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/wax.g.js"></script>
+
+  <script src="http://diegovalle.github.com/drug-war-interactive-map/js/protovis.min.js" type="text/javascript"></script>
+  <script src="http://diegovalle.github.com/drug-war-interactive-map/js/tipsy.js" type="text/javascript"></script>
+  <script src="http://diegovalle.github.com/drug-war-interactive-map/js/jquery.tipsy.js" type="text/javascript"></script>
+  <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/drug-eradication-compiled.js" charset="utf-8"></script>
+  <script type="text/javascript" src="js/google-map.js"></script>
+  <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/cartodb-gmapsv3.js"></script>
+<!--<script src="js/jQRangeSlider.js"></script>
+
+<script src="js/jQDateRangeSlider.js"></script>-->
+
+<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-es.min.js"></script>
+
+  <script type="text/javascript">
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+</head>
+  <body>
+    <div id="map">
+    </div>
+    
+    <div id="map-key">
+      <div class="span7">
+	<div class="row">
+	  <div class="span1">
+	    <div  id = "trigger" class="trigger_button"></div>
+	  </div>
+	  <div class="chart-title span6" style="margin-left:-5px">
+	  <h1>Homicidios y Narcotráfico</h1>
+	  </div>
+	</div>
+	<div id = "toggle_container">
+	  <div>
+	    <hr class ="clear"/>
+	    <div  class="cityname-border"><span class="label" id="city"></span></div>
+	  </div>
+	  <div id="MonthChart" style="height:200px;">
+	    <hr class ="clear"/>
+	    
+	  <script type="text/javascript+protovis">
+	    
+	    $(document).ready(function() {
+	      if (visChart == null)
+                createGraph();
+	      $("#trigger").click(function() {
+	        $("#trigger").toggleClass("active");
+	        $("#toggle_container").toggle();
+              });
+	    });
+	  </script>
+	  
+	  </div>
+	  <hr class="clear2"/>
+	  
+
+	  
+	  
+	  <div class="row">
+	    <div class="span3">
+	      
+	      <p><strong>Opciones del Mapa:</strong></p>
+	      
+	    <div class="input">
+	      <select class="medium" name="mediumSelect" id="mediumSelect">
+		<option value = "INEGI">Homicidios Totales</option>
+		<option value = "DWRH">Homicidios Crimen Organizado</option>
+	      </select>
+	    </div>
+	    
+	    <hr class ="clear"/>
+	    
+	    
+	    <div id="slider" style="width:150px;margin:2px"> 	      
+	    </div>
+
+
+<!--<hr class ="clear"/>
+
+<script>
+var changing = true;
+
+function updateValuesChanged(event, ui, changing){
+			if (!changing)
+				displayValues(ui.label, ui.values)
+startDate = (Math.floor(ui.values.min/12) + 2004) + '-' +
+                     ((Math.round(ui.values.min)% 12) + 1) + '-' +
+                     '15';
+endDate = (Math.floor(ui.values.max/12) + 2004) + '-' +
+                     ((Math.round(ui.values.max)% 12) + 1) +'-' +
+                     '15';
+numMonths = Math.round(ui.values.max)-Math.round(ui.values.min);
+queryData();
+		}
+
+
+$(document).ready(function(){
+  $("#defaultDateSlider").rangeSlider({
+    defaultValues:{min:72, max:12*7-1 },
+    bounds:{min:0, max:12*7+8},
+formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName[Math.round(value)% 12]}
+  }).bind("valuesChanged", function(event, ui){updateValuesChanged(event, ui, changing);});
+});	
+</script>
+-->
+
+
+	    <table style="width:100%;padding:0;margin:0;border:0;" >
+	      <tr>
+		<td style="width:33%;border:0">2004</td>
+		<td style="width:33%;border:0;text-align:center">2007</td>
+		<td style="width:33%;border:0;text-align:right">2010</td>
+	      </tr>
+	    </table>
+	    
+	    
+	    <div class="input">
+	      <ul class="inputs-list">
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option1" onclick="showMJ()" checked id="mjCheck"/>
+                    <span>Mariguana</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option2" onclick="showPoppy()" id = "poppyCheck"/>
+                    <span>Opio</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option2" onclick="showMeth()" id="methCheck"/>
+                    <span>Laboratorios (densidad)</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="disabled">
+                    <input type="checkbox" name="optionsCheckboxes" value="option2" disabled id="cocaineCheck"/>
+                    <span>Cocaina</span>
+                  </label>
+                </li>
+              </ul>
+	      <hr class="clear"/>
+	    
+	      <ul class="inputs-list">
+                <li>
+                  <label>
+		    <input type="checkbox" name="Highways" onclick="toggleProvince()" value="Show Railways" /><span>Mostrar nombres</span>
+		  </label>
+                </li>
+	      </ul>
+	    </div>
+	    </div>
+	
+	    <div class="span4">
+	      
+	      <table id="homicide_table" class="zebra-striped" >
+		<thead>
+		  <tr>
+		    <th>Year</th>
+		    <th style="color:white;background-color:#4eb4da">Homicidios<br>C. O.</th>
+		    <th style="color:white;background-color:#004b62">Homicidios<br>Totales</th>
+		  </tr>
+		</thead>
+		<tr>
+		  <th id = "y2004">2004</th>
+		  <td id = "n2004"></td>
+		  <td id = "h2004"></td>
+		</tr>
+		<tr>
+		  <th id = "y2005">2005</th>
+		  <td id = "n2005"></td>
+		  <td id = "h2005"></td>
+		</tr>
+		<tr>
+		  <th id = "y2006">2006</th>
+		  <td id = "n2006"></td>
+		  <td id = "h2006"></td>
+		</tr>
+		<tr>
+		  <th id = "y2007">2007</th>
+		  <td id = "n2007"></td>
+		  <td id = "h2007"></td>
+		</tr>
+		<tr>
+		  <th id = "y2008">2008</th>
+		  <td id = "n2008"></td>
+		  <td id = "h2008"></td>
+		</tr>
+		<tr>
+		  <th id = "y2009">2009</th>
+		  <td id = "n2009"></td>
+		  <td id = "h2009"></td>
+		</tr>
+		<tr>
+		  <th id = "y2010">2010</th>
+		  <td id = "n2010"></td>
+		  <td id = "h2010"></td>
+		</tr>
+		<!--<tr>
+		    <th>2011</th>
+		    <td id = "n2011"></td>
+		    <td id = "h2011"></td>
+	      </tr>-->
+	      </table>
+	      
+	    </div>
+	    
+	  </div>
+	
+	  
+	  <!-- sample modal content -->
+          <div id="modal-sources" class="modal hide">
+            <div class="modal-header">
+              <a href="#" class="close">&times;</a>
+              <h3>Fuentes</h3>
+            </div>
+            <div class="modal-body">
+<div style="float:right;height:200px;border:1px #000 solid;padding:.5em;margin:.5em">
+<p><h3>Hecho por</h3><h2><b>Diego Valle</h2></b></p>
+<p><a href="http://blog.diegovalle.net">blog.diegovalle.net</a></p>
+<p><a href="http://twitter.com/diegovalle">twitter.com/diegovalle</a></p>
+</div>
+              <p><strong>La mención de fuentes ajenas a este sitio no implica su apoyo. El contenido de este sitio web es únicamente responsabilidad de su autor.</strong></p>
+	      <p>Homicidios del Crimen Organizado: Dic 2006-Dic 2010: <a href="http://www.presidencia.gob.mx/base-de-datos-de-fallecimientos/">Base de datos de fallecimientos ocurridos por presunta rivalidad delincuencial</a> y 2011 <a href="http://www.pgr.gob.mx/temas%20relevantes/estadistica/estadisticas.asp#">PGR</a></p>
+	      <p>Homicidios Totales: Dirección General de Información en Salud (DGIS). Base de datos de defunciones 1979-2009: <a href="http://www.sinais.salud.gob.mx/basesdedatos/estandar.html#defunciones">Sistema Nacional de Información en Salud (SINAIS)</a>. [México]: Secretaría de Salud [Accesado 2011-01-20]</p>
+<p>Operaciones Militares: <a href="http://www.ssp.gob.mx/portalWebApp/ShowBinary?nodeId=/BEA%20Repository/816002//archivo">Segundo Informe de Labores</a>, Secretaria de Seguridad Pública</p>
+	      <p>Coordenadas de las cabeceras municipales: <a href="http://www.sinais.salud.gob.mx/basesdedatos/estandar.html#municipios">Catálogos de municipios y localidades</a></p>
+	      <p>Zonas Metropolitanas: Delimitación de las zonas metropolitanas de México 2005  <a href="http://www.inegi.gob.mx/prod_serv/contenidos/espanol/bvinegi/productos/geografia/publicaciones/delimex05/DZMM_2005_0.pdf">INEGI</a></p>
+	      <p>Estimaciones de población basadas en datos de CONAPO/COLMEX y el censo de 2010: <a href="https://github.com/diegovalle/Population-Estimates">Fuente</a></p>
+	      <p>Localidades de narco laboratorios: <a href="https://docs.google.com/spreadsheet/ccc?key=0AjjLwVYbDGx7dFVoRmdNcTJQQldKUUR4bFJ6OU8yWkE">Hoja de cálculo</a></p>
+	      <p>Datos de eradicación de mariguana y opio de: <a href="http://www.uam.es/personal_pdi/economicas/cresa//nota0205.pdf">El mapa del cultivo de drogas en México</a>, de Carlos Resa Nestares</p>
+	      <p>Las mejores rutas para llegar a la frontera de los municipios con mayor eradición de mariguana y opio hechas con Google Directions</p>
+	      <p>Para la importancia de las rutas de trasiego de droga leer: <a href="http://econ-www.mit.edu/files/7484">Trafficking Networks and the Mexican Drug War</a> by Melissa Dell</p>
+	      <p>Para la importancia de los arrestos y abatimientos de líderes criminales leer: <a href="http://insyde.org.mx/images/naf_rev_2010.pdf">Security, drugs, and violence in mexico: a survey</a>, by Eduardo Guerrero Gutiérrez</p>
+	      <p>Para la importancia de la expiración de la prohibición de las armas de asalto leer: Cross-border spillover: US Gun Law and violence in Mexico by Dube, A., Dube, O. and Garcia-Ponce, O. and <a href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html">y mi blog</a></p>
+
+<p>También te puede interesar el <a href="http://stanford.edu/~dkronick/mexico_crime/">mapa interactivo</a> de  Dorothy Kronick</p>
+<p>Hecho con <a href="http://mbostock.github.com/protovis/Protovis">Protovis</a>, <a href="https://diegovalle.cartodb.com/dashboard">Cartodb</a>, <a href="http://www.r-project.org/">R</a> y Google Maps</p>
+<p>Puedes descargar la fuente de este programa en <a href="http://github.com/diegovalle/drug-war-interactive-map">GitHub</a></p>
+	     
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="close xbtn primary">Cerrar</a>
+            </div>
+            
+	  </div>
+	  <a href="#" class ="label notice" data-controls-modal="modal-sources" data-backdrop="true" data-keyboard="true" >Acerca</a>
+
+	  <div id="modal-legend" class="modal hide">
+            <div class="modal-header">
+              <a href="#" class="close">&times;</a>
+              <h3>Legend</h3>
+            </div>
+            <div class="modal-body">
+	      <img src = "http://diegovalle.github.com/drug-war-interactive-map/images/legend.png" width="201"  height="66" alt="legend"/>
+	      <p>Los homicidios del 2010 fueron ajustatos por la fecha de corte para registrarlos en la base de datos</p>
+
+              <p>El valor máximo de la escala de color es de 130 homicidios por 100,000 habitantes. Tanto los homicidios totales como los vinculados al crimen organizado tienen la misma escala.</p>
+<p>Visita mi <a href="http://blog.diegovalle.net">blog</a>!</p>
+	    </div>
+            <div class="modal-footer">
+              <a href="#" class="close xbtn primary">Close</a>
+            </div>
+	  </div>
+	  <a href="#" class ="label notice" data-controls-modal="modal-legend" data-backdrop="true" data-keyboard="true" >Leyenda</a>
+
+<a href="#" class ="label notice" onclick="javascript:window.open('data:text/csv;base64;charset=utf-8,' + escape(convertToCSV()));return false;" >CSV</a>
+
+
+	  <div id="modal-share" class="modal hide">
+            <div class="modal-header">
+              <a href="#" class="close">&times;</a>
+              <h3>Compartir el mapa</h3>
+            </div>
+            <div class="modal-body">
+	      
+	      <p>¡Sólo copia y pega!</p>
+	      
+	      
+	      <input id="maplink" class="span12" type="text" readonly="readonly" onclick="" value="" maxlength="10000000">
+	      
+	      <button id="copy_button"  class="btn default">Copiar</button>
+	      <p><span id="ielonglinks"></span></p>
+<p> Opciones como zoom o la región seleccionada seran recordados automáticamente</p>
+	      <div class="span18"><p>O comparte en tu red social favorita:</p></div>
+
+	      <div class="row">
+<div class="span6">
+	    <div class = "social_icons">
+	      <a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURI(shortUrlShare) + '&amp;via=diegovalle'))"><span>Twitter</span></a>
+
+	      <a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI(shortUrlShare)+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
+
+	      <a class="plusone_icon" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI(shortUrlShare)"><span>Google Plus</span></a>  
+</div>
+	    </div>
+</div>
+
+<div class="row">
+<div class="span6">
+	      <p>Sígueme en twitter <a href="http://www.twitter.com/diegovalle">@diegovalle</a></p>
+</div>
+</div>
+	    </div>
+            <div class="modal-footer">
+              <a href="" class="close xbtn primary">Cerrar</a>
+            </div>
+	  </div>
+	  
+	  <a data-controls-modal="modal-share" data-backdrop="true" data-keyboard="true" class ="label success" href="" style="font-size:14px">Comapartir el Mapa</a>
+
+	  <div style="float:right; margin-top:-10px">
+	    <div class="social_icons_small">
+	      <a class="twitter_icon_small" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURI('http://www.diegovalle.net/drug-war-map.html') + '&amp;via=diegovalle'))"><span>Twitter</span></a>
+
+	      <a class="facebook_icon_small" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI('http://www.diegovalle.net/drug-war-map.html')+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
+
+	      <a class="plusone_icon_small" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI('http://www.diegovalle.net/drug-war-map.html')))"><span>Google Plus</span></a>  
+	    </div>
+	  </div>
+	</div>
+<div id="defaultDateSlider"></div>
+      </div>
+
+    </div>
+    
+    <script>
+      var _gaq=[['_setAccount','UA-100264-1'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+    
+<!--[if lt IE 8 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+    <![endif]-->
+
+  </body>
+</html>
