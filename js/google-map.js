@@ -121,21 +121,31 @@ function getLocation() {
     return location.protocol+ '//' +location.host+location.pathname;
 }
 
-function changeHash(){
-    $("#maplink").attr("value","");
+function getCompleteURL(){
+   var ret;
     if(polyString == "")
-	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
+	ret = getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom, homtype : typeOfHomicide,
-					  clat: centerLat, clong: centerLong}));
+					  clat: centerLat, clong: centerLong})
     else
-	$("#maplink").attr("value", getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
+	ret = getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom,  homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong,
-					  polygon: polyString}));
+					  polygon: polyString});
+   return ret;
+}
+
+
+function changeHash(){
+    $("#maplink").attr("value","");
+    if(polyString == "")
+	$("#maplink").attr("value", getCompleteURL());
+    else
+	$("#maplink").attr("value", getCompleteURL());
     warningLongLinksIE();
 }
 var style = [
@@ -234,6 +244,9 @@ var lastDWRHMonth = 9; //September is the last month for which DWRH are availabl
 var dates = [];
 var monthlyData = [], coordData = [];
 
+
+var shortUrl;
+var shortUrlShare;
 
 var shownModalButton = false;
 var parameters;
@@ -1132,16 +1145,44 @@ function initialize() {
     $("#maplink").attr("value", getLocation() );
     //You must supply an afterCopy function to supress the annoying dialog that pops up after ciopyn
     $('#modal-share').bind('shown', function () {
-			    if(!shownModalButton)
+			    if(!shownModalButton) {
+				shownModalButton = true;
 				$('button#copy_button').zclip({
 				  path:'http://diegovalle.github.com/drug-war-interactive-map/js/ZeroClipboard.swf',
 				  copy:function(){return $('input#maplink').val();},
 				  afterCopy: function() {return true;}
 			     });
-			   shownModalButton = true;
+			  
+			    }
+		    
+			       var baseShorten = "http://ilsevalle.com/shorten.php?url=";
+			       shortUrlShare = getCompleteURL();
+			       $.ajax({
+        url : baseShorten + getLocation() + '&jsoncallback=?',//php script to shorten with bit.ly
+        dataType : "json",
+        type : "GET",
+        data : {
+            url : getLocation()
+        },
+        success : function(data) {
+            if(data.status_txt === "OK")
+                shortUrlShare = data.data.url;
+	    else
+		shortUrlShare = getCompleteURL();
+        },
+        error : function(xhr, error, message) {
+            //no success, fallback to the long url
+            shortUrlShare = getCompleteURL();
+        }
+    });
+				   
+//$.getJSON(baseShorten + getLocation() + '&jsoncallback=?', function(data) { shortUrl = data.url;});
+			      
+			   
 			});
     
 }
+
 
 function initializeParameters() {
 
