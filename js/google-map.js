@@ -1146,27 +1146,16 @@ function initialize() {
     warningLongLinksIE();
     //Clipboard copying
     $("#maplink").attr("value", getLocation() );
-    //You must supply an afterCopy function to supress the annoying dialog that pops up after ciopyn
-    $('#modal-share').bind('shown', function () {
-			    if(!shownModalButton) {
-				shownModalButton = true;
-				$('button#copy_button').zclip({
-				  path:'http://diegovalle.github.com/drug-war-interactive-map/js/ZeroClipboard.swf',
-				  copy:function(){return $('input#maplink').val();},
-				  afterCopy: function() {return true;}
-			     });
-			  
-			    }
-		    if(hashChanged) {
+
+//get the bitly short link when showing the modal
+    $('#modal-share').bind('show', function () {
+                  if(hashChanged) {
 			var baseShorten = "http://ilsevalle.com/shorten.php?url=";
 			shortUrlShare = getShareURL();
 			$.ajax({
 				   url : baseShorten + encodeURIComponent(getShareURL()) + '&jsoncallback=?',//php script to shorten with bit.ly
 				   dataType : "json",
 				   type : "GET",
-				   //data : {
-				   //  url : getLocation()
-				   //},
 				   success : function(data) {
 				       if(data.status_txt === "OK")
 					   shortUrlShare = data.data.url;
@@ -1179,7 +1168,21 @@ function initialize() {
 				   }
 			       });
 			hashChanged = false;
-		    }  
+		    } 
+
+    });
+    //You must supply an afterCopy function to supress the annoying dialog that pops up after copyn
+    $('#modal-share').bind('shown', function () {
+			    if(!shownModalButton) {
+				shownModalButton = true;
+				$('button#copy_button').zclip({
+				  path:'http://diegovalle.github.com/drug-war-interactive-map/js/ZeroClipboard.swf',
+				  copy:function(){return $('input#maplink').val();},
+				  afterCopy: function() {return true;}
+			     });
+			  
+			    }
+		     
 			   });
     
 }
