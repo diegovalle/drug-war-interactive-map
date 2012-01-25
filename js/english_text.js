@@ -13,7 +13,7 @@ var location_text = "Location: ";
 var all_municipalities_text = "All municipalities or metro areas contained in the polygon: ";
 var dw_r_homicides_text = " DW-R Homicides)";
 var all_of_mx_text = "All of México";
-
+var label_warning_text = '<span class="label warning">Warning</span> Long links may not work in Internet Explorer or Social Networks';
 
 var mistake_df = new Date("December 1, 2006");
 mistake_df_text = "There was no drop in homicides in the Federal District. It's a mistake in the government database";

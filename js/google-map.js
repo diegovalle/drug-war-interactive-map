@@ -112,7 +112,7 @@
 
 function warningLongLinksIE(){
     if($("#maplink").val().length > 2083)
-	$('#ielonglinks').html('<span class="label warning">Warning</span> Long links may not work in Internet Explorer or Social Networks');
+	$('#ielonglinks').html(label_warning_text);
     else
 	$('#ielonglinks').html("");
 }
@@ -141,6 +141,7 @@ function getShareURL(){
 
 
 function changeHash(){
+    changedHash = true;
     $("#maplink").attr("value","");
     if(polyString == "")
 	$("#maplink").attr("value", getShareURL());
@@ -148,6 +149,7 @@ function changeHash(){
 	$("#maplink").attr("value", getShareURL());
     warningLongLinksIE();
 }
+var changedHash = true;
 var style = [
     {
 	featureType: 'road.highway',
@@ -1154,32 +1156,30 @@ function initialize() {
 			     });
 			  
 			    }
-		    
-			       var baseShorten = "http://ilsevalle.com/shorten.php?url=";
-			       shortUrlShare = getShareURL();
-			       $.ajax({
-        url : baseShorten + encodeURIComponent(getShareURL()) + '&jsoncallback=?',//php script to shorten with bit.ly
-        dataType : "json",
-        type : "GET",
-        //data : {
-          //  url : getLocation()
-        //},
-        success : function(data) {
-            if(data.status_txt === "OK")
-                shortUrlShare = data.data.url;
-	    else
-		shortUrlShare = getShareURL();
-        },
-        error : function(xhr, error, message) {
-            //no success, fallback to the long url
-            shortUrlShare = getShareURL();
-        }
-    });
-				   
-//$.getJSON(baseShorten + getLocation() + '&jsoncallback=?', function(data) { shortUrl = data.url;});
-			      
-			   
-			});
+		    if(changedHash) {
+			var baseShorten = "http://ilsevalle.com/shorten.php?url=";
+			shortUrlShare = getShareURL();
+			$.ajax({
+				   url : baseShorten + encodeURIComponent(getShareURL()) + '&jsoncallback=?',//php script to shorten with bit.ly
+				   dataType : "json",
+				   type : "GET",
+				   //data : {
+				   //  url : getLocation()
+				   //},
+				   success : function(data) {
+				       if(data.status_txt === "OK")
+					   shortUrlShare = data.data.url;
+				       else
+					   shortUrlShare = getShareURL();
+				   },
+				   error : function(xhr, error, message) {
+				       //no success, fallback to the long url
+				       shortUrlShare = getShareURL();
+				   }
+			       });
+			changedHash = false;
+		    }  
+			   });
     
 }
 

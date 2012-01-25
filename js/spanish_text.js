@@ -13,6 +13,7 @@ var location_text = "Región: ";
 var all_municipalities_text = "Todos los municipios o zonas metro contenidas en el polígono: ";
 var dw_r_homicides_text = " Homicidios C.O.)";
 var all_of_mx_text = "Todo México";
+var label_warning_text = '<span class="label warning">Advertencia</span> Los links muy largos no funcionan con internet explorer o las redes sociales';
 
 mistake_df = new Date("December 1, 2006");
 mistake_df_text = "La caída en homicidios es un error en la base de datos";
