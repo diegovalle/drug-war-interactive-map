@@ -2174,7 +2174,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
 }
 .modal {
   position: fixed;
-  top: 10%;
+  top: 30px;
   left: 10%;
   z-index: 11000;
   width: 80%;

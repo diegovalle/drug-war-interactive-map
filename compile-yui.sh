@@ -1,4 +1,4 @@
-cat css/cartodb.css css/bootstrap.css  css/tipsy.css css/interactive-drug-war.css > css/combined.min.css
+cat css/cartodb.css css/bootstrap.css  css/tipsy.css css/interactive-drug-war.css > css/combined.css
 
 java -jar yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar --type css css/combined.css > css/combined.min.css
 
