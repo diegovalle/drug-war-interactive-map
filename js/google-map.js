@@ -141,7 +141,7 @@ function getShareURL(){
 
 
 function changeHash(){
-    changedHash = true;
+    hashChanged = true;
     $("#maplink").attr("value","");
     if(polyString == "")
 	$("#maplink").attr("value", getShareURL());
