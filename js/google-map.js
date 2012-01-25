@@ -1161,9 +1161,9 @@ function initialize() {
         url : baseShorten + encodeURIComponent(getShareURL()) + '&jsoncallback=?',//php script to shorten with bit.ly
         dataType : "json",
         type : "GET",
-        data : {
-            url : getLocation()
-        },
+        //data : {
+          //  url : getLocation()
+        //},
         success : function(data) {
             if(data.status_txt === "OK")
                 shortUrlShare = data.data.url;
