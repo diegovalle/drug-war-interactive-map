@@ -149,7 +149,7 @@ function changeHash(){
 	$("#maplink").attr("value", getShareURL());
     warningLongLinksIE();
 }
-var changedHash = true;
+var hashChanged = true;
 var style = [
     {
 	featureType: 'road.highway',
@@ -246,6 +246,7 @@ var lastDWRHMonth = 9; //September is the last month for which DWRH are availabl
 var dates = [];
 var monthlyData = [], coordData = [];
 
+var tip;
 
 var shortUrl;
 var shortUrlShare;
@@ -1156,7 +1157,7 @@ function initialize() {
 			     });
 			  
 			    }
-		    if(changedHash) {
+		    if(hashChanged) {
 			var baseShorten = "http://ilsevalle.com/shorten.php?url=";
 			shortUrlShare = getShareURL();
 			$.ajax({
@@ -1177,7 +1178,7 @@ function initialize() {
 				       shortUrlShare = getShareURL();
 				   }
 			       });
-			changedHash = false;
+			hashChanged = false;
 		    }  
 			   });
     
@@ -1606,7 +1607,7 @@ function createGraph(){
 	    tip = [mistake_df_text];
 	}
         rangei = rangei.map(getIndex);
-	return data = rangei
+	return rangei
 	    .map(function(i) {
 		     return ({
 			date: new Date(monthlyData[i].date),
