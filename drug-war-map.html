@@ -45,7 +45,7 @@
 
 <script src="js/jQDateRangeSlider.js"></script>-->
 
-<script type="text/javascript" src="js/combined.min.js"></script>
+<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined.min.js"></script>
 
   <script type="text/javascript">
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -329,11 +329,11 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 	      <div class="row">
 <div class="span6">
 	    <div class = "social_icons">
-	      <a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURIComponent($('#maplink').val()) + '&amp;via=diegovalle'))"><span>Twitter</span></a>
+	      <a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURI(shortUrlShare) + '&amp;via=diegovalle'))"><span>Twitter</span></a>
 
-	      <a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent($('#maplink').val())+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
+	      <a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI(shortUrlShare)+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
 
-	      <a class="plusone_icon" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURIComponent($('#maplink').val())))"><span>Google Plus</span></a>  
+	      <a class="plusone_icon" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI(shortUrlShare)"><span>Google Plus</span></a>  
 </div>
 
 	    </div>
@@ -354,11 +354,11 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 
 	  <div style="float:right; margin-top:-10px">
 	    <div class="social_icons_small">
-	      <a class="twitter_icon_small" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURIComponent($('#maplink').val()) + '&amp;via=diegovalle'))"><span>Twitter</span></a>
+	      <a class="twitter_icon_small" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURI('http://www.diegovalle.net/drug-war-map.html') + '&amp;via=diegovalle'))"><span>Twitter</span></a>
 
-	      <a class="facebook_icon_small" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent($('#maplink').val())+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
+	      <a class="facebook_icon_small" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI('http://www.diegovalle.net/drug-war-map.html')+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
 
-	      <a class="plusone_icon_small" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURIComponent($('#maplink').val())))"><span>Google Plus</span></a>  
+	      <a class="plusone_icon_small" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI('http://www.diegovalle.net/drug-war-map.html')))"><span>Google Plus</span></a>  
 	    </div>
 	  </div>
 	</div>
