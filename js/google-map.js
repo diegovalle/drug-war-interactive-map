@@ -121,7 +121,7 @@ function getLocation() {
     return location.protocol+ '//' +location.host+location.pathname;
 }
 
-function getCompleteURL(){
+function getShareURL(){
    var ret;
     if(polyString == "")
 	ret = getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
@@ -143,9 +143,9 @@ function getCompleteURL(){
 function changeHash(){
     $("#maplink").attr("value","");
     if(polyString == "")
-	$("#maplink").attr("value", getCompleteURL());
+	$("#maplink").attr("value", getShareURL());
     else
-	$("#maplink").attr("value", getCompleteURL());
+	$("#maplink").attr("value", getShareURL());
     warningLongLinksIE();
 }
 var style = [
@@ -1156,9 +1156,9 @@ function initialize() {
 			    }
 		    
 			       var baseShorten = "http://ilsevalle.com/shorten.php?url=";
-			       shortUrlShare = getCompleteURL();
+			       shortUrlShare = getShareURL();
 			       $.ajax({
-        url : baseShorten + getLocation() + '&jsoncallback=?',//php script to shorten with bit.ly
+        url : baseShorten + encodeURIComponent(getShareURL()) + '&jsoncallback=?',//php script to shorten with bit.ly
         dataType : "json",
         type : "GET",
         data : {
@@ -1168,11 +1168,11 @@ function initialize() {
             if(data.status_txt === "OK")
                 shortUrlShare = data.data.url;
 	    else
-		shortUrlShare = getCompleteURL();
+		shortUrlShare = getShareURL();
         },
         error : function(xhr, error, message) {
             //no success, fallback to the long url
-            shortUrlShare = getCompleteURL();
+            shortUrlShare = getShareURL();
         }
     });
 				   
