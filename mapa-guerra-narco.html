@@ -251,10 +251,11 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
               <h3>Fuentes</h3>
             </div>
             <div class="modal-body">
-<div style="float:right;height:200px;border:1px #000 solid;padding:.5em;margin:.5em">
-<h3>Hecho por</h3><h2>Diego Valle</h2>
+<div style="float:right;height:260px;border:1px #000 solid;padding:.5em;margin:.5em;width:170px">
+<b>Hecho por</b><h2>Diego Valle</h2>
 <p><a href="http://blog.diegovalle.net">blog.diegovalle.net</a></p>
 <p><a href="http://twitter.com/diegovalle">twitter.com/diegovalle</a></p>
+¿Descubriste algún patrón interesante? ¿Tienes una sugerencia? ¿Comentarios sobre los datos? Por favor <a href="http://www.diegovalle.net/contact.html">contáctame</a>.
 </div>
               <p><strong>La mención de fuentes ajenas a este sitio no implica su apoyo. El contenido de este sitio web es únicamente responsabilidad de su autor.</strong></p>
 	      <p>Homicidios del Crimen Organizado: Dic 2006-Dic 2010: <a href="http://www.presidencia.gob.mx/base-de-datos-de-fallecimientos/">Base de datos de fallecimientos ocurridos por presunta rivalidad delincuencial</a> y 2011 <a href="http://www.pgr.gob.mx/temas%20relevantes/estadistica/estadisticas.asp#">PGR</a></p>
@@ -266,13 +267,13 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 	      <p>Localidades de narco laboratorios: <a href="https://docs.google.com/spreadsheet/ccc?key=0AjjLwVYbDGx7dFVoRmdNcTJQQldKUUR4bFJ6OU8yWkE">Hoja de cálculo</a></p>
 	      <p>Datos de erradicación de mariguana y opio de: <a href="http://www.uam.es/personal_pdi/economicas/cresa//nota0205.pdf">El mapa del cultivo de drogas en México</a>, de Carlos Resa Nestares</p>
 	      <p>Las mejores rutas para llegar a la frontera de los municipios con mayor erradicación de mariguana y opio hechas con Google Directions</p>
-	      <p>Para la importancia de las rutas de trasiego de droga leer: <a href="http://econ-www.mit.edu/files/7484">Trafficking Networks and the Mexican Drug War</a> by Melissa Dell</p>
-	      <p>Para la importancia de los arrestos y abatimientos de líderes criminales leer: <a href="http://insyde.org.mx/images/naf_rev_2010.pdf">Security, drugs, and violence in mexico: a survey</a>, by Eduardo Guerrero Gutiérrez</p>
-	      <p>Para la importancia de la expiración de la prohibición de las armas de asalto leer: <a href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> by Dube, A., Dube, O. and Garcia-Ponce, O. and <a href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html">y mi blog</a></p>
+	      <p>Para la importancia de las rutas de trasiego de droga leer: <a href="http://econ-www.mit.edu/files/7484">Trafficking Networks and the Mexican Drug War</a> por Melissa Dell</p>
+	      <p>Para la importancia de los arrestos y abatimientos de líderes criminales leer: <a href="http://insyde.org.mx/images/naf_rev_2010.pdf">Security, drugs, and violence in mexico: a survey</a>, de Eduardo Guerrero Gutiérrez</p>
+	      <p>Para la importancia de la expiración de la prohibición de las armas de asalto leer: <a href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> por Dube, A., Dube, O. y Garcia-Ponce, O.<a href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html"> y también mi blog</a></p>
 
 <p>También te puede interesar el <a href="http://stanford.edu/~dkronick/mexico_crime/">mapa interactivo</a> de Dorothy Kronick</p>
-<p>Hecho con <a href="http://mbostock.github.com/protovis/Protovis">Protovis</a>, <a href="http://www.r-project.org/">R</a>, <a href="http://cardodb.com">CartoDB</a> y Google Maps</p>
-<p>Puedes descargar la fuente de este programa en <a href="http://github.com/diegovalle/drug-war-interactive-map">GitHub</a></p>
+<p>Hecho con <a href="http://mbostock.github.com/protovis/">Protovis</a>, <a href="http://www.r-project.org/">R</a>, <a href="http://cartodb.com">CartoDB</a>, <a href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a href="http://colorbrewer2.org/">Color Brewer</a> y Google Directions</p>
+<p>Puedes descargar la fuente de este programa en <a href="https://github.com/diegovalle/drug-war-interactive-map/tree/gh-pages">GitHub</a></p>
 	     
             </div>
             <div class="modal-footer">
@@ -285,14 +286,17 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 	  <div id="modal-legend" class="modal hide">
             <div class="modal-header">
               <a href="#" class="close">&times;</a>
-              <h3>Legend</h3>
+              <h3>Leyenda</h3>
             </div>
             <div class="modal-body">
-	      <img src = "http://diegovalle.github.com/drug-war-interactive-map/images/legend.png" width="201"  height="66" alt="legend"/>
-	      <p>Los homicidios del 2010 fueron ajustados por la fecha de corte para registrarlos en la base de datos</p>
+	      <img src = "http://diegovalle.github.com/drug-war-interactive-map/images/legend-es.png" width="500"  height="212" alt="legend"/>
+<hr class="clear">
+	      <p>Los homicidios del 2010 fueron ajustados por aproximadamente 3% debido a que por la fecha de corte para registrarlos en la base de datos del INEGI no da tiempo de contarlos todos.</p>
 
-              <p>El valor máximo de la escala de color es de 130 homicidios por 100,000 habitantes. Tanto los homicidios totales como los vinculados al crimen organizado tienen la misma escala.</p>
-<p>Visita mi <a href="http://blog.diegovalle.net">blog</a>!</p>
+              <p>Tanto los homicidios totales como los vinculados al crimen organizado tienen la misma escala de color para facilitar su comparación.</p>
+
+<p>La abreviación Z.M. significa Zona Metropolitana</p>
+<p>Visita mi <a href="http://blog.diegovalle.net/2012/01/interactive-map-of-drug-war-in-mexico.html">blog</a> (en inglés) para más detalles</p>
 	    </div>
             <div class="modal-footer">
               <a href="#" class="close xbtn primary">Cerrar</a>
@@ -303,7 +307,7 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 <a href="#" class ="label notice" onclick="javascript:window.open('data:text/csv;base64;charset=utf-8,' + escape(convertToCSV()));return false;" >CSV</a>
 
 
-	  <div id="modal-share" class="modal hide">
+	  <div id="modal-share" class="modal hide fade">
             <div class="modal-header">
               <a href="#" class="close">&times;</a>
               <h3>Compartir el mapa</h3>
@@ -347,11 +351,11 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 
 	  <div style="float:right; margin-top:-10px">
 	    <div class="social_icons_small">
-	      <a class="twitter_icon_small" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURI('http://www.diegovalle.net/drug-war-map.html') + '&amp;via=diegovalle'))"><span>Twitter</span></a>
+	      <a class="twitter_icon_small" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Mapa%20interactivo%20guerra%20contra%20el%20narco&amp;url='+ encodeURI('http://www.diegovalle.net/mapa-guerra-narco.html') + '&amp;via=diegovalle'))"><span>Twitter</span></a>
 
-	      <a class="facebook_icon_small" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI('http://www.diegovalle.net/drug-war-map.html')+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
+	      <a class="facebook_icon_small" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI('http://www.diegovalle.net/mapa-guerra-narco.html')+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
 
-	      <a class="plusone_icon_small" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI('http://www.diegovalle.net/drug-war-map.html')))"><span>Google Plus</span></a>  
+	      <a class="plusone_icon_small" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI('http://www.diegovalle.net/mapa-guerra-narco.html')))"><span>Google Plus</span></a>  
 	    </div>
 	  </div>
 	</div>

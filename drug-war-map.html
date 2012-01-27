@@ -44,7 +44,7 @@
 
 <script src="js/jQDateRangeSlider.js"></script>-->
 
-<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined.min.js"></script>
+<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js"></script>
 
   <script type="text/javascript">
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -252,10 +252,11 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
             </div>
             <div class="modal-body">
 
-	      <div style="float:right;height:200px;border:1px #000 solid;padding:.5em;margin:.5em">
-<h3>Made by</h3><h2>Diego Valle-Jones</h2>
+	      <div style="float:right;height:260px;border:1px #000 solid;padding:.5em;margin:.5em;width:170px">
+<b>Made by:</b><h2>Diego Valle-Jones</h2>
 <p><a href="http://blog.diegovalle.net">blog.diegovalle.net</a></p>
 <p><a href="http://twitter.com/diegovalle">twitter.com/diegovalle</a></p>
+Did you notice an interesting pattern? Do you have a suggestion? Comments about the data? Please <a href="http://www.diegovalle.net/contact.html">get in touch</a>.
 </div>
 <h3>Sources</h3>
               <p><strong>The mention of external data sources or research papers does not mean an endorsement of this website. The contents of this website are solely the responsibility of its author.</strong></p>
@@ -273,8 +274,8 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 	      <p>For the importance of the expiration of the assault weapon ban read: <a href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> by Dube, A., Dube, O. and Garcia-Ponce, O. and <a href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html">my blog post</a></p>
 
 <p>Also check out Dorothy Kronick's <a href="http://stanford.edu/~dkronick/mexico_crime/">interactive map</a></p>
-<p>Made with <a href="http://mbostock.github.com/protovis/Protovis">Protovis</a>, <a href="http://www.r-project.org/">R</a>, <a href="http://cardodb.com">CartoDB</a>  and Google Maps</p>
-<p>The source for this program is available on <a href="http://github.com/diegovalle/drug-war-interactive-map">GitHub</a></p>
+<p>Made with <a href="http://mbostock.github.com/protovis/">Protovis</a>, <a href="http://www.r-project.org/">R</a>, <a href="http://cartodb.com">CartoDB</a>, <a href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a href="http://colorbrewer2.org/">Color Brewer</a> and Google Directions</p>
+<p>The source for this program is available on <a href="https://github.com/diegovalle/drug-war-interactive-map/tree/gh-pages">GitHub</a></p>
 	     
 
 
@@ -292,11 +293,12 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
               <h3>Legend</h3>
             </div>
             <div class="modal-body">
-	      <img src = "http://diegovalle.github.com/drug-war-interactive-map/images/legend.png" width="201"  height="66" alt="legend"/>
-	      <p>Homicides for 2010 have been adjusted for under-counting because of the cutoff date of December 31, 2010 for registering homicides in the database</p>
+	      <img src = "http://diegovalle.github.com/drug-war-interactive-map/images/legend-en.png" width="500"  height="212" alt="legend"/>
+<hr class="clear">
+	      <p>Homicides for 2010 have been adjusted by about 3% to account for under-counting because of the cutoff date of for registering homicides in the INEGI database</p>
 
-              <p>The color scale used to represent rates is capped at 130. Both total homicides and drug war-related homicides are shown using the same scale for ease of comparison</p>
-<p>Visit my <a href="http://blog.diegovalle.net">blog</a>!</p>
+              <p>Both total homicides and drug war-related homicides are shown using the same color scale for ease of comparison</p>
+<p>Visit my <a href="http://blog.diegovalle.net/2012/01/interactive-map-of-drug-war-in-mexico.html">blog</a> for more details</p>
 	    </div>
             <div class="modal-footer">
               <a href="#" class="close xbtn primary">Close</a>
@@ -307,7 +309,7 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 <a href="#" class ="label notice" onclick="javascript:window.open('data:text/csv;base64;charset=utf-8,' + escape(convertToCSV()));return false;" >CSV</a>
 
 
-	  <div id="modal-share" class="modal hide">
+	  <div id="modal-share" class="modal hide fade">
             <div class="modal-header">
               <a href="#" class="close">&times;</a>
               <h3>Share this map</h3>

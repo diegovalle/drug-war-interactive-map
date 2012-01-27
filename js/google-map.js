@@ -1150,7 +1150,6 @@ function initialize() {
 //get the bitly short link when showing the modal
     $('#modal-share').bind('show', function () {
                   if(hashChanged) {
-			var baseShorten = "http://ilsevalle.com/shorten.php?url=";
 			shortUrlShare = getShareURL();
 			$.ajax({
 				   url : baseShorten + encodeURIComponent(getShareURL()) + '&jsoncallback=?',//php script to shorten with bit.ly
@@ -1167,6 +1166,7 @@ function initialize() {
 				       shortUrlShare = getShareURL();
 				   }
 			       });
+                        
 			hashChanged = false;
 		    } 
 
@@ -1444,7 +1444,7 @@ function createGraph(){
 	.left(10)
 	.top(25)
 	.anchor("right").add(pv.Label).textStyle("#222")
-	.text(function(d) {if(d.drh != null) return monthName[d.date.getMonth()] + " "+ d.date.getFullYear() + " rate: " + d.drhrate.toFixed(0) +" (" + d.drh + dw_r_homicides_text;});
+	.text(function(d) {if(d.drh != null) return monthName[d.date.getMonth()] + " "+ d.date.getFullYear() + rate_chart + d.drhrate.toFixed(0) +" (" + d.drh + dw_r_homicides_text;});
 
     
     
