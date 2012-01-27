@@ -9,7 +9,7 @@ Instructions to deploy:
 
 * change the location of your server (where you've placed shorten.php) for shortening links in the file shortner.js
 * modify shorten.php to include your free bit.ly api key and username
-* Modify to include the locations of Yahoo's YUI Compressor and Google's Closure Compiler
+* Modify the makefile to include the locations of Yahoo's YUI Compressor and Google's Closure Compiler
 * make all
 
 The highways are stored in 3 fusion tables:
