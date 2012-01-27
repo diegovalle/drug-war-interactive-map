@@ -109,8 +109,8 @@
        d="m 250,392.36218 a 42.857143,42.857143 0 1 1 -85.71429,0 42.857143,42.857143 0 1 1 85.71429,0 z"
        transform="translate(-132.85714,-1.4285711)"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813" />
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401" />
     <path
        transform="matrix(0.38333334,0,0,0.38333334,-5.1190529,266.95668)"
        sodipodi:type="arc"
@@ -122,24 +122,24 @@
        sodipodi:ry="42.857143"
        d="m 250,392.36218 a 42.857143,42.857143 0 1 1 -85.71429,0 42.857143,42.857143 0 1 1 85.71429,0 z"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813" />
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 69.142857,401.50504 110.000003,0"
        id="path3773"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813" />
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 96.857147,353.79076 94.413913,0"
        id="path3779"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813" />
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401" />
     <text
        xml:space="preserve"
        style="font-size:19.48504257px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee"
@@ -148,8 +148,8 @@
        id="text3781"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813"><tspan
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401"><tspan
          sodipodi:role="line"
          id="tspan3783"
          x="195.58514"
@@ -162,8 +162,8 @@
        id="text3785"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813"><tspan
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401"><tspan
          sodipodi:role="line"
          id="tspan3787"
          x="181.43243"
@@ -187,14 +187,14 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        height="200"
        width="27"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813" />
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401" />
     <g
        id="g3875"
        transform="matrix(0.95764535,0,0,0.95764535,-123.90821,18.932383)"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813">
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401">
       <text
          sodipodi:linespacing="125%"
          id="text3830"
@@ -226,15 +226,18 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        id="text3830-1"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
-       inkscape:export-xdpi="58.055813"
-       inkscape:export-ydpi="58.055813"><tspan
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401"><tspan
          sodipodi:role="line"
          id="tspan3832-4"
          x="78.466713"
-         y="661.01733">130 homicidios por 100,000</tspan></text>
+         y="661.01733">&gt;130 homicidios por 100,000</tspan></text>
     <g
        id="g4250"
-       transform="translate(3e-4,0)">
+       transform="translate(3e-4,0)"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401">
       <path
          inkscape:export-ydpi="58.055813"
          inkscape:export-xdpi="58.055813"
@@ -272,7 +275,10 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
     </g>
     <g
        id="g4245"
-       transform="translate(3e-4,0.27084351)">
+       transform="translate(3e-4,0.27084351)"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401">
       <path
          inkscape:export-ydpi="58.055813"
          inkscape:export-xdpi="58.055813"
@@ -310,7 +316,10 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
     </g>
     <g
        id="g4239"
-       transform="translate(4.5717286,-202)">
+       transform="translate(4.5717286,-202)"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401">
       <path
          inkscape:export-ydpi="58.055813"
          inkscape:export-xdpi="58.055813"
@@ -355,8 +364,8 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        d="m 250,392.36218 a 42.857143,42.857143 0 1 1 -85.71429,0 42.857143,42.857143 0 1 1 85.71429,0 z"
        transform="translate(-130.84156,360.3904)"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949" />
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638" />
     <path
        transform="matrix(0.38333334,0,0,0.38333334,-3.1034714,628.77565)"
        sodipodi:type="arc"
@@ -368,24 +377,24 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        sodipodi:ry="42.857143"
        d="m 250,392.36218 a 42.857143,42.857143 0 1 1 -85.71429,0 42.857143,42.857143 0 1 1 85.71429,0 z"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949" />
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 71.158439,763.32401 110.000001,0"
        id="path3773-0"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949" />
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 98.872729,715.60973 94.413911,0"
        id="path3779-6"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949" />
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638" />
     <text
        xml:space="preserve"
        style="font-size:19.48504257px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee"
@@ -394,8 +403,8 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        id="text3781-9"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949"><tspan
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638"><tspan
          sodipodi:role="line"
          id="tspan3783-1"
          x="197.60072"
@@ -408,8 +417,8 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        id="text3785-5"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949"><tspan
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638"><tspan
          sodipodi:role="line"
          id="tspan3787-6"
          x="183.44801"
@@ -422,14 +431,14 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        height="200"
        width="27"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949" />
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638" />
     <g
        id="g3875-1"
        transform="matrix(0.95764535,0,0,0.95764535,-121.89263,380.75136)"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949">
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638">
       <text
          sodipodi:linespacing="125%"
          id="text3830-2"
@@ -461,15 +470,18 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
        id="text3830-1-0"
        sodipodi:linespacing="125%"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
-       inkscape:export-xdpi="58.543949"
-       inkscape:export-ydpi="58.543949"><tspan
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638"><tspan
          sodipodi:role="line"
          id="tspan3832-4-7"
          x="80.482285"
-         y="1022.8363">130 homicides por 100,000</tspan></text>
+         y="1022.8363">&gt;130 homicides per 100,000</tspan></text>
     <g
        id="g4220"
-       transform="translate(2.03245,-2.8571429)">
+       transform="translate(2.03245,-2.8571429)"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638">
       <path
          inkscape:export-ydpi="58.543949"
          inkscape:export-xdpi="58.543949"
@@ -507,7 +519,10 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
     </g>
     <g
        id="g4215"
-       transform="translate(2.03245,-9.8780653)">
+       transform="translate(2.03245,-9.8780653)"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638">
       <path
          inkscape:export-ydpi="58.543949"
          inkscape:export-xdpi="58.543949"
@@ -545,7 +560,10 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
     </g>
     <g
        id="g4210"
-       transform="translate(3.09635,6.7009046)">
+       transform="translate(3.09635,6.7009046)"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638">
       <path
          inkscape:export-ydpi="58.543949"
          inkscape:export-xdpi="58.543949"
@@ -575,5 +593,33 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
            x="444.79941"
            sodipodi:role="line">Kernel Density of Drug Lab Seizures</tspan></text>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee"
+       x="80"
+       y="939.50507"
+       id="text4267"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-en.png"
+       inkscape:export-xdpi="58.221638"
+       inkscape:export-ydpi="58.221638"><tspan
+         sodipodi:role="line"
+         id="tspan4269"
+         x="80"
+         y="939.50507">...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee"
+       x="80.85714"
+       y="576.36218"
+       id="text4271"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
+       inkscape:export-xdpi="57.715401"
+       inkscape:export-ydpi="57.715401"><tspan
+         sodipodi:role="line"
+         id="tspan4273"
+         x="80.85714"
+         y="576.36218">...</tspan></text>
   </g>
 </svg>
