@@ -2173,7 +2173,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   opacity: 0.8;
 }
 .modal {
-  position: fixed;
+  position: absolute;
   top: 30px;
   left: 10%;
   z-index: 11000;
