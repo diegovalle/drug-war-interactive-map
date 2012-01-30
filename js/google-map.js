@@ -1156,10 +1156,19 @@ function initialize() {
 				   dataType : "json",
 				   type : "GET",
 				   success : function(data) {
-				       if(data.status_txt === "OK")
-					   shortUrlShare = data.data.url;
-				       else
+				       if(data.status_txt === "OK"){
+					   $("a.twitter-share-button").attr("href", data.data.url);
+                                           $("div.g-plusone").attr("data-href", data.data.url);
+                                           shortUrlShare = data.data.url;
+				       }
+					   
+				       else {
+					   $("a.twitter-share-button").attr("href", getShareURL);
+					   $("div.g-plusone").attr("data-href", getShareURL);
 					   shortUrlShare = getShareURL();
+					   
+				       }
+					   
 				   },
 				   error : function(xhr, error, message) {
 				       //no success, fallback to the long url
@@ -1169,6 +1178,11 @@ function initialize() {
                         
 			hashChanged = false;
 		    } 
+                  $('#like').html('<fb:like href="' + getShareURL() + '"  data-layout="button_count" show_faces="false" width="65" action="like" font="segoe ui" colorscheme="light" />');
+		        if (typeof FB !== 'undefined') {
+		                  FB.XFBML.parse(document.getElementById('like'));
+			}
+           
 
     });
     //You must supply an afterCopy function to supress the annoying dialog that pops up after copyn
