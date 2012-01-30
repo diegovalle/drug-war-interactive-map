@@ -53,14 +53,14 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
      inkscape:cx="392.56022"
-     inkscape:cy="405.71429"
+     inkscape:cy="291.42858"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g4245"
      showgrid="false"
      inkscape:window-width="1419"
      inkscape:window-height="823"
-     inkscape:window-x="264"
-     inkscape:window-y="20"
+     inkscape:window-x="179"
+     inkscape:window-y="24"
      inkscape:window-maximized="0"
      objecttolerance="10000"
      guidetolerance="20"
@@ -90,7 +90,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -172,18 +172,7 @@
        y="463.79077"
        x="36.500004"
        id="image3808"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAADICAIAAACWHA2DAAAAA3NCSVQICAjb4U/gAAACBklEQVR4
-nO3ZrU4DQRQF4DOTFRgECBw4bB8ASQJvQBCEkCCxbd0WwrKKsB7JXxC8AgEHCQKFgeLAQYKpIYi5
-iP2rn9Nkt3Ovq/myk529Z+7UfL6/OieAgFHW2gjA6dkFhXPO7e3uRPmPOI79xTRNAVjScssSWKoH
-IFyRthkBANKSVatIEYP8rtmLnth3TRbJVeRMkiRk0VrjbzkntRjHA38xTY/Qlu86TDHIbtZ8UdrQ
-zYLNGRUJNYksFEBgDSMLRSDVM24t+6Px1RATOKXo9KGiitMoijA7hWinYFWRCs7RDiyFuH89pHC1
-yBgL4WRMTFZn/dH4boR2vOsQRYEFtffoKYUn6oSkYoPEKJ9nHG1bSpmF9yMWGeUjF2XxDqjnwsOF
-D3908LWEdrxrFQMS25EzQZ5S9M6+mWI5F4qBoc6FB9+LFK4WKZvIwdRi7+fFHz2e70A7RYNF7lgo
-2ntUDEAMsPeUWWgAYdxBVuLJXIfCoZoLDaOpiTH1XLh9e+PfKc/XN9GaHa4iQxRqp9B/fAITdS5s
-pljckYqxDo4Blnekl2sbDA6o0tU4wgOKtbW4kmX+6EO/j3a862Bv4uiidrPGigHOMypyqkiFPCKY
-4mO3yxPzDc7IQlhbz4UzWeaP/k4qC3X6UFHFKRQDPUk1/pRSpAK4WWis/ev1/K38oczb85O/NV7/
-Jhet5Dt22+0AAAAASUVORK5CYII=
-"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAADICAIAAACWHA2DAAAAA3NCSVQICAjb4U/gAAACBklEQVR4 nO3ZrU4DQRQF4DOTFRgECBw4bB8ASQJvQBCEkCCxbd0WwrKKsB7JXxC8AgEHCQKFgeLAQYKpIYi5 iP2rn9Nkt3Ovq/myk529Z+7UfL6/OieAgFHW2gjA6dkFhXPO7e3uRPmPOI79xTRNAVjScssSWKoH IFyRthkBANKSVatIEYP8rtmLnth3TRbJVeRMkiRk0VrjbzkntRjHA38xTY/Qlu86TDHIbtZ8UdrQ zYLNGRUJNYksFEBgDSMLRSDVM24t+6Px1RATOKXo9KGiitMoijA7hWinYFWRCs7RDiyFuH89pHC1 yBgL4WRMTFZn/dH4boR2vOsQRYEFtffoKYUn6oSkYoPEKJ9nHG1bSpmF9yMWGeUjF2XxDqjnwsOF D3908LWEdrxrFQMS25EzQZ5S9M6+mWI5F4qBoc6FB9+LFK4WKZvIwdRi7+fFHz2e70A7RYNF7lgo 2ntUDEAMsPeUWWgAYdxBVuLJXIfCoZoLDaOpiTH1XLh9e+PfKc/XN9GaHa4iQxRqp9B/fAITdS5s pljckYqxDo4Blnekl2sbDA6o0tU4wgOKtbW4kmX+6EO/j3a862Bv4uiidrPGigHOMypyqkiFPCKY 4mO3yxPzDc7IQlhbz4UzWeaP/k4qC3X6UFHFKRQDPUk1/pRSpAK4WWis/ev1/K38oczb85O/NV7/ Jhet5Dt22+0AAAAASUVORK5CYII= "
        height="200"
        width="27"
        inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
@@ -271,7 +260,7 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
            y="365.90622"
            x="443.20651"
            id="tspan3907"
-           sodipodi:role="line">Decomiso de Planta de Mariguana</tspan></text>
+           sodipodi:role="line">Decomiso de Cultivo de Mariguana</tspan></text>
     </g>
     <g
        id="g4245"
@@ -312,7 +301,7 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
            y="415.71457"
            x="442.23996"
            id="tspan3911"
-           sodipodi:role="line">Decomiso de Planta de Opio</tspan></text>
+           sodipodi:role="line">Decomiso de Cultivo de Amapola</tspan></text>
     </g>
     <g
        id="g4239"
@@ -347,7 +336,7 @@ Jhet5Dt22+0AAAAASUVORK5CYII=
            y="676.56158"
            x="441.75668"
            id="tspan3955"
-           sodipodi:role="line">Densidad Kernel de Laboratorios de</tspan><tspan
+           sodipodi:role="line">Densidad Kernel 2d de Laboratorios de</tspan><tspan
            id="tspan3983"
            y="704.6792"
            x="441.75668"
