@@ -8,7 +8,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <meta property="og:image" content="http://www.diegovalle.net/images/drug-war-interactive-th.png"/>
-
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Interactive Map of the Drug War in Mexico"/>
+  <meta content="808656520" property="fb:admins"/>
 	
   <title>Map of the Drug War in Mexico</title>
   <meta name="description" content="The most up-to-date information on the drug war in Mexico">
@@ -23,7 +25,7 @@
   <link href="http://diegovalle.github.com/drug-war-interactive-map/css/tipsy.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="css/dev.css">
 -->
- <link href="http://diegovalle.github.com/drug-war-interactive-map/css/combined.min.css" rel="stylesheet">  
+ <link href="css/combined.min.css?2011-01-29" rel="stylesheet">  
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
 
   
@@ -47,7 +49,7 @@
 
 <script src="js/jQDateRangeSlider.js"></script>-->
 
-<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js"></script>
+<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2011-01-29"></script>
 
   <script type="text/javascript">
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -69,7 +71,7 @@
 	</div>
 	<div id = "toggle_container">
 	  <div>
-	    <hr class ="clear"/>
+	    <hr class ="clear" style="margin-bottom:5px" />
 	    <div  class="cityname-border"><span class="label" id="city"></span></div>
 	  </div>
 	  <div id="MonthChart" style="height:200px;">
@@ -84,6 +86,7 @@
 	        $("#trigger").toggleClass("active");
 	        $("#toggle_container").toggle();
               });
+	   
 	    });
 	  </script>
 	  
@@ -255,30 +258,40 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
             </div>
             <div class="modal-body">
 
-	      <div style="float:right;height:260px;border:1px #000 solid;padding:.5em;margin:.5em;width:170px">
+	      <div class="made-by">
 <b>Made by:</b><h2>Diego Valle-Jones</h2>
-<p><a href="http://blog.diegovalle.net">blog.diegovalle.net</a></p>
-<p><a href="http://twitter.com/diegovalle">twitter.com/diegovalle</a></p>
-Did you notice an interesting pattern? Do you have a suggestion? Comments about the data? Please <a href="http://www.diegovalle.net/contact.html">get in touch</a>.
+<div style="clear:both;position: relative;margin-bottom:16px;">
+<ul style="list-style: none;display: block;vertical-align: baseline;margin:0;">
+<li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon blog" href="http://blog.diegovalle.net" title="Diego's Blog">Blog</a> </li>
+<li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon twit" href="http://twitter.com/diegovalle" title="@diegovalle on Twitter">@diegovalle on Twitter</a> </li>
+<li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon facebook-icon" href="http://facebook.com/diegovalle" title="Diego Valle-Jones on Facebook">@diegovalle on Facebook</a> </li>
+</ul>
 </div>
-<h3>Sources</h3>
-              <p><strong>The mention of external data sources or research papers does not mean an endorsement of this website. The contents of this website are solely the responsibility of its author.</strong></p>
-	      <p>Drug War-Related Homicides: Dec 2006-Dec 2010: <a href="http://www.presidencia.gob.mx/base-de-datos-de-fallecimientos/">Base de datos de fallecimientos ocurridos por presunta rivalidad delincuencial</a> and for 2011 <a href="http://www.pgr.gob.mx/temas%20relevantes/estadistica/estadisticas.asp#">PGR</a></p>
-	      <p>Total Homicides: Dirección General de Información en Salud (DGIS). Base de datos de defunciones 1979-2009: <a href="http://www.sinais.salud.gob.mx/basesdedatos/estandar.html#defunciones">Sistema Nacional de Información en Salud (SINAIS)</a>. [México]: Secretaría de Salud [Accessed 2011-01-20]INEGI</p>
-<p>Military Operation Dates: <a href="http://www.ssp.gob.mx/portalWebApp/ShowBinary?nodeId=/BEA%20Repository/816002//archivo">Segundo Informe de Labores</a>, Secretaria de Seguridad Pública</p>
-	      <p>Coordinates of Municipalities: <a href="http://www.sinais.salud.gob.mx/basesdedatos/estandar.html#municipios">Catálogos de municipios y localidades</a></p>
-	      <p>Metro Areas: Delimitación de las zonas metropolitanas de México 2005  <a href="http://www.inegi.gob.mx/prod_serv/contenidos/espanol/bvinegi/productos/geografia/publicaciones/delimex05/DZMM_2005_0.pdf">INEGI</a></p>
-	      <p>Population estimates based on historical data by CONAPO/COLMEX and the 2010 Census: <a href="https://github.com/diegovalle/Population-Estimates">Source</a></p>
-	      <p>Drug lab location data from various newspapers: <a href="https://docs.google.com/spreadsheet/ccc?key=0AjjLwVYbDGx7dFVoRmdNcTJQQldKUUR4bFJ6OU8yWkE">Spreadsheet</a></p>
-	      <p>Mariguana and opium poppy eradication data from: <a href="http://www.uam.es/personal_pdi/economicas/cresa//nota0205.pdf">El mapa del cultivo de drogas en México</a>, by Carlos Resa Nestares</p>
-	      <p>Best routes to reach the U.S. border from the municipalities with the highest drug plant eradication and drug lab density made with Google Directions</p>
-	      <p>For the importance of trafficking networks read: <a href="http://econ-www.mit.edu/files/7484">Trafficking Networks and the Mexican Drug War</a> by Melissa Dell</p>
-	      <p>For the importance of cartel leader arrests read: <a href="http://insyde.org.mx/images/naf_rev_2010.pdf">Security, drugs, and violence in mexico: a survey</a>, by Eduardo Guerrero-Gutiérrez</p>
-	      <p>For the importance of the expiration of the assault weapon ban read: <a href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> by Dube, A., Dube, O. and Garcia-Ponce, O. and <a href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html">my blog post</a></p>
+<hr class="clear">
+<hr class="clear2">
 
-<p>Also check out Dorothy Kronick's <a href="http://stanford.edu/~dkronick/mexico_crime/">interactive map</a></p>
-<p>Made with <a href="http://mbostock.github.com/protovis/">Protovis</a>, <a href="http://www.r-project.org/">R</a>, <a href="http://cartodb.com">CartoDB</a>, <a href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a href="http://colorbrewer2.org/">Color Brewer</a> and Google Directions</p>
-<p>The source for this program is available on <a href="https://github.com/diegovalle/drug-war-interactive-map/tree/gh-pages">GitHub</a></p>
+Did you notice an interesting pattern? Do you have a suggestion? Comments about the data? Please <a target="_blank" href="http://www.diegovalle.net/contact.html">get in touch</a>.
+
+</div>
+<h4>Sources</h4>
+              <p><strong>The mention of external data sources or research papers does not mean an endorsement of this website. The contents of this website are solely the responsibility of its author.</strong></p>
+<ul>
+	      <li>Drug War-Related Homicides: Dec 2006-Dec 2010: <a target="_blank" href="http://www.presidencia.gob.mx/base-de-datos-de-fallecimientos/">Base de datos de fallecimientos ocurridos por presunta rivalidad delincuencial</a> and for 2011 <a target="_blank" href="http://www.pgr.gob.mx/temas%20relevantes/estadistica/estadisticas.asp#">PGR</a></li>
+	      <li>Total Homicides: Dirección General de Información en Salud (DGIS). Base de datos de defunciones 1998-2010: <a target="_blank" href="http://www.sinais.salud.gob.mx/basesdedatos/estandar.html#defunciones">Sistema Nacional de Información en Salud (SINAIS)</a>. [México]: Secretaría de Salud [Accessed 2011-01-20] INEGI</li>
+<li>Military Operation Dates: <a target="_blank" href="http://www.ssp.gob.mx/portalWebApp/ShowBinary?nodeId=/BEA%20Repository/816002//archivo">Segundo Informe de Labores</a>, Secretaría de Seguridad Pública</li>
+	      <li>Coordinates of Municipalities: <a target="_blank" href="http://www.sinais.salud.gob.mx/basesdedatos/estandar.html#municipios">Catálogos de municipios y localidades</a></li>
+	      <li>Metro Areas:  <a target="_blank" href="http://www.inegi.gob.mx/prod_serv/contenidos/espanol/bvinegi/productos/geografia/publicaciones/delimex05/DZMM_2005_0.pdf">Delimitación de las zonas metropolitanas de México 2005, INEGI</a></li>
+	      <li>Population estimates based on historical data by CONAPO/COLMEX and the 2010 Census: <a target="_blank" href="https://github.com/diegovalle/Population-Estimates">Source</a></li>
+	      <li>Drug lab location data from various newspapers: <a target="_blank" href="https://docs.google.com/spreadsheet/ccc?key=0AjjLwVYbDGx7dFVoRmdNcTJQQldKUUR4bFJ6OU8yWkE">Spreadsheet</a></li>
+	      <li>Mariguana and opium poppy eradication data from: <a target="_blank" href="http://www.uam.es/personal_pdi/economicas/cresa//nota0205.pdf">El mapa del cultivo de drogas en México</a>, by Carlos Resa Nestares</li>
+	      <li>Best routes to reach the U.S. border from the municipalities with the highest drug plant eradication and drug lab density made with Google Directions</li>
+	      <li>For the importance of trafficking networks read: <a target="_blank" href="http://econ-www.mit.edu/files/7484">Trafficking Networks and the Mexican Drug War</a> by Melissa Dell</li>
+	      <li>For the importance of cartel leader arrests read: <a target="_blank" href="http://insyde.org.mx/images/naf_rev_2010.pdf">Security, drugs, and violence in mexico: a survey</a>, by Eduardo Guerrero-Gutiérrez</li>
+	      <li>For the importance of the expiration of the assault weapon ban read: <a target="_blank" href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> by Dube, A., Dube, O. and Garcia-Ponce, O. and <a target="_blank" href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html">my blog post</a></li>
+</ul>
+<p>Also check out Dorothy Kronick's <a target="_blank" href="http://stanford.edu/~dkronick/mexico_crime/">interactive map</a></p>
+<p>Made with <a target="_blank" href="http://mbostock.github.com/protovis/">Protovis</a>, <a target="_blank" href="http://www.r-project.org/">R</a>, <a target="_blank" href="http://cartodb.com">CartoDB</a>, <a target="_blank" href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a target="_blank" href="http://colorbrewer2.org/">Color Brewer</a> and Google Directions</p>
+<p>The source code for this program is available on <a target="_blank" href="https://github.com/diegovalle/drug-war-interactive-map/tree/gh-pages">GitHub</a></p>
 	     
 
 
@@ -318,34 +331,64 @@ Did you notice an interesting pattern? Do you have a suggestion? Comments about 
               <h3>Share this map</h3>
             </div>
             <div class="modal-body">
-	      
-	      <p>Just copy and paste!</p>
-	      
-	      
-	      <input id="maplink" class="span12" type="text" readonly="readonly" onclick="" value="" maxlength="10000000">
-	      
-	      <button id="copy_button"  class="btn default">Copy</button>
-	      <p><span id="ielonglinks"></span></p>
-<p> Settings such as map zoom and the city or custom area used in the chart will be remembered</p>
-	      <div class="span18"><p>Or simply share on your favorite social network:</p></div>
-
-
 	      <div class="row">
-<div class="span6">
-	    <div class = "social_icons">
-	      <a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURI(shortUrlShare) + '&amp;via=diegovalle'))"><span>Twitter</span></a>
 
-	      <a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI(shortUrlShare)+'&amp;.t='+encodeURIComponent(document.title)))"><span>Facebook</span></a>
+		<div class="span10">
+		  <div class = "social_icons">
+		    <a class="twitter_icon" rel="nofollow" title="Twitter" href="javascript:void(window.open('http://twitter.com/share?text=Interactive%20drug%20war%20map&amp;url='+ encodeURI(shortUrlShare) + '&amp;via=diegovalle', 'twitter', 'status=1' +
+                 ',width='  + 575  +
+                 ',height=' + 400 +
+                 ',top='    + ($(window).width()  - 575)  / 2   +
+                 ',left='   + ($(window).height()  - 400)  / 2))"><span>Twitter</span></a>
 
-	      <a class="plusone_icon" rel="nofollow"  title="PlusOne" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI(shortUrlShare)))"><span>Google Plus</span></a>  
+		    <a class="facebook_icon" rel="nofollow"  title="Facebook" href="javascript:void(window.open('http://www.facebook.com/sharer.php?u='+encodeURI(shortUrlShare)+'&amp;.t='+encodeURIComponent(document.title), 'facebook', 'status=1' +
+                 ',width='  + 650  +
+                 ',height=' + 400 +
+                 ',top='    + ($(window).width()  - 575)  / 2   +
+                 ',left='   + ($(window).height()  - 400)  / 2))"><span>Facebook</span></a>
+
+		    <a class="plusone_icon" rel="nofollow"  title="Google Pluse" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI(shortUrlShare), 'Google Plus', 'status=1' +
+                 ',width='  + 575  +
+                 ',height=' + 400 +
+                 ',top='    + ($(window).width()  - 575)  / 2   +
+                 ',left='   + ($(window).height()  - 400)  / 2))"><span>Google Plus</span></a>  
+		  </div>
+
+
+<div style="margin-left:50px;height:60px;">
+<div id="fb-root"></div>
+<ul class="social_network">
+<li><div style="width:100px;"><span id="like"></span></div></li>
+<li><a id="twitter-share-button" href="" class="twitter-share-button" data-via="diegovalle" data-count="none">Tweet</a><br></li>
+<li><div id="g-plusone" class="g-plusone" data-size="medium" data-annotation="none" data-href=""></div></li>
+</ul>
 </div>
+	
 
-	    </div>
-</div>
+		</div>
 
+	      </div>
+<hr class="clear">
+	      <p>Your link will lead to a map exactly as you configured it.</p><p>All the settings you modified such as map zoom and the city or custom area selected will be remembered.</p>
+<hr class="clear-space">
+	      <p>Or just copy and paste the full link:</p>
+	      
+	      
+		<input id="maplink" class="span11" type="text" readonly="readonly" onclick="" value="" maxlength="10000000">
+	      
+		<button id="copy_button"  class="btn default">Copy</button>
+		<p><span id="ielonglinks"></span></p>
+		
+<!--<p>Or the shortened one:</p>
+<input id="shortmaplink" class="span3" type="text" readonly="readonly" onclick="" value="" maxlength="10000000">
+<button id="short_copy_button"  class="btn default">Copy</button>-->
+	<hr class="clear-space">
 <div class="row">
 <div class="span6">
-	      <p>Don't forget to follow me on twitter <a href="http://www.twitter.com/diegovalle">@diegovalle</a></p>
+	      <p>Don't forget to follow me on twitter</p>
+<a href="https://twitter.com/diegovalle" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @diegovalle</a>
+
+
 </div>
 </div>
 	    </div>
@@ -354,7 +397,7 @@ Did you notice an interesting pattern? Do you have a suggestion? Comments about 
             </div>
 	  </div>
 	  
-	  <a data-controls-modal="modal-share" data-backdrop="true" data-keyboard="true" class ="label success" href="" style="font-size:14px">Share This Map</a>
+	  <a data-controls-modal="modal-share" data-backdrop="true" data-keyboard="true" class ="label success share" href="">Share This Map</a>
 
 	  <div style="float:right; margin-top:-10px">
 	    <div class="social_icons_small">
@@ -370,18 +413,48 @@ Did you notice an interesting pattern? Do you have a suggestion? Comments about 
       </div>
 
     </div>
-    
-    <script>
+   <script id="deferedjs" type="text/javascript">
       var _gaq=[['_setAccount','UA-100264-1'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
+      _gaq.push(['_setSiteSpeedSampleRate', 5]);  //Measure Page Speed
+      _gaq.push(['_trackPageview']);
+setTimeout(function(){
+/*Twitter*/
+      var b = document.createElement('script');
+      b.type = 'text/javascript';
+      b.src = ('http://platform.twitter.com/widgets.js');
+      var a=document.getElementById("deferedjs");
+      a.parentNode.insertBefore(b,a);
+
+/*Facebook*/
+ // prevent jQuery from appending cache busting string to the end of the FeatureLoader URL
+  var cache = jQuery.ajaxSettings.cache;
+  jQuery.ajaxSettings.cache = true;
+  // Load FeatureLoader asynchronously. Once loaded, we execute Facebook init 
+
+  jQuery.getScript('http://connect.facebook.net/en_US/all.js', function() {
+    FB.init({appId: 'your_app_id-optional', status: true, cookie: true, xfbml: false});
+  });
+  // just Restore jQuery caching setting
+  jQuery.ajaxSettings.cache = cache;
+
+/*Google Plus*/
+(function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+
+}, 500);
+
+
     </script>
     
-<!--[if lt IE 9 ]>
+    <!--[if lt IE 9 ]>
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
     <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
     <![endif]-->
-
   </body>
 </html>
