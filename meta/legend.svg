@@ -52,14 +52,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="392.56022"
+     inkscape:cx="367.56022"
      inkscape:cy="291.42858"
      inkscape:document-units="px"
-     inkscape:current-layer="g4245"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1419"
      inkscape:window-height="823"
-     inkscape:window-x="179"
+     inkscape:window-x="104"
      inkscape:window-y="24"
      inkscape:window-maximized="0"
      objecttolerance="10000"
@@ -90,7 +90,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -302,6 +302,69 @@
            x="442.23996"
            id="tspan3911"
            sodipodi:role="line">Decomiso de Cultivo de Amapola</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 374.28541,569.2342 52.85715,-1.42857"
+         id="path3051"
+         inkscape:connector-curvature="0" />
+      <text
+         inkscape:export-ydpi="58.055813"
+         inkscape:export-xdpi="58.055813"
+         inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
+         transform="scale(1.0014213,0.99858072)"
+         sodipodi:linespacing="125%"
+         id="text3909-6"
+         y="558.71375"
+         x="429.78217"
+         style="font-size:22.49408722px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee"
+         xml:space="preserve"><tspan
+           y="558.71375"
+           x="429.78217"
+           id="tspan3911-1"
+           sodipodi:role="line" /></text>
+      <text
+         inkscape:export-ydpi="58.055813"
+         inkscape:export-xdpi="58.055813"
+         inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
+         transform="scale(1.0014213,0.99858072)"
+         sodipodi:linespacing="125%"
+         id="text3909-5"
+         y="561.57495"
+         x="441.19452"
+         style="font-size:22.49408722px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee"
+         xml:space="preserve"><tspan
+           y="561.57495"
+           x="441.19452"
+           id="tspan3911-9"
+           sodipodi:role="line">Carreteras usadas para traficar drogas </tspan><tspan
+           y="589.69257"
+           x="441.19452"
+           sodipodi:role="line"
+           id="tspan3111">hacia la frontera</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+         d="m 382.59871,924.54813 52.85715,-1.42857"
+         id="path3051-7"
+         inkscape:connector-curvature="0" />
+      <text
+         inkscape:export-ydpi="58.055813"
+         inkscape:export-xdpi="58.055813"
+         inkscape:export-filename="/home/diego/Documents/personal/Math/drug-war/interactive-map/meta/legend-es.png"
+         transform="scale(1.0014213,0.99858072)"
+         sodipodi:linespacing="125%"
+         id="text3909-5-3"
+         y="918.82446"
+         x="442.93393"
+         style="font-size:22.49408722px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sawasdee;-inkscape-font-specification:Sawasdee"
+         xml:space="preserve"><tspan
+           y="918.82446"
+           x="442.93393"
+           id="tspan3911-9-6"
+           sodipodi:role="line">Highways used to reach the </tspan><tspan
+           y="946.94208"
+           x="442.93393"
+           sodipodi:role="line"
+           id="tspan3113">US border</tspan></text>
     </g>
     <g
        id="g4239"
