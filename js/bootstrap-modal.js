@@ -77,6 +77,7 @@
         this.isShown = true
         this.$element.trigger('show')
 
+    
         escape.call(this)
         backdrop.call(this, function () {
           var transition = $.support.transition && that.$element.hasClass('fade')

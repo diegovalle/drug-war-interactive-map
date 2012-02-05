@@ -1,0 +1,6 @@
+* TODO Nice variable names for monthlyData init values
+* DONE The y axis label is too far from the axis
+* TODO Small icons for social media
+* DONE A dialog box pops up when copying text to the clipboard
+* DONE Character encoding for the csv download (problem with accents)
+* TODO Tipsy doesn't work in IE9
