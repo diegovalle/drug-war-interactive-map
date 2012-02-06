@@ -32,11 +32,14 @@ INTERACTIVE_CSS =css/interactive-drug-war.css
 EXTRA_FILES = --js=$(SHORTEN_LOC) --js=$(ZCLIP) --js=$(BOOTSTRAP) --js=$(WAX) --js=$(PROTOVIS) --js=$(TIPSY) --js=$(JQUERYTIPSY) --js=$(DRUG) --js=$(MAP) --js=$(CARTO) 
 
 #Minimized Ouput
-COMBINED_JS_EN = js/combined-en.min.js
-COMBINED_JS_ES =js/combined-es.min.js
-COMBINED_CSS = css/combined.min.css
+COMBINED_JS_EN = gh-pages/js/combined-en.min.js
+COMBINED_JS_ES = gh-pages/js/combined-es.min.js
+COMBINED_CSS = gh-pages/css/combined.min.css
 
-all: cssmin english spanish 
+all: html cssmin english spanish webimages
+
+html:
+	cd build; node index.js production
 
 cssmin:
 	cat $(CARTO_CSS) $(BOOT_CSS) $(TIPSY_CSS) $(INTERACTIVE_CSS) | $(YUI) --type css -o $(COMBINED_CSS)
@@ -50,3 +53,6 @@ spanish:
 clean:
 	rm -f $(COMBINED_JS_EN) $(COMBINED_JS_ES) $(COMBINED_CSS) 
 
+webimages:
+	cd images; optipng *png
+	cp images/icons.png images/legend-en.png images/legend-es.png images/plus-minus.png images/result_small.png gh-pages/images/
