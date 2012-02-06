@@ -382,7 +382,8 @@ function getUrlVars()
 }
 
 
-//SELECT sum(drh) AS drh, AVG(drhrate) as rate, sum(hom) AS hom, AVG(homrate) as homrate, MAX(lat) AS lat, MAX(long) as long, EXTRACT(year FROM date), name, AVG(pop) as pop FROM homicides_web WHERE EXTRACT(year FROM date) = 2010  AND drh > 0 GROUP BY EXTRACT(year FROM date), name ORDER BY drh DESC
+//SELECT sum(hom) AS hom, ROUND(cast(MAX(ST_X(the_geom)) as numeric),4) AS long, ROUND(cast(MAX(ST_Y(the_geom))as numeric),4) as lat, name, ROUND(AVG(pop)) as pop FROM homicides_web WHERE date BETWEEN DATE '2010-01-15' AND DATE '2010-12-15' AND hom > 0 GROUP BY  name ORDER BY hom DESC
+//queryCartodb = "SELECT avg(population) as pop, sum(hom) AS hom, MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END as name FROM homicides_dwrh_month_municipality WHERE  EXTRACT(year FROM date) = " + yearSlider + " GROUP BY  EXTRACT(year FROM date), metroarea, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END ORDER BY hom DESC";
 function queryData() {
     if(typeOfHomicide === "DWRH") {
 
@@ -393,8 +394,8 @@ function queryData() {
 	var homstr = "hom";
 	var ratestr = "homrate";
     }
-var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr + ", MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, name, AVG(pop) as pop FROM homicides_web WHERE date BETWEEN DATE '" +startDate+"' AND DATE '"+ endDate +"' AND " + homstr + " > 0 GROUP BY  name ORDER BY " + homstr + " DESC";
-//queryCartodb = "SELECT avg(population) as pop, sum(hom) AS hom, MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END as name FROM homicides_dwrh_month_municipality WHERE  EXTRACT(year FROM date) = " + yearSlider + " GROUP BY  EXTRACT(year FROM date), metroarea, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END ORDER BY hom DESC";
+var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr + ", MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, name, ROUND(AVG(pop)) as pop FROM homicides_web WHERE date BETWEEN DATE '" +startDate+"' AND DATE '"+ endDate +"' AND " + homstr + " > 0 GROUP BY  name ORDER BY " + homstr + " DESC";
+
     $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
 		  coordData = result;
 		  //overlay.crimes.splice(0, overlay.crimes.length);
