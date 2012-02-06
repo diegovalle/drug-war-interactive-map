@@ -2,7 +2,7 @@
 #Modify to where you saved Yahoo's YUI Compressor and Google's Closure Compiler
 ##
 YUI = java -jar ~/apps/yuicompressor/build/yuicompressor-2.4.7.jar
-CLOSURE = java -jar ~/apps/compiler/compiler.jar
+#CLOSURE = java -jar ~/apps/compiler/compiler.jar
 
 #WHITESPACE_ONLY or else closure messes up twitter's bootstrap modal.js
 CLOSURE_FLAGS = --compilation_level WHITESPACE_ONLY
