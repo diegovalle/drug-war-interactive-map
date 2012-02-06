@@ -5,6 +5,7 @@ htmlTranslationTable = {
     "Map of the Drug War in Mexico": "Mapa de la guerra contra el narcotráfico",
     "The most comprehensive map of the drug war in Mexico – constantly updated":"El mapa más detallado de la guerra contra el narcotráfico en México – información actualizada",
     "http://www.diegovalle.net/drug-war-map.html":"http://www.diegovalle.net/mapa-guerra-narco.html",
+'js/english_text.js':'js/spanish_text.js',
     '<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2011-01-29"></script>' : '<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-es.min.js?2011-01-29"></script>',
     "Homicides and Trafficking Routes" : "Homicidios y Narcotráfico",
     "Map options:" : "Opciones del Mapa:",
@@ -19,7 +20,7 @@ htmlTranslationTable = {
     "Drug War<br>Homicides" : "Homicidios<br>C. O.",
     "Total<br>Homicides" : " Homicidios<br>Totales",
     "About" : " Acerca de",
-    "<b>Made by:</b><h2>Diego Valle-Jones</h2>" : "<b>Hecho por:</b><h2>Diego Valle Jones</h2>",
+    "<b>Made by:</b><h2>Diego Valle-Jones</h2>" : "<b>Hecho por:</b><h2>Diego Valle</h2>",
     "Diego's Blog" : "El blog de Diego",
     "Blog" : "Blog",
     "@diegovalle on Twitter" : "@diegovalle en Twitter",
@@ -42,8 +43,9 @@ htmlTranslationTable = {
     'For the importance of cartel leader arrests read: <a target="_blank" href="http://insyde.org.mx/images/naf_rev_2010.pdf">Security, drugs, and violence in mexico: a survey</a>, by Eduardo Guerrero-Gutiérrez':'Para la importancia de los arrestos y abatimientos de líderes criminales leer: <a target="_blank" href="http://insyde.org.mx/images/naf_rev_2010.pdf">Security, drugs, and violence in mexico: a survey</a>, de Eduardo Guerrero Gutiérrez',
     'For the importance of the expiration of the assault weapon ban read: <a target="_blank" href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> by Dube, A., Dube, O. and Garcia-Ponce, O. and <a target="_blank" href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html">my blog post</a>':'Para la importancia de la expiración de la prohibición de las armas de asalto leer: <a target="_blank" href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> por Dube, A., Dube, O. y Garcia-Ponce, O.<a target="_blank" href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html"> y también mi blog</a>',
     "Also check out Dorothy Kronick's <a target='_blank' href='http://stanford.edu/~dkronick/mexico_crime/'>interactive map</a>":"También te puede interesar el <a target='_blank' href='http://stanford.edu/~dkronick/mexico_crime/'>mapa interactivo</a> de Dorothy Kronick",
-    'Made with <a target="_blank" href="http://mbostock.github.com/protovis/">Protovis</a>, <a target="_blank" href="http://www.r-project.org/">R</a>, <a target="_blank" href="http://cartodb.com">CartoDB</a>, <a target="_blank" href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a target="_blank" href="http://colorbrewer2.org/">Color Brewer</a> and Google Directions':'Hecho con <a target="_blank" href="http://mbostock.github.com/protovis/">Protovis</a>, <a target="_blank" href="http://www.r-project.org/">R</a>, <a target="_blank" href="http://cartodb.com">CartoDB</a>, <a target="_blank" href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a target="_blank" href="http://colorbrewer2.org/">Color Brewer</a> y Google Directions',
+    'Made with <a target="_blank" href="http://mbostock.github.com/protovis/">Protovis</a>, <a target="_blank" href="http://www.r-project.org/">R</a>, <a target="_blank" href="http://cartodb.com">CartoDB</a>, <a target="_blank" href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a target="_blank" href="http://colorbrewer2.org/">Color Brewer</a>, <a href="http://twitter.github.com/hogan.js/">Hogan.js</a> and Google Directions':'Hecho con <a target="_blank" href="http://mbostock.github.com/protovis/">Protovis</a>, <a target="_blank" href="http://www.r-project.org/">R</a>, <a target="_blank" href="http://cartodb.com">CartoDB</a>, <a target="_blank" href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a target="_blank" href="http://colorbrewer2.org/">Color Brewer</a>, <a href="http://twitter.github.com/hogan.js/">Hogan.js</a> y Google Directions',
     'The source code for this program is available on <a target="_blank" href="https://github.com/diegovalle/drug-war-interactive-map/tree/gh-pages">GitHub</a>':'Puedes descargar la fuente de este programa en <a target="_blank" href="https://github.com/diegovalle/drug-war-interactive-map/tree/gh-pages">GitHub</a>',
+"Versión en Español":"English Version",
     'Close':'Cerrar',
     'About':'Acerca',
     'Legend':'Leyenda',
@@ -63,5 +65,6 @@ htmlTranslationTable = {
     'Follow @diegovalle':'Follow @diegovalle',
     'Close':'Cerrar',
     'Share This Map':'Compartir',
-    'http://www.diegovalle.net/drug-war-map.html':'http://www.diegovalle.net/mapa-guerra-narco.html'
+    'http://www.diegovalle.net/drug-war-map.html':'http://www.diegovalle.net/mapa-guerra-narco.html',
+'http://www.diegovalle.net/mapa-guerra-narco.html':'http://www.diegovalle.net/drug-war-map.html'
 };

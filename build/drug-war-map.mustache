@@ -29,7 +29,7 @@ display: none !important;}
   <link rel="canonical" href="{{_i}}http://www.diegovalle.net/drug-war-map.html{{/i}}"/>
 
 {{^production}}
-  <link rel="stylesheet" href="http://diegovalle.github.com/drug-war-interactive-map/css/cartodb.css">
+  <link rel="stylesheet" href="css/cartodb.css">
   <link href="css/bootstrap.css" rel="stylesheet">         
   <link rel="stylesheet" href="css/interactive-drug-war.css" type="text/css" media="all" />
   <link href="css/tipsy.css" type="text/css" rel="stylesheet"/>
@@ -49,17 +49,17 @@ display: none !important;}
 
 
 {{^production}}
-  {{_i}}<script type="text/javascript" src="js/english_text.js"></script>{{/i}}
+  <script type="text/javascript" src="{{_i}}js/english_text.js{{/i}}"></script>
   <script src="js/jquery.zclip.js" type="text/javascript"></script>
-  <script  type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/bootstrap-modal.js"></script>
-  <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/wax.g.js"></script>
+  <script type="text/javascript" src="js/bootstrap-modal.js"></script>
+  <script type="text/javascript" src="js/wax.g.js"></script>
 
-  <script src="http://diegovalle.github.com/drug-war-interactive-map/js/protovis.min.js" type="text/javascript"></script>
-  <script src="http://diegovalle.github.com/drug-war-interactive-map/js/tipsy.js" type="text/javascript"></script>
-  <script src="http://diegovalle.github.com/drug-war-interactive-map/js/jquery.tipsy.js" type="text/javascript"></script>
-  <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/drug-eradication-compiled.js" charset="utf-8"></script>
+  <script src="js/protovis.min.js" type="text/javascript"></script>
+  <script src="js/tipsy.js" type="text/javascript"></script>
+  <script src="js/jquery.tipsy.js" type="text/javascript"></script>
+  <script type="text/javascript" src="js/drug-eradication-compiled.js" charset="utf-8"></script>
   <script type="text/javascript" src="js/google-map.js"></script>
-  <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/cartodb-gmapsv3.js"></script>
+  <script type="text/javascript" src="js/cartodb-gmapsv3.js"></script>
 {{/production}}
 
 
@@ -273,7 +273,6 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
               <h3>{{_i}}About{{/i}}</h3>
             </div>
             <div class="modal-body">
-
 	      <div class="made-by">
 {{_i}}<b>Made by:</b><h2>Diego Valle-Jones</h2>{{/i}}
 <div style="clear:both;position: relative;margin-bottom:16px;">
@@ -305,9 +304,9 @@ formatter: function(value){return (Math.floor(value/ 12) +2004) + ' '+ monthName
 	      <li>{{_i}}For the importance of the expiration of the assault weapon ban read: <a target="_blank" href="https://files.nyu.edu/od9/public/papers/Cross_border_spillover.pdf">Cross-border spillover: US Gun Law and violence in Mexico</a> by Dube, A., Dube, O. and Garcia-Ponce, O. and <a target="_blank" href="http://blog.diegovalle.net/2010/09/how-expiration-of-assault-weapon-ban.html">my blog post</a>{{/i}}</li>
 </ul>
 <p>{{_i}}Also check out Dorothy Kronick's <a target='_blank' href='http://stanford.edu/~dkronick/mexico_crime/'>interactive map</a>{{/i}}</p>
-<p>{{_i}}Made with <a target="_blank" href="http://mbostock.github.com/protovis/">Protovis</a>, <a target="_blank" href="http://www.r-project.org/">R</a>, <a target="_blank" href="http://cartodb.com">CartoDB</a>, <a target="_blank" href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a target="_blank" href="http://colorbrewer2.org/">Color Brewer</a> and Google Directions{{/i}}</p>
+<p>{{_i}}Made with <a target="_blank" href="http://mbostock.github.com/protovis/">Protovis</a>, <a target="_blank" href="http://www.r-project.org/">R</a>, <a target="_blank" href="http://cartodb.com">CartoDB</a>, <a target="_blank" href="http://www.google.com/fusiontables/Home/">Fusion Tables</a>, <a target="_blank" href="http://colorbrewer2.org/">Color Brewer</a>, <a href="http://twitter.github.com/hogan.js/">Hogan.js</a> and Google Directions{{/i}}</p>
 <p>{{_i}}The source code for this program is available on <a target="_blank" href="https://github.com/diegovalle/drug-war-interactive-map/tree/gh-pages">GitHub</a>{{/i}}</p>
-
+<p><a href="{{_i}}http://www.diegovalle.net/mapa-guerra-narco.html{{/i}}" class ="label success share">{{_i}}Versión en Español{{/i}}</a></p>
 </div>
             <div class="modal-footer">
               <a href="#" class="close xbtn primary">{{_i}}Close{{/i}}</a>
