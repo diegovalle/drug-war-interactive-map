@@ -7,6 +7,7 @@ CLOSURE = java -jar ~/apps/compiler/compiler.jar
 #WHITESPACE_ONLY or else closure messes up twitter's bootstrap modal.js
 CLOSURE_FLAGS = --compilation_level WHITESPACE_ONLY
 
+
 #Language string files
 ENGLISH = js/english_text.js
 SPANISH = js/spanish_text.js
@@ -29,30 +30,45 @@ BOOT_CSS =css/bootstrap.css
 TIPSY_CSS=css/tipsy.css
 INTERACTIVE_CSS =css/interactive-drug-war.css
 
-EXTRA_FILES = --js=$(SHORTEN_LOC) --js=$(ZCLIP) --js=$(BOOTSTRAP) --js=$(WAX) --js=$(PROTOVIS) --js=$(TIPSY) --js=$(JQUERYTIPSY) --js=$(DRUG) --js=$(MAP) --js=$(CARTO) 
+EXTRA_FILES = $(SHORTEN_LOC) $(ZCLIP) $(BOOTSTRAP) $(WAX) $(PROTOVIS) $(TIPSY) $(JQUERYTIPSY) $(DRUG) $(MAP) $(CARTO) 
 
 #Minimized Ouput
 COMBINED_JS_EN = gh-pages/js/combined-en.min.js
 COMBINED_JS_ES = gh-pages/js/combined-es.min.js
 COMBINED_CSS = gh-pages/css/combined.min.css
 
+NODE = node index.js production
+
+
 all: html cssmin english spanish webimages
 
+debug: NODE = node index.js
+debug: COPYJS = cp $(SPANISH) $(ENGLISH) $(EXTRA_FILES) gh-pages/js
+debug: COPYCSS = cp $(CARTO_CSS) $(BOOT_CSS) $(TIPSY_CSS) $(INTERACTIVE_CSS) gh-pages/css
+
+debug:  html cssmin english spanish webimages
+
 html:
-	cd build; node index.js production
+	cd build; $(NODE)
 
 cssmin:
 	cat $(CARTO_CSS) $(BOOT_CSS) $(TIPSY_CSS) $(INTERACTIVE_CSS) | $(YUI) --type css -o $(COMBINED_CSS)
 
 english:
-	$(CLOSURE) $(CLOSURE_FLAGS) --js=$(ENGLISH) $(EXTRA_FILES) --js_output_file=$(COMBINED_JS_EN)
+	cat $(ENGLISH) $(EXTRA_FILES) | uglifyjs -o $(COMBINED_JS_EN)
 
 spanish: 
-	$(CLOSURE) $(CLOSURE_FLAGS) --js=$(SPANISH) $(EXTRA_FILES) --js_output_file=$(COMBINED_JS_ES)
+	cat $(SPANISH) $(EXTRA_FILES) | uglifyjs -o $(COMBINED_JS_ES)
 
 clean:
-	rm -f $(COMBINED_JS_EN) $(COMBINED_JS_ES) $(COMBINED_CSS) 
+	rm -f $(COMBINED_JS_EN) $(COMBINED_JS_ES) $(COMBINED_CSS) $(ENGLISH) $(SPANISH)
+	cd gh-pages; rm -f *.html
+	cd gh-pages/js; rm -f *.js	
+	cd gh-pages/css; rm -f *.css
+	cd gh-pages/images; rm -f *.png
 
 webimages:
 	cd images; optipng *png
 	cp images/icons.png images/legend-en.png images/legend-es.png images/plus-minus.png images/result_small.png gh-pages/images/
+	$(COPYJS)
+	$(COPYCSS)
