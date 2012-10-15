@@ -186,7 +186,7 @@ var style = [
     {
 	featureType: "administrative.country",
 	stylers: [
-	    { visibility: "simplified" }
+	    { visibility: "on" }
 	]
     },
     {
