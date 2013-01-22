@@ -51,7 +51,7 @@ htmlTranslationTable = {
     'Legend':'Leyenda',
 "http://diegovalle.github.com/drug-war-interactive-map/images/legend-en.png":"http://diegovalle.github.com/drug-war-interactive-map/images/legend-es.png",
     'Total homicides in 2011 have been adjusted by about 3% to account for the cutoff date for registering them':'Los homicidios del 2011 fueron ajustados por aproximadamente 3% debido a que por la fecha de corte para registrarlos en la base de datos del INEGI no da tiempo de contarlos todos.',
-    'Visit my <a href="http://blog.diegovalle.net/2012/01/interactive-map-of-drug-war-in-mexico.html">blog</a> for more details':'Visita mi <a href="http://blog.diegovalle.net/2012/01/interactive-map-of-drug-war-in-mexico.html">blog</a> (en inglés) para más detalles',
+    'Visit my <a href="http://blog.diegovalle.net/2012/01/interactive-map-of-drug-war-in-mexico.html">blog</a> for more details':'Visita mi <a href="http://blog.diegovalle.net/2013/01/mapa-interactivo-de-la-guerra-contra-el.html">blog</a> para más detalles',
     'Close':'Cerrar',
     'Legend':'Leyenda',
     'CSV':'CSV',
