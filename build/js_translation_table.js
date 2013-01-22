@@ -56,5 +56,6 @@ jsTranslationTable = {
 "Military Operation in Guerrero":"Operativo militar en Guerrero",
 "Mexico City":"Ciudad de México",
 "Drug War Homicides ": "Homicidios C.O. ",
-"Total Homicides ": "Homicidios Totales "
+"Total Homicides ": "Homicidios Totales ",
+"Share This Map":"Compartir"
 };
