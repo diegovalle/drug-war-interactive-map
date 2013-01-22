@@ -51,7 +51,7 @@ jsTranslationTable = {
 "Kidnapping of Nacho Coronel's son":"Secuestro del hijo de 'Nacho Coronel'",
 
 "President Calderón assumes office and starts a war against drug traffickers":"Calderón es electo presidente e inicia una guerra contra el narcotráfico",
-"César Duarte inaugurated as the new governor of Chihuahua":"César Duarte toma protesta como nuevo gobernador Chihuahua",
+"Cesar Duarte inaugurated as the new governor of Chihuahua":"César Duarte toma protesta como nuevo gobernador Chihuahua",
 "Military Operation in Veracruz":"Operativo militar en Veracruz",
 "Military Operation in Guerrero":"Operativo militar en Guerrero",
 "Mexico City":"Ciudad de México",
