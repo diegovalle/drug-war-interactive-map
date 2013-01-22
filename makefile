@@ -44,7 +44,10 @@ COMBINED_CSS = gh-pages/css/combined.min.css
 NODE = node index.js production
 
 
-all: html cssmin english spanish webimages
+all: html cssmin english spanish webimages jquery
+
+jquery: 
+	cp $(CUSTOM_UI) gh-pages/js
 
 debug: NODE = node index.js
 debug: COPYJS = cp $(SPANISH) $(ENGLISH) $(EXTRA_FILES) gh-pages/js
