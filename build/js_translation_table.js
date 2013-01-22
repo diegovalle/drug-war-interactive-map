@@ -1,6 +1,7 @@
 jsTranslationTable = { 
 "annual rate per 100,000":"tasa anual por 100,000",
-"Total Homicides":"Homicidios Tot.",
+"Total Homicides":"Homicidios Totales",
+"Adjusted Homicides":"Homicidios Ajustados",
 "Drug War-Related Homicides":"Homicidios Crimen Organizado",
 "rate:":"tasa:",
 "population:":"población:",
@@ -8,8 +9,9 @@ jsTranslationTable = {
 " Total Homicides)":" Homicidios Tot.)",
 ", Metro":", Z.M.",
 "Custom Area":"Polígono",
-'"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"':'"Ene","Feb","Mar","Apr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dec"',
+'"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"':'"Ene","Feb","Mar","Apr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"',
 "Date, Total Homicides, Drug War-Related Homicides, Population":"Fecha, Homicidios Totales, Homicidios Crimen Organizado, Población",
+"Date, Adjusted Homicides, Drug War-Related Homicides, Population":"Fecha, Homicidios Ajustados, Homicidios Crimen Organizado, Población",
 "Location: ":"Región: ",
 "All municipalities or metro areas contained in the polygon: ":"Todos los municipios o zonas metro contenidas en el polígono: ",
 " DW-R Homicides)":" Homicidios C.O.)",
@@ -34,10 +36,10 @@ jsTranslationTable = {
 "Reinforcements sent to Ciudad Juárez":"Refuerzos enviados a Ciudad Juárez",
 "Joint Operation Michoacán":"Operativo Conjunto Michoacán",
 "Joint Operation Michoacán":"Operativo Conjunto Michoacán",
-"Expiration of the assault weapon ban":"La prohibición de venta de armas de asalto expira en E.U.",
+"Expiration of the assault weapon ban":"La prohibición de venta de armas de asalto expira en EE.UU.",
 
 "Operation Mexico Secure":"Operativo México Seguro",
-"Zetas vs CDG":"The Gulf Cartel goes to war with the Zetas, its former paramilitary group",
+"The Gulf Cartel goes to war with the Zetas, its former paramilitary group":"Zetas vs CDG",
 "Operation Nuevo León-Tamaulipas":"Operativo Conjunto Nuevo León-Tamaulipas",
 "Operation La Laguna. The general in charge of operations was Jorge Juárez Loera":"Operativo La Laguna a cargo del general Jorge Juárez Loera",
 "Capture of 'El Mochomo'":"Captura de 'El Mochomo'",
@@ -48,5 +50,11 @@ jsTranslationTable = {
 "Capture of 'La Barbie'":"Captura de 'La Barbie'",
 "Kidnapping of Nacho Coronel's son":"Secuestro del hijo de 'Nacho Coronel'",
 
-"President Calderón assumes office and starts a war against drug traffickers":"Calderón es electo presidente e inicia una guerra contra el narcotráfico"
+"President Calderón assumes office and starts a war against drug traffickers":"Calderón es electo presidente e inicia una guerra contra el narcotráfico",
+"César Duarte inaugurated as the new governor of Chihuahua":"César Duarte toma protesta como nuevo gobernador Chihuahua",
+"Military Operation in Veracruz":"Operativo militar en Veracruz",
+"Military Operation in Guerrero":"Operativo militar en Guerrero",
+"Mexico City":"Ciudad de México",
+"Drug War Homicides ": "Homicidios C.O. ",
+"Total Homicides ": "Homicidios Totales "
 };

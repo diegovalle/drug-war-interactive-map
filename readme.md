@@ -5,12 +5,13 @@ To view the finished maps go to:
 English = [http://www.diegovalle.net/drug-war-map.html](http://www.diegovalle.net/drug-war-map.html)
 Spanish = [http://www.diegovalle.net/mapa-guerra-narco.html](http://www.diegovalle.net/mapa-guerra-narco.html)
 
-Instructions to deploy:
+Getting Started:
 
 * change the location of your server (where you've placed shorten.php) for shortening links in the file shortner.js
 * modify shorten.php to include your free bit.ly api key and username
-* Modify the makefile to include the locations of Yahoo's YUI Compressor and Google's Closure Compiler
-* make all
+* Modify the makefile to include the locations of Yahoo's YUI Compressor
+* Make sure you have node.js and have hogan installed ("npm install hogan.js")
+* make all or make debug will create the files in the gh-pages sub directory
 
 The highways are stored in 3 fusion tables:
 
@@ -18,6 +19,6 @@ The highways are stored in 3 fusion tables:
 * [Poppy](https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col0+from+2310300+&h=false&lat=24.86927652456801&lng=-106.87028500000002&z=5&t=1&l=col0)
 * [Meth](https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col0+from+2308189+&h=false&lat=25.525544651249998&lng=-107.26119&z=5&t=1&l=col0)
 
-Made with Protovis, R, CartoDB, Fusion Tables, Color Brewer and Google Directions
+Made with Protovis, R, CartoDB, Fusion Tables, Color Brewer, hogan.js and Google Directions
 
 Author: Diego Valle-Jones

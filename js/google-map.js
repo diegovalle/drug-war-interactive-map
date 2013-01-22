@@ -1,3 +1,13 @@
+/* Main program file
+ * 
+ * Author: Diego Valle-Jones
+ */
+
+
+
+
+
+
 // jQuery Deparam - v0.1.0 - 6/14/2011
 // http://benalman.com/
 // Copyright (c) 2011 Ben Alman; Licensed MIT, GPL
@@ -110,6 +120,11 @@
 
 }(jQuery));
 
+
+/*
+ * Warning when using IE since url links have a size limit of 2083 characters
+ * and when selecting polygons links can get pretty long
+ */
 function warningLongLinksIE(){
     if($("#maplink").val().length > 2083)
 	$('#ielonglinks').html(label_warning_text);
@@ -117,10 +132,16 @@ function warningLongLinksIE(){
 	$('#ielonglinks').html("");
 }
 
+/*
+ * the http part of the url
+ */
 function getLocation() {
     return location.protocol+ '//' +location.host+location.pathname;
 }
 
+/*
+ * The url that will take you to a map with all the options (city/polygon, mariguana, etc) as specified
+ */
 function getShareURL(){
    var ret;
     if(polyString == "")
@@ -128,18 +149,22 @@ function getShareURL(){
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom, homtype : typeOfHomicide,
-					  clat: centerLat, clong: centerLong})
+					  clat: centerLat, clong: centerLong,
+					    statadj : statAdjust, names : show_place_names});
     else
 	ret = getLocation() + "#" + $.param({city: currentCity, start: startDate, end: endDate,
 					  mariguana: mjVisible, poppy: poppyVisible,
 					  meth: methVisible, cocaine: cocaineVisible,
 					  zoom: currentZoom,  homtype : typeOfHomicide,
 					  clat: centerLat, clong: centerLong,
+					     statadj : statAdjust, names : show_place_names,
 					  polygon: polyString});
    return ret;
 }
 
-
+/*
+ * Set the url for sharing the map on the modal dialog
+ */
 function changeHash(){
     hashChanged = true;
     $("#maplink").attr("value","");
@@ -149,99 +174,162 @@ function changeHash(){
 	$("#maplink").attr("value", getShareURL());
     warningLongLinksIE();
 }
+
+
+
+/*
+ * Variable Names
+ */
+
 var hashChanged = true;
-var style = [
-    {
-	featureType: 'road.highway',
-	elementType: 'all',
-	stylers: [
-            { visibility: 'off' }
-      ]
-    } ,
-    {
-	featureType: "landscape",
-	elementType: "all",
-	stylers: [
+var statAdjust = false;
+var show_place_names = false;
 
-	    { hue: "#000"},//"#F3F4EE" },
-            { saturation: -100 }, //100
-            { lightness: 22 } //22
-	    //{ gamma: 1.11 }
-	]
-    },
-    {
-	featureType: "poi",
-	stylers: [
-	    { visibility: "off" }
-	]
-    },{
-	featureType: "water",
-	stylers: [
-	    { visibility: "simplified" },
-	    { hue: "#000000" },
-            { saturation: -100 },
-            { lightness: -30 }
-	]
-    },
-    {
-	featureType: "administrative.country",
-	stylers: [
-	    { visibility: "simplified" }
-	]
-    },
-    {
-	featureType: 'road.arterial',
-	elementType: 'all',
-	stylers: [
-            { visibility: 'off' }
-	]
-    } ,
-    
-    {
-	featureType: 'road.local',
-	elementType: 'all',
-	stylers: [
-            { visibility: 'off' }
-	]
-    } ,
-    
-    {
-	featureType: 'poi',
-	elementType: 'all',
-	stylers: [
-            { visibility: 'off' }
-	]
-    } ,
-    {
-	featureType: 'transit',
-	elementType: 'all',
-	stylers: [
-            { visibility: 'off' }
-	]
-    } ,
-{
-    featureType: 'administrative.province',
-    elementType: 'all',
-    stylers: [
-        { visibility: 'off' }
-    ]
-} ,
-    {featureType: 'administrative.locality',
-     elementType: 'all',
-     stylers: [
-        { visibility: 'off' }
-     ]
-    }
-];
-
-var startDate = "2010-01-15";
-var endDate = "2010-12-15";
+/*
+ * All the google map options
+ */
+var style = [{
+		 stylers: [{ saturation: -65 }, { gamma: 1.52 }, { "invert_lightness": true }] }, {
+		     featureType: "administrative", stylers: [{ saturation: -95 }, { gamma: 2.26 }] }, {
+			 featureType: "water", elementType: "labels", stylers: [{ visibility: "off" }] },
+	     {
+		 featureType: 'road.highway',
+		 elementType: 'all',
+		 stylers: [
+		     { visibility: 'off' }
+		 ]
+	     } ,
+	     {
+		 featureType: "landscape",
+		 elementType: "all",
+		 stylers: [
+		     
+		     { hue: "#000"},//"#F3F4EE" },
+		     { saturation: -100 }, //100
+		     { lightness: 22 } //22
+		     //{ gamma: 1.11 }
+		 ]
+	     },
+	     {
+		 featureType: "poi",
+		 stylers: [
+		     { visibility: "off" }
+		 ]
+	     },{
+		 featureType: "water",
+		 stylers: [
+		     { visibility: "simplified" },
+		     { hue: "#000000" },
+		     { saturation: -100 },
+		     { lightness: -30 }
+		 ]
+	     },
+	     {
+		 featureType: "administrative.country",
+		 stylers: [
+		     { visibility: "on" }
+		 ]
+	     },{
+		 "featureType": "poi.attraction",
+		 "stylers": [
+		     { "invert_lightness": true },
+		     { "visibility": "off" }
+		 ]
+	     },{
+		 "featureType": "poi.park",
+		 "stylers": [
+		     { "visibility": "off" }
+		 ]
+	     },{
+		 "featureType": "landscape.natural.terrain",
+		 "stylers": [
+		     { "visibility": "off" }
+		 ]
+	     },
+	     {
+		 featureType: 'road.arterial',
+		 elementType: 'all',
+		 stylers: [
+		     { visibility: 'off' }
+		 ]
+	     } ,
+	     
+	     {
+		 featureType: 'road.local',
+		 elementType: 'all',
+		 stylers: [
+		     { visibility: 'off' }
+		 ]
+	     } ,
+	     
+	     {
+		 featureType: 'poi',
+		 elementType: 'all',
+		 stylers: [
+		     { visibility: 'off' }
+		 ]
+	     } ,
+	     {
+		 featureType: 'transit',
+		 elementType: 'all',
+		 stylers: [
+		     { visibility: 'off' }
+		 ]
+	     }, {
+		 "featureType": "administrative.country",
+		 "elementType": "labels.text.fill",
+		 "stylers": [
+		     { "visibility": "off" }
+		 ]
+	     },
+	     {
+		 featureType: 'administrative.province',
+		 elementType: 'all',
+		 stylers: [
+		     { visibility: 'off' }
+		 ]
+	     } ,
+	     {featureType: 'administrative.locality',
+	      elementType: 'all',
+	      stylers: [
+		  { visibility: 'off' }
+	      ]
+	     }
+	    ];
+/*
+ * Modify this variables when updating the homicide data
+ */
+var adjustHom = false;
+var existsSlider = false;
+var startDate = "2011-01-15";
+var endDate = "2011-12-15";
 var numMonths = 12;
+/*
+ * Variables that hold the sql query from cartodb
+ */
 var homrate = [], datehom = [], homtot = [], drhrate = [], drhtot =[], pop = [];
 var commas = pv.Format.number();
-
+var homicides_text = total_homicides;
+/*
+ * Modify this variables when updating the homicide data
+ */
 var lastDWRHYear = 2011;
 var lastDWRHMonth = 9; //September is the last month for which DWRH are available
+var lastHomicideYear = 2011;
+
+/*
+ * Modify this variables when updating the homicide data
+ */
+//Chart sidebar variables
+var lastDate = "December 15, 2011";
+var interHom = -1, interDRH = -1;var interDRH2 = -1;
+var activeLine = false, activeChart;
+var startDWRH = new Date("December 15,2006");
+var endDWRH = new Date("September 15,2011");
+var start = new Date(2004, 0, 1);
+var end = new Date(lastDate);
+var endHomicides = new Date("December 15, 2011");
+var monthsLength = monthDiff(start, end);
 
 var dates = [];
 var monthlyData = [], coordData = [];
@@ -251,6 +339,7 @@ var tip;
 var shortUrl;
 var shortUrlShare;
 
+var showPartial11 = false;
 var shownModalButton = false;
 var parameters;
 var layer;
@@ -288,58 +377,54 @@ var coords = [];
 var polyString = "";
 var myPolygon = null;
 var lastModePoly = false;
-var lastHomicideYear = 2010;
 var mj_cartodb_gmapsv3, poppy_cartodb_gmapsv3;
 
 
-//Chart sidebar variables
-var lastDate = "September 15, 2011";
-var interHom = -1, interDRH = -1;var interDRH2 = -1;
-var activeLine = false, activeChart;
-var startDWRH = new Date("December 15,2006");
-var start = new Date(2004, 0, 1);
-var end = new Date(lastDate);
-var endHomicides = new Date("December 15, 2010");
-var monthsLength = monthDiff(start, end)+1;
 
+/*
+ * Size of the chart
+ */
 
 var w = 360,
     h = 180;
 
-
-var alltothom = [    772,    797,    818,    688,    837,    805,    745,    773,    746,    779,    781,    813,    770,    785,    843,    856,    819,    891,    819,    800,    845,    827,    824,    907,    894,    760,    852,    834,    917,    851,    853,    924,    920,    836,    904,    885,    605,    509,    788,    771,    936,    761,    745,    765,    709,    773,    708,    783,    888,    839,   1009,    943,   1149,   1220,   1176,   1287,   1183,   1471,   1521,   1530,   1382,   1481,   1430,   1342,   1481,   1669,   1641,   1799,   1854,   1767,   1716,   2230,   1949,   1671,   2016,   2041,   2147,   2307,   2287,   2544,   2165,   2477,   1919,   2156, null, null, null, null, null, null, null, null, null ];
-
-
-
-
-
-var alltotdrh =[ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,     62,    146,    106,    266,    249,    313,    200,    159,    300,    262,    294,    259,    272,    306,    331,    352,    294,    506,    512,    614,    706,    573,    860,    981,    802,    588,    741,    626,    641,    638,    923,    848,    882,    928,    904,    831,   1064,   1080,    988,   1266,   1250,   1363,   1494,   1494,   1488,   1160,   1467,   1079,   1144,   1351,   1176,   1424,   1630,   1539,   1433,   1519,   1461,   1370 ];
+/*
+ * Monthly homicide, imputed homicide, and drug war homicide data for all of Mexico
+ */
+var alltothom = [    772,    797,    819,    688,    836,    804,    746,    771,    745,    781,    781,    812,    769,    785,    842,    856,    818,    891,    820,    800,    845,    827,    825,    910,    893,    760,    853,    832,    913,    850,    853,    924,    916,    834,    907,    884,    599,    510,    791,    772,    937,    761,    745,    764,    710,    774,    710,    780,    888,    841,   1008,    944,   1148,   1221,   1178,   1288,   1182,   1474,   1525,   1531,   1374,   1482,   1425,   1341,   1476,   1668,   1634,   1798,   1852,   1763,   1707,   2234,   1953,   1673,   2015,   2045,   2159,   2321,   2292,   2561,   2180,   2481,   1923,   2314,   2219,   2029,   2224,   2419,   2614,   2322,   2408,   2338,   2097,   2259,   2029,   2004 ];
 
 
-var allpop = [ 1.0335e+08, 1.0347e+08, 1.0358e+08, 1.037e+08, 1.0382e+08, 1.0393e+08, 1.0405e+08, 1.0417e+08, 1.0428e+08, 1.044e+08, 1.0452e+08, 1.0463e+08, 1.0475e+08, 1.0487e+08, 1.0498e+08, 1.051e+08, 1.0522e+08, 1.0533e+08, 1.0545e+08, 1.0557e+08, 1.0568e+08, 1.058e+08, 1.0592e+08, 1.0603e+08, 1.0615e+08, 1.0627e+08, 1.0639e+08, 1.065e+08, 1.0662e+08, 1.0674e+08, 1.0685e+08, 1.0697e+08, 1.0709e+08, 1.072e+08, 1.0732e+08, 1.0744e+08, 1.0756e+08, 1.0767e+08, 1.0779e+08, 1.0791e+08, 1.0802e+08, 1.0814e+08, 1.0826e+08, 1.0837e+08, 1.0849e+08, 1.0861e+08, 1.0873e+08, 1.0884e+08, 1.0896e+08, 1.0908e+08, 1.0919e+08, 1.0931e+08, 1.0943e+08, 1.0954e+08, 1.0966e+08, 1.0978e+08, 1.0989e+08, 1.1001e+08, 1.1013e+08, 1.1024e+08, 1.1036e+08, 1.1048e+08, 1.1059e+08, 1.1071e+08, 1.1083e+08, 1.1094e+08, 1.1106e+08, 1.1118e+08, 1.1129e+08, 1.1141e+08, 1.1152e+08, 1.1164e+08, 1.1176e+08, 1.1187e+08, 1.1199e+08, 1.121e+08, 1.1222e+08, 1.1234e+08, 1.1245e+08, 1.1257e+08, 1.1268e+08, 1.128e+08, 1.1292e+08, 1.1303e+08, 1.1315e+08, 1.1326e+08, 1.1338e+08, 1.1349e+08, 1.1361e+08, 1.1373e+08, 1.1384e+08, 1.1396e+08, 1.1407e+08 ];
+var alltothom_imp = [    842,    879,    927,    789,    935,    887,    859,    873,    836,    882,    854,    907,    882,    884,    916,    951,    917,    996,    919,    883,    928,    903,    910,   1017,    977,    842,    954,    910,   1009,    935,    926,    997,    997,    926,    985,    970,    697,    607,    891,    843,   1027,    859,    833,    863,    865,    948,    912,   1005,   1005,    931,   1123,   1033,   1250,   1332,   1276,   1397,   1298,   1569,   1651,   1637,   1477,   1602,   1522,   1457,   1577,   1769,   1763,   1910,   1966,   1880,   1811,   2349,   2068,   1802,   2204,   2221,   2420,   2511,   2447,   2722,   2302,   2624,   2062,   2462,   2457,   2259,   2431,   2720,   2866,   2574,   2617,   2585,   2318,   2533,   2216,   2203 ];
 
+var alltotdrh =[ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,     62,    146,    106,    266,    249,    313,    200,    159,    300,    262,    294,    259,    272,    306,    331,    352,    294,    506,    512,    614,    706,    573,    860,    981,    802,    588,    741,    626,    641,    638,    923,    848,    882,    928,    904,    831,   1064,   1080,    988,   1266,   1250,   1363,   1494,   1494,   1488,   1160,   1467,   1079,   1144,   1351,   1176,   1424,   1630,   1539,   1433,   1519,   1461,   1370, null, null, null ];
+
+
+var allpop = [ 1.0335e+08, 1.0347e+08, 1.0358e+08, 1.037e+08, 1.0382e+08, 1.0393e+08, 1.0405e+08, 1.0417e+08, 1.0428e+08, 1.044e+08, 1.0452e+08, 1.0463e+08, 1.0475e+08, 1.0487e+08, 1.0498e+08, 1.051e+08, 1.0522e+08, 1.0533e+08, 1.0545e+08, 1.0557e+08, 1.0568e+08, 1.058e+08, 1.0592e+08, 1.0603e+08, 1.0615e+08, 1.0627e+08, 1.0639e+08, 1.065e+08, 1.0662e+08, 1.0674e+08, 1.0685e+08, 1.0697e+08, 1.0709e+08, 1.072e+08, 1.0732e+08, 1.0744e+08, 1.0756e+08, 1.0767e+08, 1.0779e+08, 1.0791e+08, 1.0802e+08, 1.0814e+08, 1.0826e+08, 1.0837e+08, 1.0849e+08, 1.0861e+08, 1.0873e+08, 1.0884e+08, 1.0896e+08, 1.0908e+08, 1.0919e+08, 1.0931e+08, 1.0943e+08, 1.0954e+08, 1.0966e+08, 1.0978e+08, 1.0989e+08, 1.1001e+08, 1.1013e+08, 1.1024e+08, 1.1036e+08, 1.1048e+08, 1.1059e+08, 1.1071e+08, 1.1083e+08, 1.1094e+08, 1.1106e+08, 1.1118e+08, 1.1129e+08, 1.1141e+08, 1.1152e+08, 1.1164e+08, 1.1176e+08, 1.1187e+08, 1.1199e+08, 1.121e+08, 1.1222e+08, 1.1234e+08, 1.1245e+08, 1.1257e+08, 1.1268e+08, 1.128e+08, 1.1292e+08, 1.1303e+08, 1.1315e+08, 1.1326e+08, 1.1338e+08, 1.1349e+08, 1.1361e+08, 1.1373e+08, 1.1384e+08, 1.1396e+08, 1.1407e+08, 1.1419e+08, 1.143e+08, 1.1442e+08 ];
+
+
+
+
+//rates per 100,000
 var alldrhrate = alltotdrh.map(function(value, i) {return value/ allpop[i] * 100000 * 12;});
 var allhomrate = alltothom.map(function(value, i) {return value/ allpop[i] * 100000 * 12;});
+var allhomrate_imp = alltothom_imp.map(function(value, i) {return value/ allpop[i] * 100000 * 12;});
 
 
 //Initialize a date array with all the months for the homicide data
-for(var i = 2004; i <= lastDWRHYear; i++) {
+for(var i = 2004; i <= lastHomicideYear; i++) {
     for(var j = 0; j < 12; j++){
-	if(i ==  lastDWRHYear) 
-	    if(j < lastDWRHMonth)
-		dates.push(new Date(i, j, 15));
-            else
-		break;
-	else
 	    dates.push(new Date(i, j, 15));
     }
 }
+//All the drug war data in a single structure
 for(var i = 0; i < dates.length; i++){
     monthlyData.push({date: dates[i], drh: alltotdrh[i], drhrate: alldrhrate[i],
 		    hom: alltothom[i], homrate: allhomrate[i], pop: allpop[i]});
 }
 
-
+/*
+ * Toggle state borders and names on the Google Map
+ */
 function toggleProvince() {
   if(showingNames) {
       style.push( {
@@ -365,9 +450,61 @@ function toggleProvince() {
     map.mapTypes.set('map-style', styledMapType);
     map.setMapTypeId('map-style');
     showingNames = !showingNames;
+    show_place_names = showingNames; 
+    changeHash();
 }
 
+/*
+ * Toggle the display of the incomplete drug war homicide data in the count tab
+ */
+function togglePartial(){
+    showPartial11 = !showPartial11;
+    if(showPartial11){	
+	$('#n2011').css("visibility", "visible");
+	$('#rn2011').css("visibility", "visible");
+    }
+    else{
+	$('#n2011').css("visibility", "hidden");
+	$('#rn2011').css("visibility", "hidden");
+    }
+}
 
+/*
+ * Toggle the statistical adjustement for total homicide data
+ */
+function toggleAdjust(){
+    adjustHom = ! adjustHom;
+    statAdjust = adjustHom;
+    homicides_text = adjustHom === true ? adjusted_homicides : total_homicides;
+    $("#adjust").css("background-color", function() {return  adjustHom === true ? "#7a250f":"white";}); //":"#004b62"
+    $("#adjust span").css("color", function() {return  adjustHom === true ? "white":"rgb(64, 64, 64)";}); //":"#004b62"
+    $("#homtableheader").html(homicides_text.replace(" ", "<br>"));
+    $(".homheader").css("background-color", function() {return  adjustHom === true ? "#7a250f":"#004b62";}); //":"#004b62"
+    if(currentCity === all_of_mx_text) {
+        monthlyData = [];
+	if(statAdjust)	
+	    for(var i = 0; i < dates.length; i++){
+		monthlyData.push({date: dates[i], drh: alltotdrh[i], drhrate: alldrhrate[i],
+				  hom: alltothom_imp[i], homrate: allhomrate_imp[i], pop: allpop[i]});
+	    }
+	else
+	    for(var i = 0; i < dates.length; i++){
+		monthlyData.push({date: dates[i], drh: alltotdrh[i], drhrate: alldrhrate[i],
+				  hom: alltothom[i], homrate: allhomrate[i], pop: allpop[i]});
+	    }
+
+    }
+    
+
+	  
+    queryData();
+    changeHash();
+    queryHomicideMonth();
+}
+
+/*
+ * Read the variable after the "#" in the url
+ */
 function getUrlVars()
 {
     var vars = [], hash;
@@ -382,19 +519,29 @@ function getUrlVars()
 }
 
 
-//SELECT sum(hom) AS hom, ROUND(cast(MAX(ST_X(the_geom)) as numeric),4) AS long, ROUND(cast(MAX(ST_Y(the_geom))as numeric),4) as lat, name, ROUND(AVG(pop)) as pop FROM homicides_web WHERE date BETWEEN DATE '2010-01-15' AND DATE '2010-12-15' AND hom > 0 GROUP BY  name ORDER BY hom DESC
-//queryCartodb = "SELECT avg(population) as pop, sum(hom) AS hom, MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END as name FROM homicides_dwrh_month_municipality WHERE  EXTRACT(year FROM date) = " + yearSlider + " GROUP BY  EXTRACT(year FROM date), metroarea, CASE metroarea WHEN '' THEN CONCAT(munname,', ', statename) ELSE metroarea END ORDER BY hom DESC";
+/*
+ * Query data to show on top of the Google Map
+ */
 function queryData() {
     if(typeOfHomicide === "DWRH") {
-
+        var maptitle = maptitle_dwrh;
 	var homstr = "drh";
+	var homstr_as = "drh";
 	var ratestr = "rate";
     } else { 
-
-	var homstr = "hom";
-	var ratestr = "homrate";
+	var maptitle = homicides_text + " ";
+	if (!adjustHom) {
+	    var homstr = "hom";
+	    var homstr_as = "hom";
+	    var ratestr = "homrate";
+	}
+	else {
+	    var homstr = "hom_imputed";
+	    var homstr_as = "hom";
+	    var ratestr = "homrate";
+	}
     }
-var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr + ", MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, name, ROUND(AVG(pop)) as pop FROM homicides_web WHERE date BETWEEN DATE '" +startDate+"' AND DATE '"+ endDate +"' AND " + homstr + " > 0 GROUP BY  name ORDER BY " + homstr + " DESC";
+var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr_as + ", MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, name, ROUND(AVG(pop)) as pop FROM homicides_web_1 WHERE date BETWEEN DATE '" +startDate+"' AND DATE '"+ endDate +"' AND " + homstr + " > 0 GROUP BY name ORDER BY " + homstr_as + " DESC";
 
     $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
 		  coordData = result;
@@ -404,7 +551,7 @@ var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr + ", MAX(ST_X(the_g
 		  for(var i =0; i<result.rows.length;i++) {
 		      
 		      
-		      overlay.crimes[i] = ({lat : result.rows[i]["lat"], lon: result.rows[i]["long"], latlon: new google.maps.LatLng(result.rows[i]["lat"], result.rows[i]["long"]), code: result.rows[i][homstr], name:result.rows[i]["name"], rate:result.rows[i][homstr]/result.rows[i]["pop"] * 100000 * 12/numMonths, pop:result.rows[i]["pop"]
+		      overlay.crimes[i] = ({lat : result.rows[i]["lat"], lon: result.rows[i]["long"], latlon: new google.maps.LatLng(result.rows[i]["lat"], result.rows[i]["long"]), code: result.rows[i][homstr_as], name:result.rows[i]["name"], rate:result.rows[i][homstr_as]/result.rows[i]["pop"] * 100000 * 12/numMonths, pop:result.rows[i]["pop"]
 });
 		      
 		  }
@@ -413,6 +560,8 @@ var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr + ", MAX(ST_X(the_g
 		  
 		  //alert(endTime-startTime);
 		  overlay.draw();
+		  $("#map-dates").
+		      text(maptitle + monthName[new Date(startDate).getMonth()] + " "+ new Date(startDate).getFullYear() + " – " + monthName[new Date(endDate).getMonth()] + " "+ new Date(endDate).getFullYear());
 	      });
 }
 
@@ -445,33 +594,12 @@ Canvas.prototype.onAdd = function() {
     this.getPanes().overlayMouseTarget.appendChild(this.canvas);
     
    
-}
+};
 
 
-/* Convert the country borders to latlng.*/
-      // mariguana_muns.forEach(function(c) {
-// 				 c.borders.forEach(function(b) {
-// 						       b.forEach(function(p, i) {
-// 								     //b[i] = {lat: p[1], lng: p[0]};
-// 								     b[i] = new google.maps.LatLng(p[1], p[0]);
-// 								 });
-// 	  });
-// 			     });
-
-// poppy_muns.forEach(function(c) {
-// 		       c.borders.forEach(function(b) {
-// 					     b.forEach(function(p, i) {
-// 							   //b[i] = {lat: p[1], lng: p[0]};
-// 							   b[i] = new google.maps.LatLng(p[1], p[0]);
-// 						       });
-// 					 });
-// 		   });
-
-
-
-
-
-
+/*
+ * Draw the protovis chart on top of the Google Map
+ */
 Canvas.prototype.draw = function(){
     
     var projection = this.getProjection();
@@ -494,7 +622,14 @@ Canvas.prototype.draw = function(){
     var c = this.canvas;
     var r = 100;
     
-    if((typeOfHomicide === "DWRH" & yearSlider <= 2006) | typeOfHomicide === "INEGI" & yearSlider > lastHomicideYear) {
+    /*
+     * Overlay "No Data" if the selected data is < Dec 2006 or > Sep 2010 since
+     * there is no drug war homicide data for other dates
+     */
+    if((typeOfHomicide === "DWRH" & new Date(endDate) < new Date(2006,11,15)) | 
+	(typeOfHomicide === "DWRH" & new Date(startDate) < new Date(2006,11,14)) |
+	(typeOfHomicide === "INEGI" & new Date(endDate).getFullYear() > lastHomicideYear) |
+       (typeOfHomicide === "DWRH" & new Date(endDate).getFullYear() == 2011  & new Date(endDate).getMonth() > 8)) {
 
 	//console.log(crimes)
 	r = 200;
@@ -561,58 +696,21 @@ Canvas.prototype.draw = function(){
     
     
  
-    
-    //.event("click", function() {alert();})
+    /*
+     * Big protovis visualization of the circles on top
+     * of the Google Map
+     */
     vis = new pv.Panel().canvas(c)
 	.left(-x.min)
 	.top(-y.min);
     
     
-    var methOpacity = pv.Scale.linear(1, 35.02).range(0,.8);
+    var methOpacity = pv.Scale.linear(1, 35.02).range(0,.9);
     
     var tempMarCoord, tempPoppyCoord,tempLabCoord, tempPointCoord;
-
-    // vis.add(pv.Panel)
-    // 	.data(mariguana_muns)
-    
-    //     .add(pv.Panel)
-    // //.left(-x.min)
-    // //	.top(-y.min)
-    // 	.data(function(c) {return c.borders;})
-    // 	.add(pv.Line)
-    // 	.data(function(l) {return l;})
-    // 	.left(function(c)  {tempMarCoord = projection.fromLatLngToDivPixel(c);
-    // 			    return tempMarCoord.x;})
-    // 	.top(function(c) {return tempMarCoord.y;})
-    // 	.fillStyle("rgba(76, 187, 23, 0.5)")
-    // 	.lineWidth(1)
-    //     .visible(mjVisible)
-    // 	.strokeStyle("black")
-    // 	.title(function(d, b, c) {return c.name;})
-    // 	.antialias(false)
-
     
     
     
-    
-    // 	.root.add(pv.Panel)
-    // 	.data(poppy_muns)
-    //     .add(pv.Panel)
-    // //.left(-x.min)
-    // //	.top(-y.min)
-    // 	.data(function(c) {return c.borders;})
-    // 	.add(pv.Line)
-    // 	.data(function(l) {return l;})
-    // 	.visible(false)
-    // 	.left(function(c)  {tempPoppyCoord = projection.fromLatLngToDivPixel(c); return tempPoppyCoord.x;})
-    // 	.top(function(c) {return tempPoppyCoord.y;})
-    // 	.fillStyle("rgba(156, 138, 165, 0.5)")
-    // 	.lineWidth(1)
-    
-    // 	.strokeStyle("black")
-    // 	.title(function(d, b, c) {return c.name;})
-    // 	.antialias(false)
-
 	vis.root.add(pv.Panel)
 	.data(lab_density)
 	.add(pv.Dot)
@@ -627,17 +725,20 @@ Canvas.prototype.draw = function(){
 			    return 5;
 		    else
 			return 7;})
-	.fillStyle(function(d) {return "rgba(0, 0, 0, " + methOpacity(d.z) + ")";})
-	.strokeStyle("rgba(0, 0, 0, 0)")
+	.fillStyle(function(d) {return "rgba(0, 0, 255, " + methOpacity(d.z) + ")";})
+	.strokeStyle("rgba(0, 0, 255, 0)")
     
     
 	.root.add(pv.Panel)
 	.data(crimes)
         .add(pv.Dot)
+/*
+ * When zoomed out only show circles with more than 20 homicides
+ */
 	.visible(function(d) {return !(d.code < 20 & currentZoom < 7);})
 	.strokeStyle(function(d) {if(d.code < 20 & currentZoom <7) return null;
 				  if(d.name != currentCity)
-				      return "#444";
+				      return "#222";
                                   else
                                       return "black";})
 	.fillStyle(function(d) {  if(d.code < 20 & currentZoom <7) 
@@ -684,14 +785,16 @@ Canvas.prototype.draw = function(){
         .title(function(d) {return d.name;})
 	.textStyle("black")
         .font(function(d) {  
-		  
+		  /*
+		   * Scale the circles depending on the zoom
+		   */
 		  if(d.code < 70)
-		      return rad(70* 12/numMonths) * scaleFactor * .75 + "px sans-serif";
+		      return rad(70* 12/numMonths) * scaleFactor * .7 + "px arial";
 		  else
-		      return rad(d.code* 12/numMonths) * scaleFactor * .75 + "px sans-serif";})
+		      return rad(d.code* 12/numMonths) * scaleFactor * .7 + "px arial";})
 	.text(function(x, d) {
 		  if(typeOfHomicide == "INEGI"){
-		      if (d.code > 250 & d.rate > 15) 
+		      if (d.code > 250 & d.rate >= 17.3) 
 			  return d.code;
 		  }
 else {
@@ -735,7 +838,9 @@ function switchCartoLayers(layer, visible) {
 
 
 
-
+/*
+ * Show or hide the mariguana eradication areas and routes
+ */
 function showMJ(){
     switchLayers(mjpathslayer, mjVisible);
     switchCartoLayers(mj_cartodb_gmapsv3, mjVisible);
@@ -744,6 +849,9 @@ function showMJ(){
     overlay.draw();
 }
 
+/*
+ * Show or hide the poppy eradication areas and routes
+ */
 function showPoppy(){
     switchLayers(poppypathslayer, poppyVisible);
     switchCartoLayers(poppy_cartodb_gmapsv3, poppyVisible);
@@ -752,6 +860,9 @@ function showPoppy(){
     overlay.draw();
 }
 
+/*
+ * Show or hide the meth eradication areas and routes
+ */
 function showMeth(){
     switchLayers(methpathslayer, methVisible);
     methVisible = !methVisible;
@@ -759,9 +870,9 @@ function showMeth(){
     overlay.draw();
 }
 
-
-
-
+/*
+ * Update the "Count" tab
+ */
 var updateHomicidesTable = function(){   
     createTipsy(homtot, homrate, "#h2004", 0, 12);
     createTipsy(homtot, homrate, "#h2005", 12, 24);
@@ -770,30 +881,36 @@ var updateHomicidesTable = function(){
     createTipsy(homtot, homrate, "#h2008", 48, 60);
     createTipsy(homtot, homrate, "#h2009", 60, 72);
     createTipsy(homtot, homrate, "#h2010", 72, 84);
-    //$('#h2011').text("NA");
+    createTipsy(homtot, homrate, "#h2011", 84, 96);
     
     
     
     $('#n2004').text("NA");
     $('#n2005').text("NA");
     $('#n2006').text("NA");
+    $('#rn2004').text("NA");
+    $('#rn2005').text("NA");
+    $('#rn2006').text("NA");
     createTipsy(drhtot, drhrate, "#n2007", 36, 48);
     createTipsy(drhtot, drhrate, "#n2008", 48, 60);
     createTipsy(drhtot, drhrate, "#n2009", 60, 72);
     createTipsy(drhtot, drhrate, "#n2010", 72, 84); 
-    //createTipsy(drhtot, drhrate, "#n2011", 84, 93);  
+    createTipsy(drhtot, drhrate, "#n2011", 84, 93);  
 		      
     var cityText = currentCity;
     switch(cityText) {
-	case "José Azueta, Guerrero":
-	  cityText = "Zihuatanejo, Guerrero";
-	  break;
-	case "San Luis Potosí-Soledad de Graciano Sánchez":
-	  cityText = "San Luis Potosí" + metroArea;
-	  break;
-	case "Polygon":
-	  cityText = custom_area;
-	  break;
+    case "José Azueta, Guerrero":
+	cityText = "Zihuatanejo, Guerrero";
+	break;
+    case "San Luis Potosí-Soledad de Graciano Sánchez":
+	cityText = "San Luis Potosí" + metroArea;
+	break;
+    case "Valle de México":
+	cityText = mexico_city + metroArea;
+	break;
+    case "Polygon":
+	cityText = custom_area;
+	break;
     }
     if(cityText.indexOf(",") < 0 & (cityText != all_of_mx_text &
 cityText != custom_area))
@@ -803,6 +920,10 @@ cityText != custom_area))
        
 };
 
+/*
+ * Create a tool tip for the military operations, drug lord captures/killings
+ * displayed in the line chart
+ */
 var createTipsy = function(array, arrayRate, elementId, start, end) {
     function sumArray(previousValue, currentValue) {
 	return previousValue + currentValue;
@@ -810,15 +931,18 @@ var createTipsy = function(array, arrayRate, elementId, start, end) {
 		      var hom12Month = commas(array.slice(start,end).reduce(sumArray));
 		      var tipId = elementId.slice(1) + "tip";
 		      var tipIdHash = "#" + tipId;
+    var rateElement = elementId.slice(0,1) + 'r' + elementId.slice(1);
 		      $(tipIdHash).tipsy("hide");
-		      $(elementId).html('<a id="'+tipId+'" href="#" original-title="<table><tr><td>'+ rate_colon + '</td><td>' + Math.round(pv.mean(arrayRate.slice(start,end))) + '</td></tr><br/><tr><td>'+ population_colon +'</td><td> '+ commas(pv.mean(pop.slice(start,end))) + '">'+hom12Month+'</td></tr></table></a>');
-		      
+		      $(elementId).html('<a class="gray-link" id="'+tipId+'" href="#" original-title="<table><tr><td>'+ rate_colon + '</td><td>' + Math.round(pv.mean(arrayRate.slice(start,end))) + '</td></tr><br/><tr><td>'+ population_colon +'</td><td> '+ commas(pv.mean(pop.slice(start,end))) + '">'+hom12Month+'</td></tr></table></a>');
+		      $(rateElement).html(Math.round(pv.mean(arrayRate.slice(start,end))));
 		      $(tipIdHash).tipsy({html: true, gravity: 'e' });
 		  };
 
-function queryHomicideMonth() {
-    
-		
+/*
+ * Query Cartodb for the monthly homicide data
+ * to show in the line chart
+ */
+function queryHomicideMonth() {		
     homrate = []; 
     drhrate = [];
     pop = [];
@@ -845,27 +969,37 @@ function queryHomicideMonth() {
 	    vis.root.render();
 	return;
     }
-
+    if(!adjustHom) {
+	var homString = "hom";
+	var homRateString = "homrate";
+    }
+    else {
+	var homString = "hom_imputed";
+	var homRateString = "hom_imputedrate";
+    }
     if(currentCity == "Polygon"){
 	if(newShape != null) {
-
+	    
 	    polyString = "";
 	    var t = newShape.getPath().b.concat(newShape.getPath().b[0]);
 	    for(var i=0;i<t.length;i++) {
 		polyString = polyString + t[i].lng() + " " + t[i]. lat();
 		if(i < (t.length-1))
-     polyString = polyString + ",";
+		    polyString = polyString + ",";
 	    }
 	    currentCity = "Polygon";
-	    var queryCartodb = "SELECT sum(drh) AS drh, sum(hom) AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM(hom)/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
-}
+	   
+	    var queryCartodb = "SELECT sum(drh) AS drh, sum("+homString+") AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM("+homString+")/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web_1 WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
+	}
 	else if(polyString != "")
-	var queryCartodb = "SELECT sum(drh) AS drh, sum(hom) AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM(hom)/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
+	var queryCartodb = "SELECT sum(drh) AS drh, sum(hom) AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM(hom)/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web_1 WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
     }
-
-    else
-	var queryCartodb = "SELECT drh, hom, drhrate, homrate, date, pop FROM homicides_web WHERE name = " + "'" + currentCity + "'" + " ORDER BY date";
     
+    else
+	var queryCartodb = "SELECT drh, "+homString+" AS hom, drhrate, "+homRateString+" AS homrate, date, pop FROM homicides_web_1 WHERE name = " + "'" + currentCity + "'" + " ORDER BY date";
+    
+    
+
     $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
 		  monthlyData = result.rows;
 		  homrate = [];datehom=[];homtot = [];drhrate = [];drhtot = [];pop = [];
@@ -889,18 +1023,13 @@ function queryHomicideMonth() {
 		 // console.log(endTime-startTime);
 		  
 });
-    
+   
 }
 
 
-
-
-
-
-//SELECT sum(drh) AS drhtotal, sum(hom) AS homtotal, date FROM homicides_web  
-//WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((-105.5302734375 20.64677721903632, -97.4443359375 15.298608451631088, -93.181640625  20.81117922114718, -104.607421875 21.303306009492623, -105.5302734375 20.64677721903632)))', 4326)) GROUP BY date ORDER BY date
-
-
+/*
+ * The cool polygon selection tool
+ */
 var drawPolygon = function(id, poly){
     // Construct the polygon
 		  // Note that we don't specify an array or arrays, but instead just
@@ -925,7 +1054,9 @@ var drawPolygon = function(id, poly){
 
 
 
-
+/*
+ * Convert the polygon to an array of coordinates
+ */
 function toPath(path) {   
     for (var i = 0; i < path.length; i++){
 	var coord=path.getAt(i);
@@ -934,6 +1065,9 @@ function toPath(path) {
     }
 }
 
+/*
+ * Deselect the polygon from the map
+ */
 var clearSelection = function() {
     if (selectedShape) {
 	//storePoly(selectedShape.getPath(), selectedShape.cartodb_id);
@@ -941,6 +1075,7 @@ var clearSelection = function() {
         selectedShape = null;
     }
 };
+
 
 function deleteSelectedShape() {
         if (selectedShape) {
@@ -961,11 +1096,15 @@ var setSelection = function(shape) {
 };
 
 
-  //add the overlay canvas
-  
-
+/*
+ * Read all the parameters in the url
+ * and initialize the options
+ * before creating the map and
+ * line chart
+ */
 function initialize() {
     initializeParameters();
+    //options for the Google Map
     var myOptions = {
 	zoom: Number(currentZoom),
 	minZoom: 4,
@@ -977,6 +1116,7 @@ function initialize() {
     
     map = new google.maps.Map(document.getElementById("map"),
 				  myOptions);
+    //options for the cartodb layer
     mj_cartodb_gmapsv3 = new google.maps.CartoDBLayer({
       map_canvas: 'map',
       map: map,
@@ -1007,14 +1147,15 @@ function initialize() {
     map.setMapTypeId('map-style');
     
     
-    
+    //change the url to share when the user moves the map
     google.maps.event.addListener(map, "center_changed", function() {
 				      var ctr = map.getCenter();
 				      centerLat = ctr.lat();
 				      centerLong = ctr.lng();
 				      changeHash();
 				  });
-    
+    //change the url to share when the user zooms the map
+    //also display the legend saying only showing places with more than 20 homicides
     google.maps.event.addListener(map, "zoom_changed", function() {
 				      currentZoom = map.getZoom();
 				      if (currentZoom >= 6)
@@ -1023,11 +1164,16 @@ function initialize() {
 					  scaleFactor = .5;
 				      if( currentZoom <= 4)
 					  scaleFactor = .3;
+				      if(currentZoom < 7)
+					  $("#zoom-explaining").css("visibility", "visible");
+				      else
+					  $("#zoom-explaining").css("visibility", "hidden");
 				      changeHash();
 				      
 				      
 				  });
 
+    //cartodb mariguana and poppy layers
     mjpathslayer = new google.maps.FusionTablesLayer(mj_paths, {
 							 suppressInfoWindows: true,
 							 clickable: false
@@ -1051,7 +1197,7 @@ function initialize() {
     methpathslayer.setQuery("SELECT 'geometry' FROM " + meth_paths);
     if(document.getElementById('methCheck').checked == true)
 	methpathslayer.setMap(map);
-    
+    //read the parameters after the # in the url
     if(parameters["mariguana"] != null){
 	mjVisible = parameters["mariguana"] == "true";
 	if(mjVisible){
@@ -1086,6 +1232,41 @@ function initialize() {
 	    //cocainepathslayer.setMap(map);
 	}
     }
+    if(parameters["names"] != null){
+	show_place_names = parameters["names"] == "true";
+	if(show_place_names) {
+	    style.pop();style.pop();
+	    $("#nameCheck").prop("checked", true);
+	    showingNames = true;
+	}
+    }
+   if(parameters["statadj"] != null){
+       adjustHom = parameters["statadj"] == "true";
+       statAdjust = adjustHom;
+	if(adjustHom) {
+	    $("#statCheck").prop("checked", true);
+	    homicides_text = adjustHom === true ? adjusted_homicides : total_homicides;
+	    $("#adjust").css("background-color", function() {return  adjustHom === true ? "#7a250f":"white";}); //":"#004b62"
+	    $("#adjust span").css("color", function() {return  adjustHom === true ? "white":"rgb(64, 64, 64)";}); //":"#004b62"
+	    $("#homtableheader").html(homicides_text.replace(" ", "<br>"));
+	    $(".homheader").css("background-color", function() {return  adjustHom === true ? "#7a250f":"#004b62";}); //":"#004b62"
+	}
+       if(currentCity === all_of_mx_text) {
+        monthlyData = [];
+	if(statAdjust)	
+	    for(var i = 0; i < dates.length; i++){
+		monthlyData.push({date: dates[i], drh: alltotdrh[i], drhrate: alldrhrate[i],
+				  hom: alltothom_imp[i], homrate: allhomrate_imp[i], pop: allpop[i]});
+	    }
+	else
+	    for(var i = 0; i < dates.length; i++){
+		monthlyData.push({date: dates[i], drh: alltotdrh[i], drhrate: alldrhrate[i],
+				  hom: alltothom[i], homrate: allhomrate[i], pop: allpop[i]});
+	    }
+
+    }
+    }
+    //for creating the polygon
     var drawingManager = new google.maps.drawing.DrawingManager({
 		       drawingControl: true,
 								    drawingControlOptions: {
@@ -1135,6 +1316,10 @@ function initialize() {
 	myPolygon.setMap(map);
     $('#mediumSelect').change(function() {
 				  typeOfHomicide = (typeOfHomicide === "INEGI" ? "DWRH" : "INEGI");
+				  if(typeOfHomicide == "DWRH")
+				      $("#drug-explaining").css("visibility", "visible");
+				  else
+				      $("#drug-explaining").css("visibility", "hidden");
 				  queryData();
 				  changeHash();
 			      
@@ -1148,7 +1333,7 @@ function initialize() {
     //Clipboard copying
     $("#maplink").attr("value", getLocation() );
 
-//get the bitly short link when showing the modal
+    //get the bitly short link when showing the modal
     $('#modal-share').bind('show', function () {
                   if(hashChanged) {
 			shortUrlShare = getShareURL();
@@ -1199,8 +1384,16 @@ function initialize() {
 			    }
 		     
 			   });
-    
+    $("#slider2004").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2004, 0, 15), new Date(2004, 11, 15));});
+    $("#slider2005").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2005, 0, 15), new Date(2005, 11, 15));});
+    $("#slider2006").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2006, 0, 15), new Date(2006, 11, 15));});
+    $("#slider2007").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2007, 0, 15), new Date(2007, 11, 15));});
+    $("#slider2008").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2008, 0, 15), new Date(2008, 11, 15));});
+    $("#slider2009").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2009, 0, 15), new Date(2009, 11, 15));});
+    $("#slider2010").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2010, 0, 15), new Date(2010, 11, 15));});
+    $("#slider2011").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2011, 0, 15), new Date(2011, 11, 15));});
 }
+
 
 
 function initializeParameters() {
@@ -1219,32 +1412,32 @@ function initializeParameters() {
 	changed = true;
     }
     yearSlider = startDate.substring(0,4);
-    numMonths = monthDiff(new Date(startDate), new Date(endDate))+1;
+    numMonths = monthDiff(new Date(startDate), new Date(endDate));
     transitionTable(2004, yearSlider);
 
     function changeTableColors(str, yearLast, yearCurrent) {
-	var idTableLast = str + yearLast;
-	var idTableCurrent = str + yearCurrent;
-	$(idTableLast).css("background-color", "#F9F9F9");
-	$(idTableCurrent).css("background-color", "#F6E493");
+	//var idTableLast = str + yearLast;
+	//var idTableCurrent = str + yearCurrent;
+	//$(idTableLast).css("background-color", "#F9F9F9");
+	//$(idTableCurrent).css("background-color", "#F6E493");
     }
     function transitionTable(yearLast, yearCurrent) {
-	changeTableColors("#y",yearLast, yearCurrent);
-	changeTableColors("#n",yearLast, yearCurrent);
-	changeTableColors("#h",yearLast, yearCurrent);
+	//changeTableColors("#y",yearLast, yearCurrent);
+	//changeTableColors("#n",yearLast, yearCurrent);
+	//changeTableColors("#h",yearLast, yearCurrent);
     }
    
     $(function() {
 	  $( "#slider" ).slider({
 				    min: 2004,
-				    max: 2010,
+				    max: 2011,
 				    value: yearSlider,
 				    stop: function(e, ui) {
 					transitionTable(yearSlider, ui.value);
 					yearSlider = ui.value;
 					startDate =  ui.value + "-01-15";
 					endDate =  ui.value + "-12-15";
-					numMonths = numMonths = monthDiff(new Date(startDate), new Date(endDate))+1;
+					numMonths = monthDiff(new Date(startDate), new Date(endDate));
 					queryData();
 					changeHash();
 					
@@ -1268,6 +1461,10 @@ function initializeParameters() {
     
     if(parameters["zoom"] != null){
 	currentZoom = parameters["zoom"];
+	if(currentZoom < 7)
+	    $("#zoom-explaining").css("visibility", "visible");
+	else
+	    $("#zoom-explaining").css("visibility", "hidden");
 	if (currentZoom >= 6)
 	    scaleFactor = 1;
 	else
@@ -1305,19 +1502,25 @@ function initializeParameters() {
 						
 					    });
     }
-    
+    if (navigator.userAgent.indexOf("Safari") != -1 && navigator.userAgent.indexOf("Chrome") == -1 &&  $.browser.version < 536.26) {alert("This version of Safari doesn't display the map properly (I recommend you use Chrome instead, sorry)");}
 }
-//
 
+//difference in months between two dates
+//useful for the size of the circles on the map
+//homicides/year
 function monthDiff(d1, d2) {
     var months;
     months = (d2.getFullYear() - d1.getFullYear()) * 12;
-    //months -= d1.getMonth() + 1;
+    months -= d1.getMonth() + 1;
     months += d2.getMonth();
-    return months;
+    return months+2;
 }
 
-
+/*
+ * The line chart to the right of the map
+ * 
+ * 
+ */
 var x = pv.Scale.linear(start, end.setMonth(end.getMonth()+1)).range(0, w),
 y = pv.Scale.linear(0, pv.max(homrate.concat(drhrate))).range(0, h);
 
@@ -1338,7 +1541,7 @@ function createGraph(){
     
     /* X-axis ticks. */
     visChart.add(pv.Rule)
-	.data(x.ticks())
+	.data(x.ticks().slice(0, x.ticks().length- 1))
 	.left(x)
 	.strokeStyle(function(d) {return d ? "#fff" : "000";})
 	.add(pv.Rule)
@@ -1351,7 +1554,7 @@ function createGraph(){
 
 
 
-/* Y-axis ticks. */
+    /* Y-axis ticks. */
     visChart.add(pv.Rule)
 	.data(function() {return y.ticks(3);})
 	.bottom(y)
@@ -1368,11 +1571,6 @@ function createGraph(){
 	.left(-1)
 	.text(y.tickFormat);
     
- /*   visChart.add(pv.Rule)
-	.left(0);
-    
-    visChart.add(pv.Rule)
-	.bottom(0);*/
     
     /* Y-axis label */
     visChart.add(pv.Label)
@@ -1388,13 +1586,7 @@ function createGraph(){
 	.textAlign("center")
 	.textAngle(-Math.PI/2);
 
-  /*  visChart.add(pv.Rule)
-	.data(function() {return gethomicideData();})
-	.left(function(d) {return x(d.x);})
-	.bottom(-4)
-	.lineWidth(5)
-	.strokeStyle(function() {return (activeChart == this.index) ? "#efefef" : "transparent";});
-    */
+    //total homicide or adjusted homicide line
     var line = visChart.add(pv.Line)
         .data(function() {return monthlyData.slice(0, 
 						   getIndex(endHomicides)+1);})
@@ -1402,23 +1594,18 @@ function createGraph(){
         .left(function(d)  {return x(d.date);})
         .lineWidth(2.5)
 	.antialias(true)
-        .strokeStyle("#004b62")
+        .strokeStyle(function() {return  adjustHom === true ? "#7a250f":"#004b62";}) //
         .text(y.tickFormat)
         .text(function(d)  {return y(d);})
 	;
     
     
-    
-    
-    
-  
-
-    
+    //drug war homicide line
     var line2 = visChart.add(pv.Line)
-//Slice the data at 35 (Dec 2006) cause otherwise we get a blank line because
-//of the null values in the drug war homicide data
+    //Slice the data at 35 (Dec 2006) cause otherwise we get a blank line because
+    //of the null values in the drug war homicide data
         .data(function() {return monthlyData.slice(getIndex(startDWRH), 
-						   monthlyData.length);})
+						   getIndex(endDWRH) + 1);})
         .bottom(function(d)  {return y(d.drhrate);})
 	.event("point",  function(d) {this.active(this.index);return visChart;})
         .left(function(d)  {return x(d.date);})
@@ -1479,7 +1666,7 @@ function createGraph(){
 		   //alert([gethomicideData()][0]);
 		   interDRH = interDRH < 0 ? (-interDRH - 2) : interDRH;
 		   interDRH2 = interDRH;
-		   if((mx2.getFullYear() < 2006) | (mx2.getFullYear() <= 2006 & mx2.getMonth() < 11))
+		   if((mx2.getFullYear() < 2006) | (mx2.getFullYear() <= 2006 & mx2.getMonth() < 11) | (mx2 > endDWRH))
 		       interDRH = -1;
 		   if(mx2.getFullYear() > lastHomicideYear)
 		       interDRH2 = -1;
@@ -1491,14 +1678,14 @@ function createGraph(){
 
     visChart.add(pv.Label)
 	.textAlign("left")
-	.text(function(d) {return total_homicides;})
+	.text(function(d) {return homicides_text;})
 	.left(15)
 	.top(-4)
 	.font("9pt sans-serif")
 	.add(pv.Dot)
 	.strokeStyle(null)
 	.height(3)
-	.fillStyle("#004b62")
+	.fillStyle(function() {return  adjustHom === true ? "#7a250f":"#004b62";})
 	.size(15)
 	.left(10)
 	.top(-11)
@@ -1507,19 +1694,19 @@ function createGraph(){
 	.def("active", -1)
 	.textAlign("left")
 	.text(function(d) {return drug_war_homicides;})
-	.left(125)
+	.left(150)
 	.top(-4)
 	.font("9pt sans-serif")
 	.add(pv.Dot)
 	.strokeStyle(null)
 	.fillStyle("#4eb4da")
 	.size(15)
-	.left(120)
+	.left(147)
 	.top(-11);
     
     
    
-
+    //list of important events to create tooltips for
     getEvents = function() {
 	var rangei = [];
 	if(currentCity.indexOf(all_of_mx_text) >= 0) {
@@ -1531,12 +1718,12 @@ function createGraph(){
 	    tip = [op_veracruz_text];
 	}
 	if(currentCity.indexOf("Juárez") >= 0) {
-	    rangei = [op_chihuahua, op_reinforcements];
-	    tip = [chihuahua_text, reinforcements_text];
+	    rangei = [op_chihuahua, op_reinforcements, new_governor];
+	    tip = [chihuahua_text, reinforcements_text, new_governor_text];
 	}
 	if(currentCity.indexOf("Chihuahua") >= 0) {
-	    rangei = [op_chihuahua];
-	    tip = [chihuahua_text];
+	    rangei = [op_chihuahua, new_governor];
+	    tip = [chihuahua_text, new_governor_text];
 	}
 	if(currentCity.indexOf("Nogales, ") >= 0) {
 	    rangei = [mochomo_date];
@@ -1590,8 +1777,8 @@ function createGraph(){
 	    tip = [op_tijuana_text, jail_riots_text, teo_text];
 	}
 	if(currentCity == "Acapulco") {
-	    rangei = [op_guerrero, capture_barbie];
-	    tip = [op_guerrero_text, capture_barbie_text];
+	    rangei = [op_guerrero, capture_barbie, op_guerrero11];
+	    tip = [op_guerrero_text, capture_barbie_text, op_guerrero11_text];
 	}
 	if(currentCity.indexOf("Tamaulipas") >= 0 || currentCity.indexOf("Nuevo León") >= 0
 	   || currentCity.indexOf("Tampico") >= 0 || currentCity.indexOf("Reynosa") >= 0
@@ -1619,11 +1806,11 @@ function createGraph(){
 	    
 	    tip = [mochomo_capture_text];
 	}
-	if(currentCity.indexOf("Valle de México") >= 0) {
-	    rangei = [mistake_df];
+	// if(currentCity.indexOf("Valle de México") >= 0) {
+	//     rangei = [mistake_df];
 	    
-	    tip = [mistake_df_text];
-	}
+	//     tip = [mistake_df_text];
+	// }
         rangei = rangei.map(getIndex);
 	return rangei
 	    .map(function(i) {
@@ -1687,7 +1874,10 @@ function createGraph(){
 
 
 
-
+/*
+ * 
+ * Redraw the line chart
+ */
 function rerenderGraph() {
     $('div[style^="position: absolute; width: 9px;"]').remove();
     $(".tipsy-e").remove();
@@ -1695,8 +1885,7 @@ function rerenderGraph() {
         createGraph();
     y.domain(0, pv.max(homrate.concat(drhrate))).nice();	  
     visChart.render();
-   		  
-    
+   
 }
 
 
@@ -1709,7 +1898,11 @@ function getIndex(idx) {
 /* Converts homtot, drhtot to a nicely formatted csv file*/
 function convertToCSV(){
     
-    var line = csvHeaders + '\r\n';
+    if(!statAdjust)
+	var line = csvHeaders + '\r\n';
+    else
+	var line = csvHeadersImp + '\r\n';
+
     for (var i = 0; i < homtot.length; i++) {
         var hom = monthlyData[i].hom == null ? "NA" : monthlyData[i].hom;
 	var drh =  monthlyData[i].drh == null ? "NA" : monthlyData[i].drh;
@@ -1858,3 +2051,10 @@ _utf8_decode : function (utftext) {
 }
 
 };
+
+
+
+
+
+
+
