@@ -34,7 +34,7 @@ TIPSY_CSS=css/tipsy.css
 INTERACTIVE_CSS =css/interactive-drug-war.css
 RANGESLIDER_CSS=css/iThing.css
 
-EXTRA_FILES = $(SHORTEN_LOC) $(ZCLIP) $(BOOTSTRAPMODAL) $(BOOTSTRAPTAB) $(WAX) $(PROTOVIS) $(TIPSY) $(JQUERYTIPSY) $(DRUG) $(MAP) $(CARTO) $(RANGESLIDER) $(CUSTOM_UI)
+EXTRA_FILES = $(SHORTEN_LOC) $(ZCLIP) $(BOOTSTRAPMODAL) $(BOOTSTRAPTAB) $(WAX) $(PROTOVIS) $(TIPSY) $(JQUERYTIPSY) $(DRUG) $(MAP) $(CARTO)  $(CUSTOM_UI)
 
 #Minimized Ouput
 COMBINED_JS_EN = gh-pages/js/combined-en.min.js
@@ -48,6 +48,7 @@ all: html cssmin english spanish webimages jquery
 
 jquery: 
 	cp $(CUSTOM_UI) gh-pages/js
+	cp $(RANGESLIDER) gh-pages/js
 
 debug: NODE = node index.js
 debug: COPYJS = cp $(SPANISH) $(ENGLISH) $(EXTRA_FILES) gh-pages/js
