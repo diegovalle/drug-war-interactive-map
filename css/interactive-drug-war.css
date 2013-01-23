@@ -100,7 +100,7 @@ table th, table td {
 }
 
 #homicide_table tbody td,#homicide_table tbody th{
-    text-align: right;
+    text-align: center;
 }
 
 .ui-slider .ui-slider-handle {
