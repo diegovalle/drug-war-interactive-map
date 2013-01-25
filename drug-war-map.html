@@ -8,22 +8,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 
-  <meta property="og:description" content="Awesome map to help understand the drug war in Mexico" /> 
-  <meta property="og:image" content="http://www.diegovalle.net/images/drug-war-interactive-th.png"/>
+  <meta property="og:description" content="The easiest way to understand the drug war in Mexico. Includes homicides and drug war deaths for all cities and municipalities in Mexico from 2004 to 2011. You can also statistically adjust the data to compensate for under-reporting and errors in how homicides are officially recorded" /> 
+  <meta property="og:image" content="http://www.diegovalle.net/images/drug-war-interactive-fb.png"/>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Interactive Map of the Drug War in Mexico"/>
   <meta property="og:title" content="Interactive Map of the Drug War in Mexico"/>
-  <meta property="og:url" content="http://www.diegovalle.net/drug-war-map.html" />
+  <meta property="og:url" content="http://www.diegovalle.net/narcomap" />
   <meta content="808656520" property="fb:admins"/>
 	
-  <title>Map of the Drug War in Mexico</title>
+  <title>Interactive Map of the Drug War in Mexico</title>
   <meta name="description" content="The most comprehensive map of the drug war in Mexico – continuously updated">
   <meta name="author" content="diego" >
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link href='http://fonts.googleapis.com/css?family=Anton|Yanone+Kaffeesatz:700&subset=latin' rel='stylesheet' type='text/css'>
-  <link rel="canonical" href="http://www.diegovalle.net/drug-war-map.html"/>
+  <link rel="canonical" href="http://www.diegovalle.net/narcomap"/>
 <style>
 .-cx-PRIVATE-pluginCommentFlyout__full {
 width: 390px;
@@ -43,7 +43,7 @@ width:300px!important;
 }
 </style>
 
-  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/combined.min.css?2012-12-20" rel="stylesheet">
+  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/combined.min.css?2013-12-22" rel="stylesheet">
 
 
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
@@ -56,7 +56,7 @@ width:300px!important;
 
 
 
-<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2011-01-29"></script>
+<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2013-01-22"></script>
 
   <script type="text/javascript">
     google.maps.event.addDomListener(window, 'load', initialize);
@@ -303,7 +303,7 @@ $(document).ready(function() {
 </div>
  <p>Total homicides in 2011 have been adjusted by about 3% to account for the cutoff date for registering them</p>
 
-              <p>Visit my <a href="http://blog.diegovalle.net/2012/01/interactive-map-of-drug-war-in-mexico.html">blog</a> for more details</p>
+              <p>Visit my <a href="http://blog.diegovalle.net/2013/01/interactive-map-of-drug-war-in-mexico.html">blog</a> for more details</p>
             </div>
 <!-- Table -->
 	    <div class="tab-pane" id="table">
@@ -456,9 +456,9 @@ $(document).ready(function() {
 <div class="span2">
 
   <div class="social_icons_small"  style = "width:100px">
-    <a class='twitter-share-button' data-lang='en' data-count='horizontal' data-via='diegovalle' data-text='Awesome map of the drug war in Mexico' data-related="diegovalle" data-url='http://www.diegovalle.net/drug-war-map.html' href='https://twitter.com/share'></a>
+    <a class='twitter-share-button' data-lang='en' data-count='horizontal' data-via='diegovalle' data-text='Interactive map of the drug war in Mexico' data-related="diegovalle" data-url='http://www.diegovalle.net/drug-war-map.html' href='https://twitter.com/share'></a>
     <div id='fb-root'></div>
-    <div class='fb-like' data-layout='button_count' data-send='false' data-show-faces='false' data-width='1' href='http://www.diegovalle.net/drug-war-map.html'></div>
+    <div class='fb-like' data-layout='button_count' data-send='false' data-show-faces='false' data-width='90' data-href='https://www.facebook.com/narcomap'></div>
     
   </div>
 </div>
@@ -538,7 +538,7 @@ Did you notice an interesting pattern? Do you have a suggestion? Comments about 
                  ',top='    + ($(window).width()  - 575)  / 2   +
                  ',left='   + ($(window).height()  - 400)  / 2))"><span>Facebook</span></a>
 
-		    <a class="plusone_icon" rel="nofollow"  title="Google Pluse" href="javascript:void(window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url='+encodeURI(shortUrlShare), 'Google Plus', 'status=1' +
+		    <a class="plusone_icon" rel="nofollow"  title="Google Plus" href="javascript:void(window.open('https://plus.google.com/share?url='+encodeURI(shortUrlShare), 'Google Plus', 'status=1' +
                  ',width='  + 575  +
                  ',height=' + 400 +
                  ',top='    + ($(window).width()  - 575)  / 2   +
@@ -599,6 +599,11 @@ Did you notice an interesting pattern? Do you have a suggestion? Comments about 
     </div>
    <script id="deferedjs" type="text/javascript">
       var _gaq=[['_setAccount','UA-100264-1'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+      _gaq.push(['_setSiteSpeedSampleRate', 5]);  //Measure Page Speed
+      _gaq.push(['_trackPageview']);
 	
     </script>
     <!--[if lt IE 9 ]>
@@ -620,12 +625,13 @@ Did you notice an interesting pattern? Do you have a suggestion? Comments about 
       
 
     // Facebook SDK
-    add('//connect.facebook.net/en_US/all.js#xfbml=1&appId=200103733347528', 'facebook-jssdk');
+    add('//connect.facebook.net/en_US/all.js#xfbml=1&appId=212097428820706', 'facebook-jssdk');
     // Twitter SDK
     add('//platform.twitter.com/widgets.js');
 
 
     fjs.parentNode.insertBefore(frag, fjs);
+
 }(document, 'script'));
 </script>
 </body>
