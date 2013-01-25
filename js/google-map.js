@@ -1401,15 +1401,48 @@ function initializeParameters() {
     //To speed up the code pre-convert the lat and longitudes of the 2d drug lab density estimate to google latlon objects
     lab_density = lab_density.map(function(d) {return {latlon: new google.maps.LatLng(d.y, d.x),
 				     z : d.z};});
-
+    var testDate;
     parameters = $.deparam(document.location.hash);
     if(parameters["start"] != null){
         startDate = parameters["start"];
 	changed = true;
+	testDate = new Date(startDate);
+/*
+ * Check to see if the data was correctly specifies
+ * sometimes jQuerySlider goes crazy and the
+ * data comes out as 2011-NaN-NaN
+ */
+	if ( Object.prototype.toString.call(testDate) === "[object Date]" ) {
+	    // it is a date
+	    if ( isNaN( d.getTime() ) ) {  // d.valueOf() could also work
+		// date is not valid
+		startDate = "2011-01-15";
+	    }
+	}
+	else {
+	    startDate = "2011-01-15";
+	}
     }
     if(parameters["end"] != null){
         endDate = parameters["end"];
 	changed = true;
+	testDate = new Date(startDate);
+/*
+ * Check to see if the data was correctly specifies
+ * sometimes jQuerySlider goes crazy and the
+ * data comes out as 2011-NaN-NaN
+ */
+
+	if ( Object.prototype.toString.call(testDate) === "[object Date]" ) {
+	    // it is a date
+	    if ( isNaN( d.getTime() ) ) {  // d.valueOf() could also work
+		// date is not valid
+		startDate = "2011-12-15";
+	    }
+	}
+	else {
+	    startDate = "2011-12-15";
+	}
     }
     yearSlider = startDate.substring(0,4);
     numMonths = monthDiff(new Date(startDate), new Date(endDate));
@@ -1502,7 +1535,7 @@ function initializeParameters() {
 						
 					    });
     }
-    if (navigator.userAgent.indexOf("Safari") != -1 && navigator.userAgent.indexOf("Chrome") == -1 &&  $.browser.version < 536.26) {alert("This version of Safari doesn't display the map properly (I recommend you use Chrome instead, sorry)");}
+    //if (navigator.userAgent.indexOf("Safari") != -1 && navigator.userAgent.indexOf("Chrome") == -1 &&  $.browser.version < 536.26) {alert("This version of Safari doesn't display the map properly (I recommend you use Chrome instead, sorry)");}
 }
 
 //difference in months between two dates

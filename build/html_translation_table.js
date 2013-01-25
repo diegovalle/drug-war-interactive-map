@@ -5,6 +5,7 @@ htmlTranslationTable = {
     "Map of the Drug War in Mexico": "Mapa de la guerra contra el narcotráfico",
     "The most comprehensive map of the drug war in Mexico – constantly updated":"El mapa más detallado de la guerra contra el narcotráfico en México – información actualizada",
     "http://www.diegovalle.net/drug-war-map.html":"http://www.diegovalle.net/mapa-guerra-narco.html",
+    "http://www.diegovalle.net/narcomap":"http://www.diegovalle.net/narcomapa",
 'js/english_text.js':'js/spanish_text.js',
     '<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2013-01-22"></script>' : '<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-es.min.js?2013-01-22"></script>',
     "DRUG WAR IN MEXICO" : "HOMICIDIOS Y NARCOTRÁFICO",
@@ -82,7 +83,8 @@ htmlTranslationTable = {
 "Show drug war-related homicides from Jan to Sept 2011":"Mostrar Homicidios C.O. de Ene a Sep 2011",
 'For comparison, New Orleans has the highest <a href="http://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2011/crime-in-the-u.s.-2011/tables/table-6"  target="_blank">U.S. metro homicide rate at 24</a>':'En el 2011 el área metropolitana más violenta de EE.UU, New Orleans, tuvo una <a href="http://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2011/crime-in-the-u.s.-2011/tables/table-6"  target="_blank">tasa de 24</a>',
 "At this zoom level only places with more than 20 homicides are shown":"A este zoom sólo se muestran lugares con más de 20 homicidios",
-"The easiest way to understand the drug war in Mexico. Includes homicides and drug war deaths for all municipalities and cities in Mexico from 2004 to 2011. You can also statistically adjust the data to compensate for under-reporting and errors in how homicides are officially recorded":"El mejor mapa para entender la guerra contra en narcotráfico. Incluye homicidios totales y por crimen organizado de todos los municipios del 2004 al 2011. También se pueden ajustar estadísticamente los datos para compensar los errores y omisiones que existen en las bases de datos oficiales",
+"The easiest way to understand the drug war in Mexico. Includes homicides and drug war deaths for all cities and municipalities in Mexico from 2004 to 2011. You can also statistically adjust the data to compensate for under-reporting and errors in how homicides are officially recorded":"El mejor mapa para entender la guerra contra en narcotráfico. Incluye homicidios totales y por crimen organizado de todos los municipios del 2004 al 2011. También se pueden ajustar estadísticamente los datos para compensar los errores y omisiones que existen en las bases de datos oficiales",
 "Share This Map":"Compartir",
-"Annual<br>Rate":"Tasa<br>Anual"
+"Annual<br>Rate":"Tasa<br>Anual",
+"https://www.facebook.com/narcomap":"https://www.facebook.com/narcomapa"
 };
