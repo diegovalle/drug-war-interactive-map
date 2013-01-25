@@ -1414,19 +1414,21 @@ function initializeParameters() {
  */
 	if ( Object.prototype.toString.call(testDate) === "[object Date]" ) {
 	    // it is a date
-	    if ( isNaN( d.getTime() ) ) {  // d.valueOf() could also work
+	    if ( isNaN( testDate.getTime() ) ) {  // d.valueOf() could also work
 		// date is not valid
 		startDate = "2011-01-15";
+		endDate = "2011-12-15";
 	    }
 	}
 	else {
 	    startDate = "2011-01-15";
+	    endDate = "2011-12-15";
 	}
     }
     if(parameters["end"] != null){
         endDate = parameters["end"];
 	changed = true;
-	testDate = new Date(startDate);
+	testDate = new Date(endDate);
 /*
  * Check to see if the data was correctly specifies
  * sometimes jQuerySlider goes crazy and the
@@ -1435,13 +1437,15 @@ function initializeParameters() {
 
 	if ( Object.prototype.toString.call(testDate) === "[object Date]" ) {
 	    // it is a date
-	    if ( isNaN( d.getTime() ) ) {  // d.valueOf() could also work
+	    if ( isNaN( testDate.getTime() ) ) {  // d.valueOf() could also work
 		// date is not valid
-		startDate = "2011-12-15";
+		startDate = "2011-01-15";
+		endDate = "2011-12-15";
 	    }
 	}
 	else {
-	    startDate = "2011-12-15";
+	    startDate = "2011-01-15";
+	    endDate = "2011-12-15";
 	}
     }
     yearSlider = startDate.substring(0,4);
