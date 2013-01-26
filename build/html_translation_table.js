@@ -86,5 +86,5 @@ htmlTranslationTable = {
 "The easiest way to understand the drug war in Mexico. Includes homicides and drug war deaths for all cities and municipalities in Mexico from 2004 to 2011. You can also statistically adjust the data to compensate for under-reporting and errors in how homicides are officially recorded":"El mejor mapa para entender la guerra contra en narcotráfico. Incluye homicidios totales y por crimen organizado de todos los municipios del 2004 al 2011. También se pueden ajustar estadísticamente los datos para compensar los errores y omisiones que existen en las bases de datos oficiales",
 "Share This Map":"Compartir",
 "Annual<br>Rate":"Tasa<br>Anual",
-"https://www.facebook.com/narcomap":"https://www.facebook.com/narcomapa"
+"http://www.facebook.com/narcomap":"http://www.facebook.com/narcomapa"
 };
