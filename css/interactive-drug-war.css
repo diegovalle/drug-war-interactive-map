@@ -121,12 +121,12 @@ table th, table td {
     cursor: pointer;
 }
 .maximized {
-    background:url('../images/chart.png') no-repeat -26px 0px;width:26px; height:26px;
+    background:url('http://www.diegovalle.net/images/chart.png') no-repeat -26px 0px;width:26px; height:26px;
  
 }
 
 .minimized {
-background:url('../images/chart.png') no-repeat 0px 0px;width:26px; height:26px;
+background:url('http://www.diegovalle.net/images/chart.png') no-repeat 0px 0px;width:26px; height:26px;
 }
 
 .selected-year {
@@ -348,8 +348,8 @@ height:200px;
 padding-bottom:30px
 }
 
-.sprite-chart-polygon{ background:url('../images/chart.png') no-repeat -19px -26px;width:15px; height:15px;display: inline-block;}
-.sprite-chart-twitter_bw_small{ background:url('../images/chart.png') no-repeat 0px 0px;width:19px; height:19px;}
+.sprite-chart-polygon{ background:url('http://www.diegovalle.net/images/chart.png') no-repeat -19px -26px;width:15px; height:15px;display: inline-block;}
+.sprite-chart-twitter_bw_small{ background:url('http://www.diegovalle.net/images/chart.png') no-repeat 0px 0px;width:19px; height:19px;}
 
 .btn.custom {
   background-color: hsl(108, 71%, 30%);

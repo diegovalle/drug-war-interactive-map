@@ -7,7 +7,7 @@ htmlTranslationTable = {
     "http://www.diegovalle.net/drug-war-map.html":"http://www.diegovalle.net/mapa-guerra-narco.html",
     "http://www.diegovalle.net/narcomap":"http://www.diegovalle.net/narcomapa",
 'js/english_text.js':'js/spanish_text.js',
-    '<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2013-01-22"></script>' : '<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-es.min.js?2013-01-22"></script>',
+    '<script type="text/javascript" src="http://www.diegovalle.net/javascript/combined-en.min.js"></script>' : '<script type="text/javascript" src="http://www.diegovalle.net/javascript/combined-es.min.js"></script>',
     "DRUG WAR IN MEXICO" : "HOMICIDIOS Y NARCOTRÁFICO",
     "Map options:" : "Opciones del Mapa:",
     "Total Homicides" : "Homicidios Totales",
@@ -26,7 +26,7 @@ htmlTranslationTable = {
     "Blog" : "Blog",
     "@diegovalle on Twitter" : "@diegovalle en Twitter",
     "@diegovalle on Twitter" : "@diegovalle en Twitter",
-    "Diego Valle-Jones on Facebook" : "Diego Valle-Jones en Facebook",
+    "Narcomap on Facebook" : "Narcomapa en Facebook",
     "@diegovalle on Facebook" : "@diegovalle en Facebook",
     'Did you notice an interesting pattern? Do you have a suggestion? Comments about the data? Please <a target="_blank" href="http://www.diegovalle.net/contact.html">get in touch</a>.' :'¿Descubriste algún patrón interesante? ¿Tienes una sugerencia? ¿Comentarios sobre los datos? Por favor <a target="_blank" href="http://www.diegovalle.net/contact.html">contáctame</a>.',
     "Sources" : " Fuentes",
@@ -86,5 +86,7 @@ htmlTranslationTable = {
 "The easiest way to understand the drug war in Mexico. Includes homicides and drug war deaths for all cities and municipalities in Mexico from 2004 to 2011. You can also statistically adjust the data to compensate for under-reporting and errors in how homicides are officially recorded":"El mejor mapa para entender la guerra contra en narcotráfico. Incluye homicidios totales y por crimen organizado de todos los municipios del 2004 al 2011. También se pueden ajustar estadísticamente los datos para compensar los errores y omisiones que existen en las bases de datos oficiales",
 "Share This Map":"Compartir",
 "Annual<br>Rate":"Tasa<br>Anual",
-"http://www.facebook.com/narcomap":"http://www.facebook.com/narcomapa"
+"http://www.facebook.com/narcomap":"http://www.facebook.com/narcomapa",
+"137425193044328":"263403597061712",
+"en_US":"es_LA"
 };

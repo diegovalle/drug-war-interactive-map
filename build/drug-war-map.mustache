@@ -15,6 +15,7 @@
   <meta property="og:title" content="{{_i}}Interactive Map of the Drug War in Mexico{{/i}}"/>
   <meta property="og:url" content="{{_i}}http://www.diegovalle.net/narcomap{{/i}}" />
   <meta content="808656520" property="fb:admins"/>
+  <meta content="{{_i}}137425193044328{{/i}}" property="fb:page_id">
 	
   <title>{{_i}}Interactive Map of the Drug War in Mexico{{/i}}</title>
   <meta name="description" content="{{_i}}The most comprehensive map of the drug war in Mexico – continuously updated{{/i}}">
@@ -51,17 +52,14 @@ width:300px!important;
 {{/production}}
 
 {{#production}}
-  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/combined.min.css?2013-12-22" rel="stylesheet">
-{{/production}}
+  <link href="http://www.diegovalle.net/css/combined.min.css" rel="stylesheet">
+  <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />-->  
 
-
-  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
-
-  
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-  <script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script type="text/javascript" src="http://www.diegovalle.net/javascript/jquery-ui-1.8.16.custom.min.js"></script>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=drawing"></script>
-<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/jQDateRangeSlider-min.js"></script>
+  <script type="text/javascript" src="http://www.diegovalle.net/javascript/jQDateRangeSlider-min.js"></script>
+{{/production}}
 
 {{^production}}
   <script type="text/javascript" src="{{_i}}js/english_text.js{{/i}}"></script>
@@ -82,7 +80,7 @@ width:300px!important;
 
 
 {{#production}}
-{{_i}}<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2013-01-22"></script>{{/i}}
+{{_i}}<script type="text/javascript" src="http://www.diegovalle.net/javascript/combined-en.min.js"></script>{{/i}}
 {{/production}}
 
   <script type="text/javascript">
@@ -142,6 +140,7 @@ $(document).ready(function() {
 		      //create the chart
 		      if (visChart == null)
 			  createGraph();
+                      
                       //hide or show with the +/- button
 		      $("#trigger").click(function() {
 					      $("#trigger").toggleClass("minimized");
@@ -485,7 +484,7 @@ $(document).ready(function() {
   <div class="social_icons_small"  style = "width:100px">
     <a class='twitter-share-button' data-lang='{{_i}}en{{/i}}' data-count='horizontal' data-via='diegovalle' data-text='{{_i}}Interactive map of the drug war in Mexico{{/i}}' data-related="diegovalle" data-url='{{_i}}http://www.diegovalle.net/drug-war-map.html{{/i}}' href='https://twitter.com/share'></a>
     <div id='fb-root'></div>
-    <div class='fb-like' data-layout='button_count' data-send='false' data-show-faces='false' data-width='90' data-href='{{_i}}http://www.facebook.com/narcomap{{/i}}'></div>
+    <div class='fb-like' data-layout='button_count' data-send='false' data-show-faces='false' data-width='90' data-href='{{_i}}http://www.diegovalle.net/drug-war-map.html{{/i}}'></div>
     
   </div>
 </div>
@@ -503,8 +502,8 @@ $(document).ready(function() {
 <div style="clear:both;position: relative;margin-bottom:16px;">
 <ul style="list-style: none;display: block;vertical-align: baseline;margin:0;">
 <li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon blog" href="http://blog.diegovalle.net" title="{{_i}}Diego's Blog{{/i}}">{{_i}}Blog{{/i}}</a> </li>
-<li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon twit" href="http://twitter.com/diegovalle" title="{{_i}}@diegovalle on Twitter{{/i}}">{{_i}}@diegovalle on Twitter{{/i}}</a> </li>
-<li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon facebook-icon" href="http://facebook.com/diegovalle" title="{{_i}}Diego Valle-Jones on Facebook{{/i}}">{{_i}}@diegovalle on Facebook{{/i}}</a> </li>
+<li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon twit" rel="me" href="http://twitter.com/diegovalle" title="{{_i}}@diegovalle on Twitter{{/i}}">{{_i}}@diegovalle on Twitter{{/i}}</a> </li>
+<li style="float: left;margin-right:5px;"> <a target="_blank" class="made-by-icon facebook-icon" href="{{_i}}http://facebook.com/narcomap{{/i}}" title="{{_i}}Narcomap on Facebook{{/i}}">{{_i}}Narcomap on Facebook{{/i}}</a> </li>
 </ul>
 </div>
 <hr class="clear">
@@ -654,10 +653,9 @@ $(document).ready(function() {
       
 
     // Facebook SDK
-    add('//connect.facebook.net/en_US/all.js#xfbml=1&appId=212097428820706', 'facebook-jssdk');
+    add('//connect.facebook.net/{{_i}}en_US{{/i}}/all.js#xfbml=1&appId=212097428820706', 'facebook-jssdk');
     // Twitter SDK
     add('//platform.twitter.com/widgets.js');
-
 
     fjs.parentNode.insertBefore(frag, fjs);
 
