@@ -902,8 +902,8 @@ var updateHomicidesTable = function(){
 		      
     var cityText = currentCity;
     switch(cityText) {
-    case "José Azueta, Guerrero":
-	cityText = "Zihuatanejo, Guerrero";
+    case "José Azueta, Gro":
+	cityText = "Zihuatanejo, Gro";
 	break;
     case "San Luis Potosí-Soledad de Graciano Sánchez":
 	cityText = "San Luis Potosí" + metroArea;
