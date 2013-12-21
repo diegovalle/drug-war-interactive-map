@@ -176,7 +176,7 @@ $(document).ready(function() {
 					      $("#dateSlider").dateRangeSlider({
 										   bounds:{
 										       min: new Date(2004, 0, 15),
-										       max: new Date(2011, 11, 15)
+										       max: new Date(2012, 11, 15)
 										   },
 										   step:{
 										       months: 1
@@ -261,14 +261,15 @@ $(document).ready(function() {
 
 	    <table style="width:304px;padding:0;margin:0 0 10px 22px;border:0;" >
 	      <tr>
-		<td style="width:12.5%;border:0" id="slider2004">2004</td>
-		<td style="width:12.5%;border:0" id="slider2005">2005</td>
-		<td style="width:12.5%;border:0" id="slider2006">2006</td>
-		<td style="width:12.5%;border:0" id="slider2007">2007</td>
-		<td style="width:12.5%;border:0;" id="slider2008">2008</td>
-		<td style="width:12.5%;border:0" id="slider2009">2009</td>
-		<td style="width:12.5%;border:0;" id="slider2010">2010</td>
-		<td style="width:12.5%;border:0" id="slider2011">2011</td>
+		<td style="width:10.5%;border:0" id="slider2004">2004</td>
+		<td style="width:10.5%;border:0" id="slider2005">2005</td>
+		<td style="width:10.5%;border:0" id="slider2006">2006</td>
+		<td style="width:10.5%;border:0" id="slider2007">2007</td>
+		<td style="width:10.5%;border:0;" id="slider2008">2008</td>
+		<td style="width:10.5%;border:0" id="slider2009">2009</td>
+		<td style="width:10.5%;border:0;" id="slider2010">2010</td>
+		<td style="width:10.5%;border:0" id="slider2011">2011</td>
+                <td style="width:10.5%;border:0" id="slider2012">2012</td>
 	      </tr>
 	    </table>
 	    
@@ -328,7 +329,7 @@ $(document).ready(function() {
 <div class="span7">
 <span id="zoom-explaining"><i>{{_i}}At this zoom level only places with more than 20 homicides are shown{{/i}}</i></span>
 </div>
- <p>{{_i}}Total homicides in 2011 have been adjusted by about 3% to account for the cutoff date for registering them{{/i}}</p>
+ <p>{{_i}}Total homicides in 2012 have been adjusted by about 3% to account for the cutoff date for registering them{{/i}}</p>
 
               <p>{{_i}}Visit my <a href="http://blog.diegovalle.net/2012/01/interactive-map-of-drug-war-in-mexico.html">blog</a> for more details{{/i}}</p>
             </div>
@@ -401,6 +402,13 @@ $(document).ready(function() {
 		  <td id = "rn2011" class="hidden-cell"></td>
 		  <td id = "h2011"></td>
 		  <td id = "rh2011"></td>
+	        </tr>
+                <tr>
+		  <th>2012</th>
+		  <td id = "n2012"></td>
+		  <td id = "rn2012"></td>
+		  <td id = "h2012"></td>
+		  <td id = "rh2012"></td>
 	      </tr>
 	      </table>
 	      
