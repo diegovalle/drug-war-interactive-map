@@ -628,6 +628,7 @@ Canvas.prototype.draw = function(){
      */
     if((typeOfHomicide === "DWRH" & new Date(endDate) < new Date(2006,11,15)) | 
 	(typeOfHomicide === "DWRH" & new Date(startDate) < new Date(2006,11,14)) |
+       (typeOfHomicide === "DWRH" & new Date(startDate) > new Date(2011,09,14)) |
 	(typeOfHomicide === "INEGI" & new Date(endDate).getFullYear() > lastHomicideYear) |
        (typeOfHomicide === "DWRH" & new Date(endDate).getFullYear() == 2011  & new Date(endDate).getMonth() > 8)) {
 
@@ -1733,7 +1734,7 @@ function createGraph(){
 	    rangei = [mochomo_date];
 	    tip = [mochomo_text];
 	}
-	if(currentCity.indexOf(", Michoacán") >= 0) {
+	if(currentCity.indexOf(", Mich") >= 0) {
 	    rangei = [op_michoacan, op_michoacan2];
 	    tip = [op_michoacan_text, op_michoacan2_text];
 	}
@@ -1742,14 +1743,14 @@ function createGraph(){
 	    rangei = [op_marlin, op_culiacan];
 	    tip = [op_marlin_text, op_culiacan_text];
 	}
-	if(currentCity.indexOf("Ahome, Sinaloa") >= 0 ||
-	   currentCity.indexOf("El Fuerte, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Guasave, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Sinaloa, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Salvador Alvarado, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Mocorito, Sinaloa") >= 0 ||
-	   currentCity.indexOf("El Fuerte, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Angostura, Sinaloa") >= 0) {
+	if(currentCity.indexOf("Ahome, Sin") >= 0 ||
+	   currentCity.indexOf("El Fuerte, Sin") >= 0 ||
+	   currentCity.indexOf("Guasave, Sin") >= 0 ||
+	   currentCity.indexOf("Sinaloa, Sin") >= 0 ||
+	   currentCity.indexOf("Salvador Alvarado, Sin") >= 0 ||
+	   currentCity.indexOf("Mocorito, Sin") >= 0 ||
+	   currentCity.indexOf("El Fuerte, Sin") >= 0 ||
+	   currentCity.indexOf("Angostura, Sin") >= 0) {
 	    rangei = [abl_date];
 	    tip = [abl_text];
 	}
@@ -1805,7 +1806,7 @@ function createGraph(){
 	    rangei = [mochomo_capture, abl_killed];
 	    tip = [mochomo_capture_text, abl_killed_text];
 	}
-	if(currentCity.indexOf(", Guerrero") >= 0) {
+	if(currentCity.indexOf(", Gro") >= 0) {
 	    rangei = [mochomo_capture];
 	    
 	    tip = [mochomo_capture_text];

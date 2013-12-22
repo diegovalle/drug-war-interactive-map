@@ -76,7 +76,7 @@ htmlTranslationTable = {
 'Select a circle on the map or use the draw any shape button <img class="sprite-chart-polygon"> to display the homicide data from that area in the above chart':'Selecciona un círculo en el mapa o usa el botón de áreas arbitrarias <img class="sprite-chart-polygon"> para mostrar los datos en la gráfica',
 "Type of homicide:":"Tipo de homicidio:",
 "Date range to show on map:":"Fechas a mostrar en el mapa:",
-    "Drug War Homicides are only available from Dec 2006 to Sep 2011":"Sólo disponibles de Dic 2005 a Sep 2011",
+    "Drug War Homicides are only available from Dec 2006 to Sep 2011":"Sólo disponibles de Dic 2006 a Sep 2011",
 "Drug cultivation and trafficking routes:":"Tráfico y Cultivos",
 "images/legend-en.png":"images/legend-es.png",
 "Show drug war-related homicides from Jan to Sept 2011":"Mostrar Homicidios C.O. de Ene a Sep 2011",

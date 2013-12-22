@@ -51,15 +51,21 @@ width:300px!important;
 {{/production}}
 
 {{#production}}
-  <link href="http://diegovalle.github.com/drug-war-interactive-map/css/combined.min.css?2012-12-20" rel="stylesheet">
+  <link href="http://diegovalle.net/css/combined.min.css?2013-12-20" rel="stylesheet">
 {{/production}}
 
 
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
 
   
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-  <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+{{#production}} 
+  <script type="text/javascript" src="http://diegovalle.net/javascript/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="http://diegovalle.net/javascript/jQDateRangeSlider-min.js"></script>
+{{/production}}
+{{^production}}
+<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+{{/production}}
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=drawing"></script>
 
 
@@ -82,7 +88,7 @@ width:300px!important;
 
 
 {{#production}}
-{{_i}}<script type="text/javascript" src="http://diegovalle.github.com/drug-war-interactive-map/js/combined-en.min.js?2011-01-29"></script>{{/i}}
+{{_i}}<script type="text/javascript" src="http://diegovalle.net/javascript/combined-en.min.js?2013-01-29"></script>{{/i}}
 {{/production}}
 
   <script type="text/javascript">
