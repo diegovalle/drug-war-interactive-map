@@ -8,8 +8,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 
-  <meta property="og:description" content="{{_i}}The easiest way to understand the drug war in Mexico. Includes homicides and drug war deaths for all cities and municipalities in Mexico from 2004 to 2011. You can also statistically adjust the data to compensate for under-reporting and errors in how homicides are officially recorded{{/i}}" /> 
-  <meta property="og:image" content="http://www.diegovalle.net/images/drug-war-interactive-fb.png"/>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="diegovalle">
+<meta name="twitter:title" content="{{_i}}Interactive Map of the Drug War in Mexico{{/i}}">
+<meta name="twitter:description" content="{{_i}}Interactive map with homicide rates and important events in the drug war{{/i}}">
+<meta name="twitter:creator" content="diegovalle">
+<meta name="twitter:image:src" content="http://www.diegovalle.net/images/narcomap_card.jpg">
+
+
+  <meta property="og:description" content="{{_i}}Interactive map with homicide rates and important events in the drug war{{/i}}" /> 
+  <meta property="og:image" content="http://www.diegovalle.net/images/drug-war-interactive-th.png"/>
+
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="{{_i}}Interactive Map of the Drug War in Mexico{{/i}}"/>
   <meta property="og:title" content="{{_i}}Interactive Map of the Drug War in Mexico{{/i}}"/>
@@ -52,11 +62,22 @@ width:300px!important;
 {{/production}}
 
 {{#production}}
-  <link href="http://www.diegovalle.net/css/combined.min.css" rel="stylesheet">
-  <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />-->  
+  <link href="http://diegovalle.net/css/combined.min.css?2013-12-20" rel="stylesheet">
+{{/production}}
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-  <script type="text/javascript" src="http://www.diegovalle.net/javascript/jquery-ui-1.8.16.custom.min.js"></script>
+
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
+
+  
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+{{#production}} 
+  <script type="text/javascript" src="http://diegovalle.net/javascript/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="http://diegovalle.net/javascript/jQDateRangeSlider-min.js"></script>
+{{/production}}
+{{^production}}
+<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+{{/production}}
+
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=drawing"></script>
   <script type="text/javascript" src="http://www.diegovalle.net/javascript/jQDateRangeSlider-min.js"></script>
 {{/production}}
@@ -80,7 +101,7 @@ width:300px!important;
 
 
 {{#production}}
-{{_i}}<script type="text/javascript" src="http://www.diegovalle.net/javascript/combined-en.min.js"></script>{{/i}}
+{{_i}}<script type="text/javascript" src="http://diegovalle.net/javascript/combined-en.min.js?2013-01-29"></script>{{/i}}
 {{/production}}
 
   <script type="text/javascript">
@@ -175,7 +196,7 @@ $(document).ready(function() {
 					      $("#dateSlider").dateRangeSlider({
 										   bounds:{
 										       min: new Date(2004, 0, 15),
-										       max: new Date(2011, 11, 15)
+										       max: new Date(2012, 11, 15)
 										   },
 										   step:{
 										       months: 1
@@ -260,14 +281,15 @@ $(document).ready(function() {
 
 	    <table style="width:304px;padding:0;margin:0 0 10px 22px;border:0;" >
 	      <tr>
-		<td style="width:12.5%;border:0" id="slider2004">2004</td>
-		<td style="width:12.5%;border:0" id="slider2005">2005</td>
-		<td style="width:12.5%;border:0" id="slider2006">2006</td>
-		<td style="width:12.5%;border:0" id="slider2007">2007</td>
-		<td style="width:12.5%;border:0;" id="slider2008">2008</td>
-		<td style="width:12.5%;border:0" id="slider2009">2009</td>
-		<td style="width:12.5%;border:0;" id="slider2010">2010</td>
-		<td style="width:12.5%;border:0" id="slider2011">2011</td>
+		<td style="width:10.5%;border:0" id="slider2004">2004</td>
+		<td style="width:10.5%;border:0" id="slider2005">2005</td>
+		<td style="width:10.5%;border:0" id="slider2006">2006</td>
+		<td style="width:10.5%;border:0" id="slider2007">2007</td>
+		<td style="width:10.5%;border:0;" id="slider2008">2008</td>
+		<td style="width:10.5%;border:0" id="slider2009">2009</td>
+		<td style="width:10.5%;border:0;" id="slider2010">2010</td>
+		<td style="width:10.5%;border:0" id="slider2011">2011</td>
+                <td style="width:10.5%;border:0" id="slider2012">2012</td>
 	      </tr>
 	    </table>
 	    
@@ -327,7 +349,7 @@ $(document).ready(function() {
 <div class="span7">
 <span id="zoom-explaining"><i>{{_i}}At this zoom level only places with more than 20 homicides are shown{{/i}}</i></span>
 </div>
- <p>{{_i}}Total homicides in 2011 have been adjusted by about 3% to account for the cutoff date for registering them{{/i}}</p>
+ <p>{{_i}}Total homicides in 2012 have been adjusted by about 3% to account for the cutoff date for registering them{{/i}}</p>
 
               <p>{{_i}}Visit my <a href="http://blog.diegovalle.net/2013/01/interactive-map-of-drug-war-in-mexico.html">blog</a> for more details{{/i}}</p>
             </div>
@@ -400,6 +422,13 @@ $(document).ready(function() {
 		  <td id = "rn2011" class="hidden-cell"></td>
 		  <td id = "h2011"></td>
 		  <td id = "rh2011"></td>
+	        </tr>
+                <tr>
+		  <th>2012</th>
+		  <td id = "n2012"></td>
+		  <td id = "rn2012"></td>
+		  <td id = "h2012"></td>
+		  <td id = "rh2012"></td>
 	      </tr>
 	      </table>
 	      
@@ -413,7 +442,7 @@ $(document).ready(function() {
                 </li>
 </ul>
 </div>
-	      <p>{{_i}}For comparison, New Orleans has the highest <a href="http://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2011/crime-in-the-u.s.-2011/tables/table-6"  target="_blank">U.S. metro homicide rate at 24</a>{{/i}}</a></p>
+	      <p>{{_i}}In comparison, New Orleans had a <a href="http://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2012/crime-in-the-u.s.-2012/tables/6tabledatadecpdf"  target="_blank">homicide rate of 21</a>{{/i}}</a></p>
 	    </div>
             </div>
            
@@ -515,7 +544,7 @@ $(document).ready(function() {
               <p><strong>{{_i}}The mention of external data sources or research papers does not mean an endorsement of this website. The contents of this website are solely the responsibility of its author.{{/i}}</strong></p>
 <ul>
 	      <li>{{_i}}Drug War-Related Homicides: Dec 2006-Dec 2010: <a target="_blank" href="http://www.presidencia.gob.mx/base-de-datos-de-fallecimientos/">Base de datos de fallecimientos ocurridos por presunta rivalidad delincuencial</a> and for 2011 <a target="_blank" href="http://www.pgr.gob.mx/temas%20relevantes/estadistica/estadisticas.asp#">PGR</a>{{/i}}</li>
-	      <li>{{_i}}Total Homicides: Dirección General de Información en Salud (DGIS). Base de datos de defunciones 1998-2011: <a target="_blank" href="http://www.sinais.salud.gob.mx/basesdedatos/std_defunciones.html">Sistema Nacional de Información en Salud (SINAIS)</a>. [México]: Secretaría de Salud [Accessed 2013-01-10] INEGI{{/i}}</li>
+	      <li>{{_i}}Total Homicides: Dirección General de Información en Salud (DGIS). Base de datos de defunciones 2004-2012: <a target="_blank" href="http://www3.inegi.org.mx/sistemas/microdatos/encuestas.aspx?c=33398&s=est">Microdatos de defunciones generales</a>. [México]: Secretaría de Salud [Accessed 2013-12-16] INEGI{{/i}}</li>
 <li>{{_i}}Military Operation Dates: <a target="_blank" href="http://www.ssp.gob.mx/portalWebApp/ShowBinary?nodeId=/BEA%20Repository/816002//archivo">Segundo Informe de Labores</a>, Secretaría de Seguridad Pública{{/i}}</li>
 	      <li>{{_i}}Coordinates of Municipalities: <a target="_blank" href="http://www.sinais.salud.gob.mx/basesdedatos/estandar.html#municipios">Catálogos de municipios y localidades</a>{{/i}}</li>
 	      <li>{{_i}}Metro Areas:  <a target="_blank" href="http://www.conapo.gob.mx/en/CONAPO/Zonas_metropolitanas_2010">Delimitación de las zonas metropolitanas de México 2010, INEGI</a>{{/i}}</li>

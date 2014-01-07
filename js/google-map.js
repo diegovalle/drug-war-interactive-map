@@ -297,12 +297,12 @@ var style = [{
 	     }
 	    ];
 /*
- * Modify this variables when updating the homicide data
+ * Modify these variables when updating the homicide data
  */
 var adjustHom = false;
 var existsSlider = false;
-var startDate = "2011-01-15";
-var endDate = "2011-12-15";
+var startDate = "2012-01-15";
+var endDate = "2012-12-15";
 var numMonths = 12;
 /*
  * Variables that hold the sql query from cartodb
@@ -311,24 +311,24 @@ var homrate = [], datehom = [], homtot = [], drhrate = [], drhtot =[], pop = [];
 var commas = pv.Format.number();
 var homicides_text = total_homicides;
 /*
- * Modify this variables when updating the homicide data
+ * Modify these variables when updating the homicide data
  */
 var lastDWRHYear = 2011;
 var lastDWRHMonth = 9; //September is the last month for which DWRH are available
-var lastHomicideYear = 2011;
+var lastHomicideYear = 2012;
 
 /*
- * Modify this variables when updating the homicide data
+ * Modify these variables when updating the homicide data
  */
 //Chart sidebar variables
-var lastDate = "December 15, 2011";
+var lastDate = "December 15, 2012";
 var interHom = -1, interDRH = -1;var interDRH2 = -1;
 var activeLine = false, activeChart;
 var startDWRH = new Date("December 15,2006");
 var endDWRH = new Date("September 15,2011");
 var start = new Date(2004, 0, 1);
 var end = new Date(lastDate);
-var endHomicides = new Date("December 15, 2011");
+var endHomicides = new Date("December 15, 2012");
 var monthsLength = monthDiff(start, end);
 
 var dates = [];
@@ -391,15 +391,15 @@ var w = 360,
 /*
  * Monthly homicide, imputed homicide, and drug war homicide data for all of Mexico
  */
-var alltothom = [    772,    797,    819,    688,    836,    804,    746,    771,    745,    781,    781,    812,    769,    785,    842,    856,    818,    891,    820,    800,    845,    827,    825,    910,    893,    760,    853,    832,    913,    850,    853,    924,    916,    834,    907,    884,    599,    510,    791,    772,    937,    761,    745,    764,    710,    774,    710,    780,    888,    841,   1008,    944,   1148,   1221,   1178,   1288,   1182,   1474,   1525,   1531,   1374,   1482,   1425,   1341,   1476,   1668,   1634,   1798,   1852,   1763,   1707,   2234,   1953,   1673,   2015,   2045,   2159,   2321,   2292,   2561,   2180,   2481,   1923,   2314,   2219,   2029,   2224,   2419,   2614,   2322,   2408,   2338,   2097,   2259,   2029,   2004 ];
+var alltothom = [ 773, 798, 819, 689, 837, 805, 745, 773, 746, 784, 781, 816, 771, 786, 843, 856, 819, 892, 820, 800, 845, 827, 825, 910, 894, 761, 854, 834, 917, 852, 855, 924, 920, 838, 906, 887, 606, 510, 788, 771, 938, 761, 746, 766, 710, 774, 710, 783, 893, 841, 1010, 945, 1150, 1224, 1178, 1288, 1186, 1479, 1524, 1531, 1384, 1482, 1432, 1345, 1482, 1673, 1645, 1801, 1865, 1772, 1719, 2240, 1960, 1676, 2021, 2046, 2165, 2322, 2301, 2568, 2191, 2489, 1934, 2327, 2231, 2032, 2250, 2451, 2599, 2343, 2428, 2341, 2104, 2284, 2025, 2151, 2190, 1895, 2195, 2244, 2393, 2241, 2151, 2228, 2396, 1893, 1815, 2153 ];
 
 
-var alltothom_imp = [    842,    879,    927,    789,    935,    887,    859,    873,    836,    882,    854,    907,    882,    884,    916,    951,    917,    996,    919,    883,    928,    903,    910,   1017,    977,    842,    954,    910,   1009,    935,    926,    997,    997,    926,    985,    970,    697,    607,    891,    843,   1027,    859,    833,    863,    865,    948,    912,   1005,   1005,    931,   1123,   1033,   1250,   1332,   1276,   1397,   1298,   1569,   1651,   1637,   1477,   1602,   1522,   1457,   1577,   1769,   1763,   1910,   1966,   1880,   1811,   2349,   2068,   1802,   2204,   2221,   2420,   2511,   2447,   2722,   2302,   2624,   2062,   2462,   2457,   2259,   2431,   2720,   2866,   2574,   2617,   2585,   2318,   2533,   2216,   2203 ];
+var alltothom_imp = [ 858, 888, 938, 793, 946, 899, 860, 886, 843, 899, 854, 919, 892, 892, 929, 960, 923, 992, 938, 902, 934, 913, 921, 1027, 986, 849, 957, 920, 1023, 945, 936, 1013, 1016, 950, 1006, 994, 744, 648, 893, 850, 1034, 866, 837, 886, 863, 951, 908, 1007, 1013, 933, 1137, 1039, 1254, 1349, 1278, 1399, 1308, 1579, 1666, 1639, 1485, 1611, 1541, 1472, 1585, 1778, 1778, 1924, 1991, 1897, 1837, 2361, 2072, 1814, 2217, 2229, 2440, 2526, 2474, 2737, 2319, 2645, 2078, 2487, 2476, 2274, 2486, 2772, 2872, 2616, 2659, 2606, 2357, 2576, 2251, 2395, 2358, 2035, 2361, 2382, 2544, 2393, 2332, 2400, 2563, 2089, 1981, 2356 ];
 
-var alltotdrh =[ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,     62,    146,    106,    266,    249,    313,    200,    159,    300,    262,    294,    259,    272,    306,    331,    352,    294,    506,    512,    614,    706,    573,    860,    981,    802,    588,    741,    626,    641,    638,    923,    848,    882,    928,    904,    831,   1064,   1080,    988,   1266,   1250,   1363,   1494,   1494,   1488,   1160,   1467,   1079,   1144,   1351,   1176,   1424,   1630,   1539,   1433,   1519,   1461,   1370, null, null, null ];
+var alltotdrh =[ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,     62,    146,    106,    266,    249,    313,    200,    159,    300,    262,    294,    259,    272,    306,    331,    352,    294,    506,    512,    614,    706,    573,    860,    981,    802,    588,    741,    626,    641,    638,    923,    848,    882,    928,    904,    831,   1064,   1080,    988,   1266,   1250,   1363,   1494,   1494,   1488,   1160,   1467,   1079,   1144,   1351,   1176,   1424,   1630,   1539,   1433,   1519,   1461,   1370, null, null, null, null, null, null,null, null, null,null, null, null,null, null, null ];
 
 
-var allpop = [ 1.0335e+08, 1.0347e+08, 1.0358e+08, 1.037e+08, 1.0382e+08, 1.0393e+08, 1.0405e+08, 1.0417e+08, 1.0428e+08, 1.044e+08, 1.0452e+08, 1.0463e+08, 1.0475e+08, 1.0487e+08, 1.0498e+08, 1.051e+08, 1.0522e+08, 1.0533e+08, 1.0545e+08, 1.0557e+08, 1.0568e+08, 1.058e+08, 1.0592e+08, 1.0603e+08, 1.0615e+08, 1.0627e+08, 1.0639e+08, 1.065e+08, 1.0662e+08, 1.0674e+08, 1.0685e+08, 1.0697e+08, 1.0709e+08, 1.072e+08, 1.0732e+08, 1.0744e+08, 1.0756e+08, 1.0767e+08, 1.0779e+08, 1.0791e+08, 1.0802e+08, 1.0814e+08, 1.0826e+08, 1.0837e+08, 1.0849e+08, 1.0861e+08, 1.0873e+08, 1.0884e+08, 1.0896e+08, 1.0908e+08, 1.0919e+08, 1.0931e+08, 1.0943e+08, 1.0954e+08, 1.0966e+08, 1.0978e+08, 1.0989e+08, 1.1001e+08, 1.1013e+08, 1.1024e+08, 1.1036e+08, 1.1048e+08, 1.1059e+08, 1.1071e+08, 1.1083e+08, 1.1094e+08, 1.1106e+08, 1.1118e+08, 1.1129e+08, 1.1141e+08, 1.1152e+08, 1.1164e+08, 1.1176e+08, 1.1187e+08, 1.1199e+08, 1.121e+08, 1.1222e+08, 1.1234e+08, 1.1245e+08, 1.1257e+08, 1.1268e+08, 1.128e+08, 1.1292e+08, 1.1303e+08, 1.1315e+08, 1.1326e+08, 1.1338e+08, 1.1349e+08, 1.1361e+08, 1.1373e+08, 1.1384e+08, 1.1396e+08, 1.1407e+08, 1.1419e+08, 1.143e+08, 1.1442e+08 ];
+var allpop = [ 102608217, 102686957, 102765698, 102844414, 102923148, 103001867, 103080694, 103159742, 103238900, 103318121, 103397310, 103476448, 103555556, 103634387, 103713034, 103791370, 103869292, 103946866, 104020008, 104086329, 104148121, 104207607, 104267081, 104328830, 104395137, 104468267, 104550458, 104643975, 104751218, 104874282, 105016275, 105176763, 105353144, 105542827, 105743099, 105951314, 106164860, 106381067, 106597315, 106810896, 107019205, 107219602, 107415155, 107610651, 107806125, 108001573, 108197023, 108392442, 108587828, 108783231, 108978626, 109174082, 109369475, 109564921, 109760377, 109955784, 110151258, 110346659, 110542108, 110737541, 110932953, 111128422, 111323826, 111519279, 111714746, 111910231, 112108669, 112311957, 112518529, 112726660, 112934809, 113141337, 113344627, 113543028, 113734952, 113918737, 114092828, 114255551, 114406237, 114546278, 114677130, 114800288, 114917180, 115029219, 115137982, 115244847, 115351320, 115458847, 115568833, 115682857, 115798978, 115914465, 116029367, 116143808, 116257893, 116371688, 116485277, 116598807, 116712291, 116825938, 116939741, 117053786, 117168020, 117282259, 117396543, 117510785, 117625014, 117739255 ];
 
 
 
@@ -541,7 +541,7 @@ function queryData() {
 	    var ratestr = "homrate";
 	}
     }
-var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr_as + ", MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, name, ROUND(AVG(pop)) as pop FROM homicides_web_1 WHERE date BETWEEN DATE '" +startDate+"' AND DATE '"+ endDate +"' AND " + homstr + " > 0 GROUP BY name ORDER BY " + homstr_as + " DESC";
+var queryCartodb = "SELECT sum(" + homstr + ") AS " + homstr_as + ", MAX(ST_X(the_geom)) AS long, MAX(ST_Y(the_geom)) as lat, name, ROUND(AVG(pop)) as pop FROM homicides_web WHERE date BETWEEN DATE '" +startDate+"' AND DATE '"+ endDate +"' AND " + homstr + " > 0 GROUP BY name ORDER BY " + homstr_as + " DESC";
 
     $.getJSON(baseURLCartodb + encodeURIComponent(queryCartodb) + "&callback=?",function(result){
 		  coordData = result;
@@ -628,6 +628,7 @@ Canvas.prototype.draw = function(){
      */
     if((typeOfHomicide === "DWRH" & new Date(endDate) < new Date(2006,11,15)) | 
 	(typeOfHomicide === "DWRH" & new Date(startDate) < new Date(2006,11,14)) |
+       (typeOfHomicide === "DWRH" & new Date(startDate) > new Date(2011,09,14)) |
 	(typeOfHomicide === "INEGI" & new Date(endDate).getFullYear() > lastHomicideYear) |
        (typeOfHomicide === "DWRH" & new Date(endDate).getFullYear() == 2011  & new Date(endDate).getMonth() > 8)) {
 
@@ -882,25 +883,28 @@ var updateHomicidesTable = function(){
     createTipsy(homtot, homrate, "#h2009", 60, 72);
     createTipsy(homtot, homrate, "#h2010", 72, 84);
     createTipsy(homtot, homrate, "#h2011", 84, 96);
+    createTipsy(homtot, homrate, "#h2012", 96, 108); 
     
-    
-    
+    $('#n2012').text("NA");
     $('#n2004').text("NA");
     $('#n2005').text("NA");
     $('#n2006').text("NA");
+
     $('#rn2004').text("NA");
     $('#rn2005').text("NA");
     $('#rn2006').text("NA");
+    $('#rn2012').text("NA");
+
     createTipsy(drhtot, drhrate, "#n2007", 36, 48);
     createTipsy(drhtot, drhrate, "#n2008", 48, 60);
     createTipsy(drhtot, drhrate, "#n2009", 60, 72);
     createTipsy(drhtot, drhrate, "#n2010", 72, 84); 
-    createTipsy(drhtot, drhrate, "#n2011", 84, 93);  
+    createTipsy(drhtot, drhrate, "#n2011", 84, 93);
 		      
     var cityText = currentCity;
     switch(cityText) {
-    case "José Azueta, Guerrero":
-	cityText = "Zihuatanejo, Guerrero";
+    case "José Azueta, Gro":
+	cityText = "Zihuatanejo, Gro";
 	break;
     case "San Luis Potosí-Soledad de Graciano Sánchez":
 	cityText = "San Luis Potosí" + metroArea;
@@ -989,14 +993,14 @@ function queryHomicideMonth() {
 	    }
 	    currentCity = "Polygon";
 	   
-	    var queryCartodb = "SELECT sum(drh) AS drh, sum("+homString+") AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM("+homString+")/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web_1 WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
+	    var queryCartodb = "SELECT sum(drh) AS drh, sum("+homString+") AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM("+homString+")/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
 	}
 	else if(polyString != "")
-	var queryCartodb = "SELECT sum(drh) AS drh, sum(hom) AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM(hom)/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web_1 WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
+	var queryCartodb = "SELECT sum(drh) AS drh, sum(hom) AS hom, ((SUM(drh)/SUM(pop))*100000 * 12) AS drhrate, SUM(hom)/SUM(pop) * 100000 * 12 AS homrate, date, sum(pop) AS pop FROM homicides_web WHERE ST_Intersects(the_geom,  GEOMETRYFROMTEXT('MULTIPOLYGON(((" + polyString +")))', 4326)) GROUP BY date ORDER BY date";
     }
     
     else
-	var queryCartodb = "SELECT drh, "+homString+" AS hom, drhrate, "+homRateString+" AS homrate, date, pop FROM homicides_web_1 WHERE name = " + "'" + currentCity + "'" + " ORDER BY date";
+	var queryCartodb = "SELECT drh, "+homString+" AS hom, drhrate, "+homRateString+" AS homrate, date, pop FROM homicides_web WHERE name = " + "'" + currentCity + "'" + " ORDER BY date";
     
     
 
@@ -1392,6 +1396,7 @@ function initialize() {
     $("#slider2009").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2009, 0, 15), new Date(2009, 11, 15));});
     $("#slider2010").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2010, 0, 15), new Date(2010, 11, 15));});
     $("#slider2011").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2011, 0, 15), new Date(2011, 11, 15));});
+    $("#slider2012").click(function() {$("#dateSlider").dateRangeSlider("values", new Date(2012, 0, 15), new Date(2012, 11, 15));});
 }
 
 
@@ -1467,7 +1472,7 @@ function initializeParameters() {
     $(function() {
 	  $( "#slider" ).slider({
 				    min: 2004,
-				    max: 2011,
+				    max: 2012,
 				    value: yearSlider,
 				    stop: function(e, ui) {
 					transitionTable(yearSlider, ui.value);
@@ -1751,8 +1756,8 @@ function createGraph(){
 	    tip = [drug_war_text];
 	}
 	if(currentCity.indexOf("Veracruz") >= 0) {
-	    rangei = [op_veracruz];
-	    tip = [op_veracruz_text];
+	    rangei = [op_veracruz, op_veracruz_seguro];
+	    tip = [op_veracruz_text, op_veracruz_seguro_text];
 	}
 	if(currentCity.indexOf("Juárez") >= 0) {
 	    rangei = [op_chihuahua, op_reinforcements, new_governor];
@@ -1766,7 +1771,7 @@ function createGraph(){
 	    rangei = [mochomo_date];
 	    tip = [mochomo_text];
 	}
-	if(currentCity.indexOf(", Michoacán") >= 0) {
+	if(currentCity.indexOf(", Mich") >= 0) {
 	    rangei = [op_michoacan, op_michoacan2];
 	    tip = [op_michoacan_text, op_michoacan2_text];
 	}
@@ -1775,14 +1780,14 @@ function createGraph(){
 	    rangei = [op_marlin, op_culiacan];
 	    tip = [op_marlin_text, op_culiacan_text];
 	}
-	if(currentCity.indexOf("Ahome, Sinaloa") >= 0 ||
-	   currentCity.indexOf("El Fuerte, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Guasave, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Sinaloa, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Salvador Alvarado, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Mocorito, Sinaloa") >= 0 ||
-	   currentCity.indexOf("El Fuerte, Sinaloa") >= 0 ||
-	   currentCity.indexOf("Angostura, Sinaloa") >= 0) {
+	if(currentCity.indexOf("Ahome, Sin") >= 0 ||
+	   currentCity.indexOf("El Fuerte, Sin") >= 0 ||
+	   currentCity.indexOf("Guasave, Sin") >= 0 ||
+	   currentCity.indexOf("Sinaloa, Sin") >= 0 ||
+	   currentCity.indexOf("Salvador Alvarado, Sin") >= 0 ||
+	   currentCity.indexOf("Mocorito, Sin") >= 0 ||
+	   currentCity.indexOf("El Fuerte, Sin") >= 0 ||
+	   currentCity.indexOf("Angostura, Sin") >= 0) {
 	    rangei = [abl_date];
 	    tip = [abl_text];
 	}
@@ -1817,14 +1822,14 @@ function createGraph(){
 	    rangei = [op_guerrero, capture_barbie, op_guerrero11];
 	    tip = [op_guerrero_text, capture_barbie_text, op_guerrero11_text];
 	}
-	if(currentCity.indexOf("Tamaulipas") >= 0 || currentCity.indexOf("Nuevo León") >= 0
+	if(currentCity.indexOf("Tamps") >= 0 || currentCity.indexOf("NL") >= 0
 	   || currentCity.indexOf("Tampico") >= 0 || currentCity.indexOf("Reynosa") >= 0
 	   || currentCity.indexOf("Matamoros") >= 0
 	   || currentCity.indexOf("Ciudad Valles") >= 0) {
 	    rangei = [zetas_vs_cdg];
 	    tip = [zetas_vs_cdg_text];
 	}
-	if(currentCity.indexOf("Jalisco") >= 0 || currentCity.indexOf("Nayarit") >= 0
+	if(currentCity.indexOf("Jal") >= 0 || currentCity.indexOf("Nayarit") >= 0
 	   || currentCity.indexOf("Colima") >= 0
 	   || currentCity.indexOf("Tepic") >= 0
 	   || currentCity.indexOf("Guadalajara") >= 0
@@ -1838,7 +1843,7 @@ function createGraph(){
 	    rangei = [mochomo_capture, abl_killed];
 	    tip = [mochomo_capture_text, abl_killed_text];
 	}
-	if(currentCity.indexOf(", Guerrero") >= 0) {
+	if(currentCity.indexOf(", Gro") >= 0) {
 	    rangei = [mochomo_capture];
 	    
 	    tip = [mochomo_capture_text];

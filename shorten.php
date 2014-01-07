@@ -1,7 +1,7 @@
 <?php
 
     //the long url posted by the map webpage
-    $url = $_GET["url"];
+    $url = urlencode(trim($_GET["url"]));
 
     //You have to create an account on bit.ly and modify the username and API key.
     $api_user = "username";
