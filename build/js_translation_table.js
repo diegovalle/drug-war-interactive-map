@@ -20,7 +20,7 @@ jsTranslationTable = {
 
 "There was no drop in homicides in the Federal District. It's a mistake in the government database":"La caída en homicidios es un error en la base de datos",
 "Joint Operation Veracruz":"Operativo Veracruz",
-
+"Operation Safe Veracruz": "Operativo Veracruz Seguro",
 "Operation Marlin":"Operativo Marlín",
 "Joint Operation Culiacán-Navolato started 5 days after the son of 'El Chapo' Guzman was killed. The general in charge of operations was Noé Sandoval Alcázar":"El Operativo Conjunto Culiacán-Navolato inicia 5 días después de la muerte del hijo de 'El Chapo'. A cargo del operativo estaba el general Noé Sandoval Alcázar",
 "Joint Operation Culiacán-Navolato-Mazatlán-Salvador Alvarado":"Operativo Conjunto Culiacán-Navolato-Mazatlán-Salvador Alvarado",

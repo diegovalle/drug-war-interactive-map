@@ -1719,8 +1719,8 @@ function createGraph(){
 	    tip = [drug_war_text];
 	}
 	if(currentCity.indexOf("Veracruz") >= 0) {
-	    rangei = [op_veracruz];
-	    tip = [op_veracruz_text];
+	    rangei = [op_veracruz, op_veracruz_seguro];
+	    tip = [op_veracruz_text, op_veracruz_seguro_text];
 	}
 	if(currentCity.indexOf("Juárez") >= 0) {
 	    rangei = [op_chihuahua, op_reinforcements, new_governor];
@@ -1785,14 +1785,14 @@ function createGraph(){
 	    rangei = [op_guerrero, capture_barbie, op_guerrero11];
 	    tip = [op_guerrero_text, capture_barbie_text, op_guerrero11_text];
 	}
-	if(currentCity.indexOf("Tamaulipas") >= 0 || currentCity.indexOf("Nuevo León") >= 0
+	if(currentCity.indexOf("Tamps") >= 0 || currentCity.indexOf("NL") >= 0
 	   || currentCity.indexOf("Tampico") >= 0 || currentCity.indexOf("Reynosa") >= 0
 	   || currentCity.indexOf("Matamoros") >= 0
 	   || currentCity.indexOf("Ciudad Valles") >= 0) {
 	    rangei = [zetas_vs_cdg];
 	    tip = [zetas_vs_cdg_text];
 	}
-	if(currentCity.indexOf("Jalisco") >= 0 || currentCity.indexOf("Nayarit") >= 0
+	if(currentCity.indexOf("Jal") >= 0 || currentCity.indexOf("Nayarit") >= 0
 	   || currentCity.indexOf("Colima") >= 0
 	   || currentCity.indexOf("Tepic") >= 0
 	   || currentCity.indexOf("Guadalajara") >= 0
